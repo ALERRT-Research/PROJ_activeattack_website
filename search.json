@@ -32,13 +32,6 @@
     "href": "index.html#website-guide",
     "title": "Active Attack Data Explorer",
     "section": "Website Guide",
-    "text": "Website Guide"
-  },
-  {
-    "objectID": "5_rememberance.html",
-    "href": "5_rememberance.html",
-    "title": "Rememberances",
-    "section": "",
-    "text": "We would like to take a moment to recognize the many civilian and law enforcement lives that have been lost due to the active attack events documented on this website."
+    "text": "Website Guide\nBelow are several plots that help illustrate the characteristics of active attacks included in the full Active Attack dataset. These visualization were created using the version of the dataset that is available for download on the Download the Data page. We selected specific aspects of Active Attacks that we believe will help inform the public and law enforcement about the nature of active attacks. While these images are static, the Dataviz Builder page allows users to create their own graphics using aspects of the dataset that are of most interest to them."
   }
 ]
