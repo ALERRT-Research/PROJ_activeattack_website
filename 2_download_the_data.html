@@ -39,14 +39,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
-<script src="site_libs/quarto-dashboard/stickythead.js"></script>
-<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
-<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
-<script src="site_libs/quarto-dashboard/components.js"></script>
-<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <meta name="shinylive:serviceworker_dir" content=".">
 <script src="site_libs/quarto-contrib/shinylive-0.5.0/shinylive/load-shinylive-sw.js" type="module"></script>
 <script src="site_libs/quarto-contrib/shinylive-0.5.0/shinylive/run-python-blocks.js" type="module"></script>
@@ -81,10 +73,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
-
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -112,112 +104,90 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./1_by_the_numbers.html"> 
 <span class="menu-text">Visualizing Active Attacks</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./2_download_the_data.html" aria-current="page"> 
+<span class="menu-text">Shinylive</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-<header id="quarto-dashboard-header">
-<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
-  <div class="navbar-container container-fluid">
-    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>    
-
-
-    <div class="navbar-brand-container">       
-
-      <div class="navbar-title">
-        <div class="navbar-title-text"><a href="#">Download Active Attack Data</a></div>
-        
-        
-      </div>
-    </div>
-</div>
-</nav>
-</header></header>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#this-is-a-test" id="toc-this-is-a-test" class="nav-link active" data-scroll-target="#this-is-a-test">This is a test</a></li>
+  <li><a href="#end-test" id="toc-end-test" class="nav-link" data-scroll-target="#end-test">End test</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
+<main class="content" id="quarto-document-content">
 
-<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
-<div class="bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card bslib-card html-fill-container" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-body html-fill-item html-fill-container">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Download Active Attack Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="this-is-a-test" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-a-test">This is a test</h2>
 <pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
 #|   shinylive does not work in self-contained HTML documents.
 #|   Please set `embed-resources: false` in your metadata.
 #| standalone: true
 #| viewerHeight: 600
 library(shiny)
-library(bslib)
+# library(bslib)
+# library(dplyr)
+# library(tidyr)
+# library(readr)
 
-# Define UI for app that draws a histogram ----
-ui &lt;- page_sidebar(
-  sidebar = sidebar(open = "open",
-    numericInput("n", "Sample count", 100),
-    checkboxInput("pause", "Pause", FALSE),
-  ),
-  plotOutput("plot", width=1100)
+# Load data from .rds (assuming "my_data.rds" is in your app directory)
+data &lt;- readRDS("https://raw.githubusercontent.com/ALERRT-Research/PROJ_activeattack_website/tree/main/data/aa_data_clean_nogeo_2023.rds")
+
+ui &lt;- fluidPage(
+  tableOutput("table")
 )
 
 server &lt;- function(input, output, session) {
-  data &lt;- reactive({
-    input$resample
-    if (!isTRUE(input$pause)) {
-      invalidateLater(1000)
-    }
-    rnorm(input$n)
-  })
   
-  output$plot &lt;- renderPlot({
-    hist(data(),
-      breaks = 40,
-      xlim = c(-2, 2),
-      ylim = c(0, 1),
-      lty = "blank",
-      xlab = "value",
-      freq = FALSE,
-      main = ""
-    )
-    
-    x &lt;- seq(from = -2, to = 2, length.out = 500)
-    y &lt;- dnorm(x)
-    lines(x, y, lwd=1.5)
-    
-    lwd &lt;- 5
-    abline(v=0, col="red", lwd=lwd, lty=2)
-    abline(v=mean(data()), col="blue", lwd=lwd, lty=1)
+  data &lt;- readRDS("data/aa_data_clean_nogeo_2023.rds")
 
-    legend(legend = c("Normal", "Mean", "Sample mean"),
-      col = c("black", "red", "blue"),
-      lty = c(1, 2, 1),
-      lwd = c(1, lwd, lwd),
-      x = 1,
-      y = 0.9
-    )
-  }, res=140)
+  output$table &lt;- renderTable({ data })
 }
 
-# Create Shiny app ----
-shinyApp(ui = ui, server = server)</code></pre>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
-
-</div>
-</div>
-</div>
+shinyApp(ui, server)
+</code></pre>
+</section>
+<section id="end-test" class="level2">
+<h2 class="anchored" data-anchor-id="end-test">End test</h2>
 
 
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -640,14 +610,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
-<script type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (_event) {
-  if (window.bslib.Card) {
-    window.bslib.Card.initializeAllCards();
-  }
-}); 
-</script>
-  
 
 
 
