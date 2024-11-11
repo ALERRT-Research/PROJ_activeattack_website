@@ -26,26 +26,5 @@
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Website Guide",
     "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. There are several subpages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\nAll visualization are downloadable as .png images.\n\n\nRemembrance\nThe Remembrance page presents a list of victims from the active attacks included in the dataset."
-  },
-  {
-    "objectID": "2_download_the_data.html",
-    "href": "2_download_the_data.html",
-    "title": "Download Active Attack Data",
-    "section": "",
-    "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 600\nlibrary(shiny)\n# library(bslib)\n# library(dplyr)\n# library(tidyr)\n# library(readr)\n\n# Load data from .rds (assuming \"my_data.rds\" is in your app directory)\ndata &lt;- readRDS(\"https://raw.githubusercontent.com/ALERRT-Research/PROJ_activeattack_website/tree/main/data/aa_data_clean_nogeo_2023.rds\")\n\nui &lt;- fluidPage(\n  tableOutput(\"table\")\n)\n\nserver &lt;- function(input, output, session) {\n  \n  data &lt;- readRDS(\"data/aa_data_clean_nogeo_2023.rds\")\n\n  output$table &lt;- renderTable({ data })\n}\n\nshinyApp(ui, server)"
-  },
-  {
-    "objectID": "2_download_the_data.html#this-is-a-test",
-    "href": "2_download_the_data.html#this-is-a-test",
-    "title": "Download Active Attack Data",
-    "section": "",
-    "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 600\nlibrary(shiny)\n# library(bslib)\n# library(dplyr)\n# library(tidyr)\n# library(readr)\n\n# Load data from .rds (assuming \"my_data.rds\" is in your app directory)\ndata &lt;- readRDS(\"https://raw.githubusercontent.com/ALERRT-Research/PROJ_activeattack_website/tree/main/data/aa_data_clean_nogeo_2023.rds\")\n\nui &lt;- fluidPage(\n  tableOutput(\"table\")\n)\n\nserver &lt;- function(input, output, session) {\n  \n  data &lt;- readRDS(\"data/aa_data_clean_nogeo_2023.rds\")\n\n  output$table &lt;- renderTable({ data })\n}\n\nshinyApp(ui, server)"
-  },
-  {
-    "objectID": "2_download_the_data.html#end-test",
-    "href": "2_download_the_data.html#end-test",
-    "title": "Download Active Attack Data",
-    "section": "End test",
-    "text": "End test"
   }
 ]
