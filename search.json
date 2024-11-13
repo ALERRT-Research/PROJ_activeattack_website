@@ -46,6 +46,13 @@
     "href": "index.html#website-guide",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Website Guide",
-    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. There are several subpages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\nAll visualization are downloadable as .png images.\n\n\nRemembrance\nThe Remembrance page presents a list of victims from the active attacks included in the dataset."
+    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. There are several subpages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\nAll visualization are downloadable as .png images.\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack dataset."
+  },
+  {
+    "objectID": "index.html#the-alerrt-center",
+    "href": "index.html#the-alerrt-center",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "The ALERRT Center",
+    "text": "The ALERRT Center\nTo learn more about the work and research being done at the ALERRT Center, please visit ALERRT.org."
   }
 ]
