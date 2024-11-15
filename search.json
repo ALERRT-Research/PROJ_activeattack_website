@@ -32,7 +32,7 @@
     "href": "index.html#history-of-the-active-attack-project",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "History of the Active Attack Project",
-    "text": "History of the Active Attack Project\nThis website hosts the overall data for the 567 active attacks that occurred between 2000-2023."
+    "text": "History of the Active Attack Project\nALERRT started collecting data from active shooter events in 2010 in an effort to better understand how the attacks unfold and to inform ALERRT’s curriculum. This original dataset was focused on events where the attacker used a firearm. Around 2018, we expanded the definition to include attacks where any weapon was used in an attempt to commit mass murder. We started referring to this expanded data as the Active Attack data.\nALERRT’s research ring partnered with the FBI to form an Active Shooter Working Group in 2013. Since then, we have assisted with the FBI’s annual reporting of active shooter events. The Active Attack Dataset includes all the FBI firearm attacks plus additional non-firearm attacks found by ALERRT’s research team."
   },
   {
     "objectID": "index.html#definitions",
@@ -46,7 +46,7 @@
     "href": "index.html#website-guide",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Website Guide",
-    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. There are several subpages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\nAll visualization are downloadable as .png images.\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack dataset."
+    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. All visualization are downloadable as .png/.gif/.mp4 files. There are several sub-pages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack dataset."
   },
   {
     "objectID": "index.html#the-alerrt-center",
