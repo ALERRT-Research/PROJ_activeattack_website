@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "2_victims.html",
-    "href": "2_victims.html",
-    "title": "Active Attack Data Explorer",
-    "section": "",
-    "text": "Between 2000 and 2023, our nation has experienced 568 active attack events. There were a total of 3,917 people injured, and out of that number, 1,383 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
-  },
-  {
-    "objectID": "2_victims.html#we-remember",
-    "href": "2_victims.html#we-remember",
-    "title": "Active Attack Data Explorer",
-    "section": "",
-    "text": "Between 2000 and 2023, our nation has experienced 568 active attack events. There were a total of 3,917 people injured, and out of that number, 1,383 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
-  },
-  {
-    "objectID": "2_victims.html#dont-name-them",
-    "href": "2_victims.html#dont-name-them",
-    "title": "Active Attack Data Explorer",
-    "section": "Don’t Name Them",
-    "text": "Don’t Name Them\nAt ALERRT, it is our policy to refrain from naming the person or people responsible for active attacks. Research has shown that many attacks are the result of fame-seeking behavior by the shooters. By refusing to name them, we aim to remove fame and notoriety as possible motivators of future attacks. Below are listed several resources and research papers examining the effect of naming and the movement to deprive would-be shooters of any additional motivation."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome to the Active Attack Data Explorer",
@@ -46,7 +25,7 @@
     "href": "index.html#website-guide",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Website Guide",
-    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nVisualizing Active Attacks\nThe Visualizing Active Attacks page presents many visualizations created by our team to show different aspects of the data. All visualization are downloadable as .png/.gif/.mp4 files. There are several sub-pages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack dataset."
+    "text": "Website Guide\nThere are several different pages on this website that may be of interest.\n\nActive Attacks\nThe Active Attacks page presents many visualizations created by our team to show different aspects of the data. All visualization are downloadable as .png/.gif/.mp4 files. There are several sub-pages that organize these visualizations:\n\nBy The Numbers: Counts and percentages of event characteristics (e.g., date/time, location type/ relationship), shooter characteristics (e.g., race/ethnicity, number of shooters, number of weapons), and fatalities.\nAcross The USA: Geographic distribution of attacks across the USA. This page includes plots as well as maps.\nDownload The Data: This page allows users to view the data underlying all of the visualizations. In addition to viewing the data, users can download the data directly as a .csv file.\n\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack dataset.\n\n\nContact\nThe Contact page provides contact information for the members of the Research Ring at the ALERRT Center."
   },
   {
     "objectID": "index.html#the-alerrt-center",
@@ -54,5 +33,33 @@
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "The ALERRT Center",
     "text": "The ALERRT Center\nTo learn more about the work and research being done at the ALERRT Center, please visit ALERRT.org."
+  },
+  {
+    "objectID": "2_victims.html",
+    "href": "2_victims.html",
+    "title": "Active Attack Data Explorer",
+    "section": "",
+    "text": "Between 2000 and 2023, our nation has experienced 568 active attack events. There were a total of 3,917 people injured, and out of that number, 1,383 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+  },
+  {
+    "objectID": "2_victims.html#we-remember",
+    "href": "2_victims.html#we-remember",
+    "title": "Active Attack Data Explorer",
+    "section": "",
+    "text": "Between 2000 and 2023, our nation has experienced 568 active attack events. There were a total of 3,917 people injured, and out of that number, 1,383 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+  },
+  {
+    "objectID": "2_victims.html#dont-name-them",
+    "href": "2_victims.html#dont-name-them",
+    "title": "Active Attack Data Explorer",
+    "section": "Don’t Name Them",
+    "text": "Don’t Name Them\nAt ALERRT, it is our policy to refrain from naming the person or people responsible for active attacks. Research has shown that many attacks are the result of fame-seeking behavior by the shooters. By refusing to name them, we aim to remove fame and notoriety as possible motivators of future attacks. Below are listed several resources and research papers examining the effect of naming and the movement to deprive would-be shooters of any additional motivation."
+  },
+  {
+    "objectID": "3_contact.html",
+    "href": "3_contact.html",
+    "title": "Contact Us",
+    "section": "",
+    "text": "Contact Us\nIf you have inquiries about the Active Attack dataset or this website, you can contact members of the Research Ring at the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nResearch Ring\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
   }
 ]
