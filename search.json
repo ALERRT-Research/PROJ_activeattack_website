@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "3_contact.html",
-    "href": "3_contact.html",
-    "title": "Contact Us",
-    "section": "",
-    "text": "Contact Us\nIf you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nPosition\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector of Research\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
-  },
-  {
     "objectID": "2_victims.html",
     "href": "2_victims.html",
     "title": "Active Attack Data Explorer",
@@ -26,6 +19,13 @@
     "title": "Active Attack Data Explorer",
     "section": "Don’t Name Them",
     "text": "Don’t Name Them\nAt ALERRT, it is our policy to refrain from naming the person(s) responsible for active attacks. Research has shown that many attacks are the result of fame-seeking behavior by the attackers. By refusing to name them, we aim to remove fame and notoriety as possible motivators of future attacks. ALERRT hosts a website, DontNameThem.org, that provides more information and resources about the “Don’t Name Them” movement."
+  },
+  {
+    "objectID": "3_contact.html",
+    "href": "3_contact.html",
+    "title": "Contact Us",
+    "section": "",
+    "text": "Contact Us\nIf you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nPosition\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector of Research\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
   },
   {
     "objectID": "index.html",
