@@ -1,1 +1,1 @@
-Sitemap: https://ALERRT-Research.github.io/PROJ_activeattack_website/sitemap.xml
+Sitemap: https://activeattackdata.org/sitemap.xml

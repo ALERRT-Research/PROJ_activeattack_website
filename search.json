@@ -38,8 +38,8 @@
     "objectID": "index.html#updates",
     "href": "index.html#updates",
     "title": "Welcome to the Active Attack Data Explorer",
-    "section": "Updates:",
-    "text": "Updates:\n\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
+    "section": "Updates",
+    "text": "Updates\n\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
   },
   {
     "objectID": "3_contact.html",
