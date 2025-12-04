@@ -601,7 +601,7 @@ following notes:
 
 2.  The dataset also includes several variables with the *\_incl*
     suffix. This suffix refers to an "inclusive definition" applied to
-    the the variables' coding scheme. ALERRT applies more stringent
+    the variable coding schemes. ALERRT applies more stringent
     definitions than does the FBI for coding active attack cases. For
     instance, injuries that were sustained during an active attack but
     not directly by the attacker (e.g., sprained ankle from running
