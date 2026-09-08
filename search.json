@@ -1,17 +1,24 @@
 [
   {
+    "objectID": "3_contact.html",
+    "href": "3_contact.html",
+    "title": "Contact Us",
+    "section": "",
+    "text": "Contact Us\nIf you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nPosition\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector of Research\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
+  },
+  {
     "objectID": "2_victims.html",
     "href": "2_victims.html",
     "title": "Active Attack Data Explorer",
     "section": "",
-    "text": "Between 2000 and 2024, our nation has experienced 597 active attack events. A total of 4,055 casualties result from these attacks, and out of that number, 1,415 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
   },
   {
     "objectID": "2_victims.html#we-remember",
     "href": "2_victims.html#we-remember",
     "title": "Active Attack Data Explorer",
     "section": "",
-    "text": "Between 2000 and 2024, our nation has experienced 597 active attack events. A total of 4,055 casualties result from these attacks, and out of that number, 1,415 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
   },
   {
     "objectID": "2_victims.html#dont-name-them",
@@ -60,13 +67,6 @@
     "href": "index.html#updates",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Updates",
-    "text": "Updates\n\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
-  },
-  {
-    "objectID": "3_contact.html",
-    "href": "3_contact.html",
-    "title": "Contact Us",
-    "section": "",
-    "text": "Contact Us\nIf you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nPosition\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector of Research\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
+    "text": "Updates\n\n09/08/26 - Update to v2025 data. The downloadable fact sheet is now a .pdf.\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
   }
 ]
