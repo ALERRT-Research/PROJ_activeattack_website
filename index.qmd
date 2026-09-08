@@ -68,7 +68,9 @@ To learn more about the work and research conducted at the ALERRT Center, please
 
 ## Updates
 
--   12/04/25 - Added "fact sheet" tab and downloadable fact sheet to the Active Attacks page.
+-   09/08/26 - Update to v2025 data. The downloadable fact sheet is now a *.pdf*.
+
+-   *12/04/25* - Added "fact sheet" tab and downloadable fact sheet to the Active Attacks page.
 
 -   *08/29/25* - Changed the section title "fatalities" to "casualities" and added information on the number of wounded.
 
