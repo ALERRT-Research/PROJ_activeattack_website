@@ -64,9 +64,9 @@ The [Contact](./3_contact.qmd) page provides contact information for members of 
 
 ## The ALERRT Center
 
-To learn more about the work and research conducted at the ALERRT Center, please visit [ALERRT.org](https://www.alerrt.org).
+To learn more about the research conducted by the ALERRT Center, please visit [ALERRTResearch.org](https://alerrtresearch.org).
 
-The Research Ring, the team that maintains the Active Attack Data and this website, has its own site at [ALERRTResearch.org](https://alerrtresearch.org).
+To learn more about the work conducted at the ALERRT Center, please visit [ALERRT.org](https://www.alerrt.org).
 
 ## Updates
 
