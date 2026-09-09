@@ -25,7 +25,7 @@
     "href": "bob.html#this-week",
     "title": "Active Attack Data Explorer",
     "section": "This Week",
-    "text": "This Week\n\nConfirm Peter’s local clones match origin (done 2026-09-09 — all three fast-forwarded; live site is v2025)\nDecide with Hunter: 2025 victim memorial roster — who supplies it, when. Until then the Remembrance page text says 2000–2025 but victim_scroll.mp4 is still the v2024 roll\nAsk Peter for explicit approval to remove the defunct Shiny app (PROJ_activeattack_app: local folder + GitHub repo)"
+    "text": "This Week\n\nDONE 2026-09-09: clones current; weapon-plot arrow colour + dropped zero-count points fixed; toolbar icons hidden on all four widgets; deployed and verified live — see docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md\nDONE 2026-09-09 (Hunter): 2025 victim memorial roster added, scroll regenerated, deployed\nAsk Peter for explicit approval to (a) untrack output/*_files/ + .DS_Store in graphics and (b) remove the defunct Shiny app (PROJ_activeattack_app: local folder + GitHub repo)\nTell Hunter about the two fixes and the ggiraph 0.9.1 (Mac) vs 0.9.6 (his) drift; agree on pinning"
   },
   {
     "objectID": "bob.html#upcoming-milestones",
@@ -39,14 +39,126 @@
     "href": "bob.html#start-here-next-session",
     "title": "Active Attack Data Explorer",
     "section": "Start Here Next Session",
-    "text": "Start Here Next Session\n\nRun git -C &lt;repo&gt; status -sb in all three repos; if behind, git pull --ff-only (Hunter pushes directly to main)\nThen work the open v2025 items in Notes below, victims roster first — it is the only user-visible inconsistency on the live site\nNever render 1_visuals.qmd/2_victims.qmd locally without the sibling repos checked out beside this one; the update functions copy from ../DATA_aa and ../PROJ_activeattack_graphics\nPush requires Peter’s explicit approval; deploy is automatic on push to main"
+    "text": "Start Here Next Session\n\nRun git -C &lt;repo&gt; status -sb in all three repos; if behind, git pull --ff-only (Hunter pushes directly to main)\nThen work the OPEN items in Notes below; nothing user-visible is currently wrong on the live site\nNever render 1_visuals.qmd/2_victims.qmd locally without the sibling repos checked out beside this one; the update functions copy from ../DATA_aa and ../PROJ_activeattack_graphics\nPush requires Peter’s explicit approval; deploy is automatic on push to main"
   },
   {
     "objectID": "bob.html#notes",
     "href": "bob.html#notes",
     "title": "Active Attack Data Explorer",
     "section": "Notes",
-    "text": "Notes\n\nPipeline coupling: relative ../ paths + md5 checksum copies (copy_ifelse_checksums). All three repos must sit as siblings under ~/Documents/GitHub/. Website data/ and www/ are committed so GitHub Actions renders without the feeders (update calls are skipped when GITHUB_ACTIONS == \"true\")\nDeploy: .github/workflows/publish.yml on push to main → gh-pages; CNAME activeattackdata.org. Runner pins R 4.2.0 while renv.lock was written under R 4.3.3 and Peter’s Mac runs 4.5.1 — works today, fragile if the lock is regenerated\nOnly the website has an renv.lock; DATA_aa and graphics have none. Hunter’s v2025 run used ggiraph ≥ 0.9 (hence the new save_girafe_widget() font-stripping helper); expect environment drift between his Windows box and Peter’s Mac\nOPEN (v2025): no DATA_aa/input/victims/2025/ and no victims_2025.rds; graphics falls back to v2024 by design and victim_scroll.mp4 is unchanged since 2025-06-20. Remembrance prose (computed from event data) says 2000–2025; the video ends at 2024\nOPEN (v2025): fact-sheet numbers in 1_visuals.qmd are hand-typed, not computed from the data; now 2 decimals where v2024 used 1. Fact sheet is a static data/aa_fact_sheet_2025.pdf; aa_fact_sheet_template.docx and unversioned aa_data_wide_codebook.docx are orphaned, as are the v2023/v2024 data copies in data/ and bivar_kill_yr.png/bivar_kill_year.html in www/\nzip_coords_completed.csv lives under input/events/2023/ on purpose — cumulative non-ZCTA lookup, do not re-point at {version}; code_events.R now warns on any event that fails to geocode\nSite policy: never name attackers (Don’t Name Them); Remembrance page lists victims only\nTO-DO (needs Peter’s explicit approval, not done): PROJ_activeattack_app (Shiny predecessor, last commit 2024-10-21) is defunct — remove local folder and GitHub repo ALERRT-Research/PROJ_activeattack_app\nSibling project: Research Ring Website (PROJ_researchring_website) — index.qmd now links to alerrtresearch.org\nFull orientation (pipeline, Hunter’s v2025 changes, fix items, env fragility): docs/logs/2026-09-09_registration-and-v2025-orientation.md"
+    "text": "Notes\n\nPipeline coupling: relative ../ paths + md5 checksum copies (copy_ifelse_checksums). All three repos must sit as siblings under ~/Documents/GitHub/. Website data/ and www/ are committed so GitHub Actions renders without the feeders (update calls are skipped when GITHUB_ACTIONS == \"true\")\nDeploy: .github/workflows/publish.yml on push to main → gh-pages; CNAME activeattackdata.org. Runner pins R 4.2.0 while renv.lock was written under R 4.3.3 and Peter’s Mac runs 4.5.1 — works today, fragile if the lock is regenerated\nOnly the website has an renv.lock; DATA_aa and graphics have none. Hunter renders with ggiraph 0.9.6 (Windows), Peter with 0.9.1 (Mac, R 4.5.1, ggplot2 4.0.3) — both work, bytes differ. opts_toolbar(saveaspng=FALSE) alone no longer hides download/fullscreen in ggiraph ≥ 0.9; use hidden = c(\"selection\",\"zoom\",\"misc\") (now applied to all four widgets)\nOPEN (graphics repo): output/*_files/ dirs are saveWidget staging leftovers, tracked since 2024-11, now holding both ggiraph 0.8.10 and 0.9.4 libs (~2 MB) plus a tracked output/.DS_Store. Widgets themselves are fully self-contained. Fix: save_girafe_widget() deletes the sibling dir; untrack + gitignore (deletion → approval)\nOPEN (v2025): fact-sheet numbers in 1_visuals.qmd are hand-typed, not computed from the data; now 2 decimals where v2024 used 1. Fact sheet is a static data/aa_fact_sheet_2025.pdf; aa_fact_sheet_template.docx and unversioned aa_data_wide_codebook.docx are orphaned, as are the v2023/v2024 data copies in data/ and bivar_kill_yr.png/bivar_kill_year.html in www/\nzip_coords_completed.csv lives under input/events/2023/ on purpose — cumulative non-ZCTA lookup, do not re-point at {version}; code_events.R now warns on any event that fails to geocode\nSite policy: never name attackers (Don’t Name Them); Remembrance page lists victims only\nTO-DO (needs Peter’s explicit approval, not done): PROJ_activeattack_app (Shiny predecessor, last commit 2024-10-21) is defunct — remove local folder and GitHub repo ALERRT-Research/PROJ_activeattack_app\nSibling project: Research Ring Website (PROJ_researchring_website) — index.qmd now links to alerrtresearch.org\nFull orientation (pipeline, Hunter’s v2025 changes, fix items, env fragility): docs/logs/2026-09-09_registration-and-v2025-orientation.md; today’s fixes: docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md"
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "Repos touched: PROJ_activeattack_graphics (b6cc205), PROJ_activeattack_website (a7f60a2 figures, 1f5b89b bob.md + orientation log). Both pushed to main with Peter’s explicit approval; site redeployed via GitHub Actions at 20:09 UTC and verified live.\n\n\n\nOn the Casualties tab, the Fatalities/Wounded by Weapon Type graphic had an arrow annotation (the Waukesha 2021 vehicle case, wounded &gt; 60) shaded like a pistol instead of a vehicle.\nRemove the download and fullscreen icons from the top-right of the bicolor map widget; the page has its own download buttons and Peter dislikes the icons’ behaviour. Extended on request to all four interactive widgets.\n\n\n\n\n\nArrow colour. fatality_weap_pal is an unnamed 5-colour vector (make_color_blend_multi() returns positional colours). The geom_segment_interactive arrow layer’s data contain only the two over-ceiling cases (Las Vegas 2017, Waukesha 2021), so its scale_color_manual saw two factor levels and assigned the first two palette colours positionally. Waukesha got the pistol colour; Las Vegas happened to get rifle, correctly, by luck. Confirmed by decoding the girafe SVG: Waukesha &lt;line&gt; stroke #C97578 = pistol dot fill, vehicle dots are #697BC8.\nDropped points (found while fixing the above). geom_jitter_interactive jittered x as well as y (y is already jittered by hand into weapon_primary_jitter). With scale_x_continuous(limits = c(0, ceiling), expand = c(0,0)), any zero-count event jittered below 0 was removed: 95 rows from the fatalities panel (of 205 events with 0 killed) and 71 from the wounded panel (of 130 with 0 wounded). Which points vanished depended on RNG state, so Hunter’s Windows render and Peter’s Mac render disagreed on dot counts. Pre-existing bug, present on the live site since the plot was created.\nToolbar icons. ggiraph ≥ 0.9 moved the download-PNG and fullscreen buttons into the misc toolbar group; opts_toolbar(saveaspng = FALSE) no longer hides them. Fix is hidden = c(\"selection\", \"zoom\", \"misc\").\n\n\n\n\nPROJ_activeattack_graphics/code/plots_cartesian.R, generate_weapon_plot(): - weapon_pal &lt;- setNames(fatality_weap_pal[seq_along(weapon_lvls)], weapon_lvls) with a stopifnot length guard; all three scale calls use it. - Both geom_jitter_interactive → geom_point_interactive. - opts_toolbar(saveaspng = FALSE, hidden = c(\"selection\", \"zoom\", \"misc\")) here and in generate_kill_yr_plot(), generate_wound_killed_plot().\nPROJ_activeattack_graphics/code/0_packages.R, create_interactive_map(): same opts_toolbar change.\nRegenerated: bivar_kill_weapon.{html,png}, bivar_kill_year.html, bivar_wound_kill.html, bicol_map_attackxkilled.html. Static PNGs whose content did not change (bivar_kill_yr.png, bivar_wound_kill.png, bicol_map_attackxkilled.png) were restored/left at Hunter’s versions to avoid byte churn. Rendered with scratch scripts that evaluate only the affected blocks of plots_cartesian.R / plots_geospatial.R (not the full scripts, which also rebuild the gif/mp4).\nCopied to PROJ_activeattack_website/www/ (byte-identical, cmp-verified). 0_set_up.R could not be sourced from Rscript because the repo’s renv activates and has no pacman; used plain cp instead — equivalent to update_aa_graphics().\n\n\n\n\nDecoded girafe JSON → SVG for all four widgets: \"hidden\":[\"selection\",\"zoom\",\"misc\",\"saveaspng\"], zero external _files/ refs, sizes 0.46–0.74 MB (self-contained).\nWeapon widget: 1,254 circles = 2 × 628 events − 2 (the two &gt; 60-wounded arrow cases, excluded from the wounded axis by design); 628 distinct data-ids. Both arrow strokes match their row’s dot fill.\nViewed regenerated PNG: zero columns solid at x = 0 in both panels; vehicle arrow blue.\nLive after deploy: same checks against https://activeattackdata.org/www/*.html pass.\n\n\n\n\n\nPeter’s Mac: R 4.5.1, ggplot2 4.0.3, ggiraph 0.9.1; Hunter rendered with ggiraph 0.9.6. Widgets from either work; bytes differ. Neither DATA_aa nor graphics has a lockfile.\nsaveWidget(selfcontained = TRUE) leaves a sibling &lt;name&gt;_files/ dir behind each run. Those dirs have been tracked in the graphics repo since 2024-11 and now hold both 0.8.10 and 0.9.4 ggiraph libs (~2 MB dead weight) plus a tracked output/.DS_Store. My render’s girafe-binding-0.9.1 leftovers were deleted before commit. Untracking the folders is a deletion → needs Peter’s approval.\npacman auto-installed tidytext on first run (was missing locally).\ngh CLI is not installed; deploy verified by fetching origin/gh-pages and curling the live widgets.\n\n\n\n\n\nUntrack output/*_files/ + output/.DS_Store in graphics; make save_girafe_widget() delete the sibling dir after saving.\nFact-sheet numbers hand-typed; compute from data during the overhaul.\nOrphaned files in website data/ and www/.\nPin package versions across the three repos (R runner 4.2.0 / lock 4.3.3 / Mac 4.5.1; ggiraph 0.9.1 vs 0.9.6).\nRemove defunct PROJ_activeattack_app (local + GitHub) — needs explicit approval.\nVisual overhaul before December 2026 ALERRT conference.\n\nVictims-roster item from the orientation log is closed: Hunter added the 2025 memorial list (62 names, total 1,447) and regenerated the scroll; deployed 19:07 UTC."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#what-peter-asked-for",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#what-peter-asked-for",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "On the Casualties tab, the Fatalities/Wounded by Weapon Type graphic had an arrow annotation (the Waukesha 2021 vehicle case, wounded &gt; 60) shaded like a pistol instead of a vehicle.\nRemove the download and fullscreen icons from the top-right of the bicolor map widget; the page has its own download buttons and Peter dislikes the icons’ behaviour. Extended on request to all four interactive widgets."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#diagnosis",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#diagnosis",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "Arrow colour. fatality_weap_pal is an unnamed 5-colour vector (make_color_blend_multi() returns positional colours). The geom_segment_interactive arrow layer’s data contain only the two over-ceiling cases (Las Vegas 2017, Waukesha 2021), so its scale_color_manual saw two factor levels and assigned the first two palette colours positionally. Waukesha got the pistol colour; Las Vegas happened to get rifle, correctly, by luck. Confirmed by decoding the girafe SVG: Waukesha &lt;line&gt; stroke #C97578 = pistol dot fill, vehicle dots are #697BC8.\nDropped points (found while fixing the above). geom_jitter_interactive jittered x as well as y (y is already jittered by hand into weapon_primary_jitter). With scale_x_continuous(limits = c(0, ceiling), expand = c(0,0)), any zero-count event jittered below 0 was removed: 95 rows from the fatalities panel (of 205 events with 0 killed) and 71 from the wounded panel (of 130 with 0 wounded). Which points vanished depended on RNG state, so Hunter’s Windows render and Peter’s Mac render disagreed on dot counts. Pre-existing bug, present on the live site since the plot was created.\nToolbar icons. ggiraph ≥ 0.9 moved the download-PNG and fullscreen buttons into the misc toolbar group; opts_toolbar(saveaspng = FALSE) no longer hides them. Fix is hidden = c(\"selection\", \"zoom\", \"misc\")."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#changes",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#changes",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "PROJ_activeattack_graphics/code/plots_cartesian.R, generate_weapon_plot(): - weapon_pal &lt;- setNames(fatality_weap_pal[seq_along(weapon_lvls)], weapon_lvls) with a stopifnot length guard; all three scale calls use it. - Both geom_jitter_interactive → geom_point_interactive. - opts_toolbar(saveaspng = FALSE, hidden = c(\"selection\", \"zoom\", \"misc\")) here and in generate_kill_yr_plot(), generate_wound_killed_plot().\nPROJ_activeattack_graphics/code/0_packages.R, create_interactive_map(): same opts_toolbar change.\nRegenerated: bivar_kill_weapon.{html,png}, bivar_kill_year.html, bivar_wound_kill.html, bicol_map_attackxkilled.html. Static PNGs whose content did not change (bivar_kill_yr.png, bivar_wound_kill.png, bicol_map_attackxkilled.png) were restored/left at Hunter’s versions to avoid byte churn. Rendered with scratch scripts that evaluate only the affected blocks of plots_cartesian.R / plots_geospatial.R (not the full scripts, which also rebuild the gif/mp4).\nCopied to PROJ_activeattack_website/www/ (byte-identical, cmp-verified). 0_set_up.R could not be sourced from Rscript because the repo’s renv activates and has no pacman; used plain cp instead — equivalent to update_aa_graphics()."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#verification",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#verification",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "Decoded girafe JSON → SVG for all four widgets: \"hidden\":[\"selection\",\"zoom\",\"misc\",\"saveaspng\"], zero external _files/ refs, sizes 0.46–0.74 MB (self-contained).\nWeapon widget: 1,254 circles = 2 × 628 events − 2 (the two &gt; 60-wounded arrow cases, excluded from the wounded axis by design); 628 distinct data-ids. Both arrow strokes match their row’s dot fill.\nViewed regenerated PNG: zero columns solid at x = 0 in both panels; vehicle arrow blue.\nLive after deploy: same checks against https://activeattackdata.org/www/*.html pass."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#environment-notes",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#environment-notes",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "Peter’s Mac: R 4.5.1, ggplot2 4.0.3, ggiraph 0.9.1; Hunter rendered with ggiraph 0.9.6. Widgets from either work; bytes differ. Neither DATA_aa nor graphics has a lockfile.\nsaveWidget(selfcontained = TRUE) leaves a sibling &lt;name&gt;_files/ dir behind each run. Those dirs have been tracked in the graphics repo since 2024-11 and now hold both 0.8.10 and 0.9.4 ggiraph libs (~2 MB dead weight) plus a tracked output/.DS_Store. My render’s girafe-binding-0.9.1 leftovers were deleted before commit. Untracking the folders is a deletion → needs Peter’s approval.\npacman auto-installed tidytext on first run (was missing locally).\ngh CLI is not installed; deploy verified by fetching origin/gh-pages and curling the live widgets."
+  },
+  {
+    "objectID": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#open-items-carried-on-bob.md",
+    "href": "docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.html#open-items-carried-on-bob.md",
+    "title": "2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden",
+    "section": "",
+    "text": "Untrack output/*_files/ + output/.DS_Store in graphics; make save_girafe_widget() delete the sibling dir after saving.\nFact-sheet numbers hand-typed; compute from data during the overhaul.\nOrphaned files in website data/ and www/.\nPin package versions across the three repos (R runner 4.2.0 / lock 4.3.3 / Mac 4.5.1; ggiraph 0.9.1 vs 0.9.6).\nRemove defunct PROJ_activeattack_app (local + GitHub) — needs explicit approval.\nVisual overhaul before December 2026 ALERRT conference.\n\nVictims-roster item from the orientation log is closed: Hunter added the 2025 memorial list (62 names, total 1,447) and regenerated the scroll; deployed 19:07 UTC."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "",
+    "text": "The Active Attack Data is a dataset maintained by the Advanced Law Enforcement Rapid Response Training (ALERRT) Center at Texas State University. The purpose of this website is to make that dataset more accessible to the general public, as well as to the entire first responder community. Using the data, we have developed many visualizations that communicate important aspects of the dataset in the hopes that we may better understand these unfortunate events and improve our efforts to prevent them in the future.\nAll of the media on this website are easily downloadable, and we encourage their use. Please take some time to learn more about the history and definitions of the Active Attack Data in the sections that follow. At the bottom of this page, you will also find a guide listing the website’s contents for easy navigation."
+  },
+  {
+    "objectID": "index.html#history",
+    "href": "index.html#history",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "History",
+    "text": "History\nALERRT started collecting data from active shooter events in 2010 to better understand how these attacks unfold and to inform ALERRT’s curriculum. This original dataset focused on events where the attacker used a firearm. Around 2018, we expanded the definition to include attacks involving any weapon used in an attempt to commit mass murder. We started referring to this expanded data as the Active Attack Data.\nALERRT’s research ring partnered with the FBI in 2013 to form an Active Shooter Working Group. Since then, we have assisted with the FBI’s annual reporting of active shooter events. The Active Attack Data includes all the FBI-documented firearm attacks, plus additional non-firearm attacks identified by ALERRT’s research team."
+  },
+  {
+    "objectID": "index.html#definitions",
+    "href": "index.html#definitions",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "Definitions",
+    "text": "Definitions\nWe define an active attack as follows: an active attack occurs when an individual or individuals is actively killing or attempting to kill multiple unrelated people in a public space. The key component of this definition is the word actively. For an event to qualify as an active attack, it must involve an active component. This requirement excludes cases where law enforcement is unaware that the attack is happening.\nA good example is a family annihilation. In many such events, the attacker kills their family in a private home. Law enforcement often learns of these attacks only after they’ve ended, too late to intervene and save lives. By contrast, first responders are typically alerted to an active attack while it is ongoing. As you will see in the data, half the time, the event ends before law enforcement arrives on the scene because the attacker is stopped by civilians or stops themselves (e.g., flees the scene or commits suicide).\nActive attacks are not limited to those carried out with firearms. Instead, active attacks encompass events where a firearm, knife, or even a vehicle serves as the primary weapon. Any weapon can be used in an active attack as long as the intent is to kill as many people as possible.\n\n\n\n\n\n\nTip\n\n\n\nFor a helpful discussion of the similarities and differences between “active attack” and other terms commonly misused in the media, please refer to this 2022 paper by Sandel & Martaindale (Journal of Mass Violence Research):\n\nWhat Are We Talking About? Definitional Confusion Within Active and Mass Shooting Research"
+  },
+  {
+    "objectID": "index.html#website-guide",
+    "href": "index.html#website-guide",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "Website Guide",
+    "text": "Website Guide\nThere are several pages on this website that may be of interest.\n\nActive Attacks\nThe Active Attacks page presents many visualizations created by our team to show different aspects of the data. All visualizations are downloadable as .png/.gif/.mp4/.html files. The sub-pages below organize these visualizations:\n\nTiming: A breakdown of active attacks across different time scales, including years, month of year, day of week, and hour of day.\nAttackers: Characteristics of the attackers responsible for active attacks, including race/ethnicity, age, and weapons used.\nLocations: Topics like the type of location attacked, the relationship of the attack to the location, and the timing of attacks across location types.\nFatalities: The lethality of specific active attacks and changes in fatalities versus attacks over the years.\nAcross the USA: Geographic distribution of attacks and fatalities across the USA, along with the accumulation of attacks over the years.\nFact Sheet: Answers and statistics to some common questions regarding the ALERRT active attack data.\nDownload the Data: View and directly download the data underlying all visualizations as a .csv file.\n\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack Data.\n\n\nContact\nThe Contact page provides contact information for members of the Research Ring at the ALERRT Center."
+  },
+  {
+    "objectID": "index.html#the-alerrt-center",
+    "href": "index.html#the-alerrt-center",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "The ALERRT Center",
+    "text": "The ALERRT Center\nTo learn more about the research conducted by the ALERRT Center, please visit ALERRTResearch.org.\nTo learn more about the work conducted at the ALERRT Center, please visit ALERRT.org."
+  },
+  {
+    "objectID": "index.html#updates",
+    "href": "index.html#updates",
+    "title": "Welcome to the Active Attack Data Explorer",
+    "section": "Updates",
+    "text": "Updates\n\n09/09/26 - Added a link to the Research Ring website.\n09/08/26 - Update to v2025 data. The downloadable fact sheet is now a .pdf.\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
+  },
+  {
+    "objectID": "2_victims.html",
+    "href": "2_victims.html",
+    "title": "Active Attack Data Explorer",
+    "section": "",
+    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+  },
+  {
+    "objectID": "2_victims.html#we-remember",
+    "href": "2_victims.html#we-remember",
+    "title": "Active Attack Data Explorer",
+    "section": "",
+    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
+  },
+  {
+    "objectID": "2_victims.html#dont-name-them",
+    "href": "2_victims.html#dont-name-them",
+    "title": "Active Attack Data Explorer",
+    "section": "Don’t Name Them",
+    "text": "Don’t Name Them\nAt ALERRT, it is our policy to refrain from naming the person(s) responsible for active attacks. Research has shown that many attacks are the result of fame-seeking behavior by the attackers. By refusing to name them, we aim to remove fame and notoriety as possible motivators of future attacks. ALERRT hosts a website, DontNameThem.org, that provides more information and resources about the “Don’t Name Them” movement."
   },
   {
     "objectID": "docs/logs/2026-09-09_registration-and-v2025-orientation.html",
@@ -96,69 +208,6 @@
     "title": "2026-09-09 — Bob registration and post-v2025 orientation",
     "section": "",
     "text": "Hunter Martaindale — co-maintainer; made every upstream change above; pushes directly to main.\nJack Cox (jackdjohncox) — former contributor (fact-sheet tab PR, 2025-12-04); no longer at ALERRT.\nSibling project: Research Ring Website (PROJ_researchring_website, alerrtresearch.org)."
-  },
-  {
-    "objectID": "2_victims.html",
-    "href": "2_victims.html",
-    "title": "Active Attack Data Explorer",
-    "section": "",
-    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
-  },
-  {
-    "objectID": "2_victims.html#we-remember",
-    "href": "2_victims.html#we-remember",
-    "title": "Active Attack Data Explorer",
-    "section": "",
-    "text": "Between 2000 and 2025, our nation has experienced 634 active attack events. A total of 4,287 casualties result from these attacks, and out of that number, 1,477 people died. This page attempts to list every name of every victim. Please alert us if any mistakes or omissions are found. We attempt to capture every name we can find to remember the victims.\nLet us pause for a moment of silence to remember and honor those lost. ALERRT also strives to honor with courage and compassion the thousands of surviving families and those who risked their lives to save others.\n\n Download"
-  },
-  {
-    "objectID": "2_victims.html#dont-name-them",
-    "href": "2_victims.html#dont-name-them",
-    "title": "Active Attack Data Explorer",
-    "section": "Don’t Name Them",
-    "text": "Don’t Name Them\nAt ALERRT, it is our policy to refrain from naming the person(s) responsible for active attacks. Research has shown that many attacks are the result of fame-seeking behavior by the attackers. By refusing to name them, we aim to remove fame and notoriety as possible motivators of future attacks. ALERRT hosts a website, DontNameThem.org, that provides more information and resources about the “Don’t Name Them” movement."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "",
-    "text": "The Active Attack Data is a dataset maintained by the Advanced Law Enforcement Rapid Response Training (ALERRT) Center at Texas State University. The purpose of this website is to make that dataset more accessible to the general public, as well as to the entire first responder community. Using the data, we have developed many visualizations that communicate important aspects of the dataset in the hopes that we may better understand these unfortunate events and improve our efforts to prevent them in the future.\nAll of the media on this website are easily downloadable, and we encourage their use. Please take some time to learn more about the history and definitions of the Active Attack Data in the sections that follow. At the bottom of this page, you will also find a guide listing the website’s contents for easy navigation."
-  },
-  {
-    "objectID": "index.html#history",
-    "href": "index.html#history",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "History",
-    "text": "History\nALERRT started collecting data from active shooter events in 2010 to better understand how these attacks unfold and to inform ALERRT’s curriculum. This original dataset focused on events where the attacker used a firearm. Around 2018, we expanded the definition to include attacks involving any weapon used in an attempt to commit mass murder. We started referring to this expanded data as the Active Attack Data.\nALERRT’s research ring partnered with the FBI in 2013 to form an Active Shooter Working Group. Since then, we have assisted with the FBI’s annual reporting of active shooter events. The Active Attack Data includes all the FBI-documented firearm attacks, plus additional non-firearm attacks identified by ALERRT’s research team."
-  },
-  {
-    "objectID": "index.html#definitions",
-    "href": "index.html#definitions",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "Definitions",
-    "text": "Definitions\nWe define an active attack as follows: an active attack occurs when an individual or individuals is actively killing or attempting to kill multiple unrelated people in a public space. The key component of this definition is the word actively. For an event to qualify as an active attack, it must involve an active component. This requirement excludes cases where law enforcement is unaware that the attack is happening.\nA good example is a family annihilation. In many such events, the attacker kills their family in a private home. Law enforcement often learns of these attacks only after they’ve ended, too late to intervene and save lives. By contrast, first responders are typically alerted to an active attack while it is ongoing. As you will see in the data, half the time, the event ends before law enforcement arrives on the scene because the attacker is stopped by civilians or stops themselves (e.g., flees the scene or commits suicide).\nActive attacks are not limited to those carried out with firearms. Instead, active attacks encompass events where a firearm, knife, or even a vehicle serves as the primary weapon. Any weapon can be used in an active attack as long as the intent is to kill as many people as possible.\n\n\n\n\n\n\nTip\n\n\n\nFor a helpful discussion of the similarities and differences between “active attack” and other terms commonly misused in the media, please refer to this 2022 paper by Sandel & Martaindale (Journal of Mass Violence Research):\n\nWhat Are We Talking About? Definitional Confusion Within Active and Mass Shooting Research"
-  },
-  {
-    "objectID": "index.html#website-guide",
-    "href": "index.html#website-guide",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "Website Guide",
-    "text": "Website Guide\nThere are several pages on this website that may be of interest.\n\nActive Attacks\nThe Active Attacks page presents many visualizations created by our team to show different aspects of the data. All visualizations are downloadable as .png/.gif/.mp4/.html files. The sub-pages below organize these visualizations:\n\nTiming: A breakdown of active attacks across different time scales, including years, month of year, day of week, and hour of day.\nAttackers: Characteristics of the attackers responsible for active attacks, including race/ethnicity, age, and weapons used.\nLocations: Topics like the type of location attacked, the relationship of the attack to the location, and the timing of attacks across location types.\nFatalities: The lethality of specific active attacks and changes in fatalities versus attacks over the years.\nAcross the USA: Geographic distribution of attacks and fatalities across the USA, along with the accumulation of attacks over the years.\nFact Sheet: Answers and statistics to some common questions regarding the ALERRT active attack data.\nDownload the Data: View and directly download the data underlying all visualizations as a .csv file.\n\n\n\nRemembrance\nThe Remembrance page catalogs all victims who died because of the attacks included in the Active Attack Data.\n\n\nContact\nThe Contact page provides contact information for members of the Research Ring at the ALERRT Center."
-  },
-  {
-    "objectID": "index.html#the-alerrt-center",
-    "href": "index.html#the-alerrt-center",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "The ALERRT Center",
-    "text": "The ALERRT Center\nTo learn more about the research conducted by the ALERRT Center, please visit ALERRTResearch.org.\nTo learn more about the work conducted at the ALERRT Center, please visit ALERRT.org."
-  },
-  {
-    "objectID": "index.html#updates",
-    "href": "index.html#updates",
-    "title": "Welcome to the Active Attack Data Explorer",
-    "section": "Updates",
-    "text": "Updates\n\n09/09/26 - Added a link to the Research Ring website.\n09/08/26 - Update to v2025 data. The downloadable fact sheet is now a .pdf.\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
   },
   {
     "objectID": "3_contact.html",

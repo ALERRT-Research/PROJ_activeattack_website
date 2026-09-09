@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>bob – Active Attack Data Explorer</title>
+<title>weapon-plot-and-toolbar-fixes – Active Attack Data Explorer</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +29,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-65ab6f6afcc98c2005f3bec1c5e98b7d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-65ab6f6afcc98c2005f3bec1c5e98b7d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -85,11 +85,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./www/alerrt_banner.png" alt="" class="navbar-logo light-content">
-    <img src="./www/alerrt_banner.png" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../www/alerrt_banner.png" alt="" class="navbar-logo light-content">
+    <img src="../../www/alerrt_banner.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Active Attack Data Explorer</span>
     </a>
   </div>
@@ -100,19 +100,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./1_visuals.html"> 
+    <a class="nav-link" href="../../1_visuals.html"> 
 <span class="menu-text">Active Attacks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./2_victims.html"> 
+    <a class="nav-link" href="../../2_victims.html"> 
 <span class="menu-text">Remembrance</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./3_contact.html"> 
+    <a class="nav-link" href="../../3_contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -131,12 +131,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#team-dependencies" id="toc-team-dependencies" class="nav-link" data-scroll-target="#team-dependencies">Team &amp; Dependencies</a></li>
-  <li><a href="#this-week" id="toc-this-week" class="nav-link" data-scroll-target="#this-week">This Week</a></li>
-  <li><a href="#upcoming-milestones" id="toc-upcoming-milestones" class="nav-link" data-scroll-target="#upcoming-milestones">Upcoming Milestones</a></li>
-  <li><a href="#start-here-next-session" id="toc-start-here-next-session" class="nav-link" data-scroll-target="#start-here-next-session">Start Here Next Session</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#weapon-plot-colourdropped-points-fixes-widget-toolbars-hidden" id="toc-weapon-plot-colourdropped-points-fixes-widget-toolbars-hidden" class="nav-link active" data-scroll-target="#weapon-plot-colourdropped-points-fixes-widget-toolbars-hidden">2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden</a>
+  <ul class="collapse">
+  <li><a href="#what-peter-asked-for" id="toc-what-peter-asked-for" class="nav-link" data-scroll-target="#what-peter-asked-for">What Peter asked for</a></li>
+  <li><a href="#diagnosis" id="toc-diagnosis" class="nav-link" data-scroll-target="#diagnosis">Diagnosis</a></li>
+  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a></li>
+  <li><a href="#verification" id="toc-verification" class="nav-link" data-scroll-target="#verification">Verification</a></li>
+  <li><a href="#environment-notes" id="toc-environment-notes" class="nav-link" data-scroll-target="#environment-notes">Environment notes</a></li>
+  <li><a href="#open-items-carried-on-bob.md" id="toc-open-items-carried-on-bob.md" class="nav-link" data-scroll-target="#open-items-carried-on-bob.md">Open items (carried on bob.md)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -146,89 +149,63 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="objectives" class="level2">
-<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<section id="weapon-plot-colourdropped-points-fixes-widget-toolbars-hidden" class="level1">
+<h1>2026-09-09 — Weapon plot colour/dropped-points fixes; widget toolbars hidden</h1>
+<p><strong>Repos touched:</strong> <code>PROJ_activeattack_graphics</code> (b6cc205), <code>PROJ_activeattack_website</code> (a7f60a2 figures, 1f5b89b bob.md + orientation log). Both pushed to <code>main</code> with Peter’s explicit approval; site redeployed via GitHub Actions at 20:09 UTC and verified live.</p>
+<section id="what-peter-asked-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-peter-asked-for">What Peter asked for</h2>
+<ol type="1">
+<li>On the Casualties tab, the Fatalities/Wounded by Weapon Type graphic had an arrow annotation (the Waukesha 2021 vehicle case, wounded &gt; 60) shaded like a pistol instead of a vehicle.</li>
+<li>Remove the download and fullscreen icons from the top-right of the bicolor map widget; the page has its own download buttons and Peter dislikes the icons’ behaviour. Extended on request to all four interactive widgets.</li>
+</ol>
+</section>
+<section id="diagnosis" class="level2">
+<h2 class="anchored" data-anchor-id="diagnosis">Diagnosis</h2>
 <ul>
-<li>Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version</li>
-<li>Umbrella card for the three-repo pipeline: <code>DATA_aa</code> (build) → <code>PROJ_activeattack_graphics</code> (figures) → <code>PROJ_activeattack_website</code> (Quarto site, GitHub Pages)</li>
-<li>Near term: verify and tidy after Hunter’s v2025 update (2026-09-08/09); later: visual overhaul of the site for the December 2026 ALERRT conference</li>
+<li><strong>Arrow colour.</strong> <code>fatality_weap_pal</code> is an <em>unnamed</em> 5-colour vector (<code>make_color_blend_multi()</code> returns positional colours). The <code>geom_segment_interactive</code> arrow layer’s data contain only the two over-ceiling cases (Las Vegas 2017, Waukesha 2021), so its <code>scale_color_manual</code> saw two factor levels and assigned the first two palette colours positionally. Waukesha got the pistol colour; Las Vegas happened to get rifle, correctly, by luck. Confirmed by decoding the girafe SVG: Waukesha <code>&lt;line&gt;</code> stroke <code>#C97578</code> = pistol dot fill, vehicle dots are <code>#697BC8</code>.</li>
+<li><strong>Dropped points (found while fixing the above).</strong> <code>geom_jitter_interactive</code> jittered <strong>x</strong> as well as y (y is already jittered by hand into <code>weapon_primary_jitter</code>). With <code>scale_x_continuous(limits = c(0, ceiling), expand = c(0,0))</code>, any zero-count event jittered below 0 was removed: 95 rows from the fatalities panel (of 205 events with 0 killed) and 71 from the wounded panel (of 130 with 0 wounded). Which points vanished depended on RNG state, so Hunter’s Windows render and Peter’s Mac render disagreed on dot counts. Pre-existing bug, present on the live site since the plot was created.</li>
+<li><strong>Toolbar icons.</strong> ggiraph ≥ 0.9 moved the download-PNG and fullscreen buttons into the <code>misc</code> toolbar group; <code>opts_toolbar(saveaspng = FALSE)</code> no longer hides them. Fix is <code>hidden = c("selection", "zoom", "misc")</code>.</li>
 </ul>
 </section>
-<section id="team-dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="team-dependencies">Team &amp; Dependencies</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 29%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Role</th>
-<th>Affiliation</th>
-<th>Waiting on Peter?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Hunter Martaindale</td>
-<td>Co-maintainer; did the v2025 data update and pipeline fixes (Windows)</td>
-<td>ALERRT / Texas State</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>Jack Cox</td>
-<td>Former contributor (fact-sheet tab, 2025) — no longer at ALERRT</td>
-<td>—</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+<section id="changes" class="level2">
+<h2 class="anchored" data-anchor-id="changes">Changes</h2>
+<p><code>PROJ_activeattack_graphics/code/plots_cartesian.R</code>, <code>generate_weapon_plot()</code>: - <code>weapon_pal &lt;- setNames(fatality_weap_pal[seq_along(weapon_lvls)], weapon_lvls)</code> with a <code>stopifnot</code> length guard; all three scale calls use it. - Both <code>geom_jitter_interactive</code> → <code>geom_point_interactive</code>. - <code>opts_toolbar(saveaspng = FALSE, hidden = c("selection", "zoom", "misc"))</code> here and in <code>generate_kill_yr_plot()</code>, <code>generate_wound_killed_plot()</code>.</p>
+<p><code>PROJ_activeattack_graphics/code/0_packages.R</code>, <code>create_interactive_map()</code>: same <code>opts_toolbar</code> change.</p>
+<p>Regenerated: <code>bivar_kill_weapon.{html,png}</code>, <code>bivar_kill_year.html</code>, <code>bivar_wound_kill.html</code>, <code>bicol_map_attackxkilled.html</code>. Static PNGs whose content did not change (<code>bivar_kill_yr.png</code>, <code>bivar_wound_kill.png</code>, <code>bicol_map_attackxkilled.png</code>) were restored/left at Hunter’s versions to avoid byte churn. Rendered with scratch scripts that evaluate only the affected blocks of <code>plots_cartesian.R</code> / <code>plots_geospatial.R</code> (not the full scripts, which also rebuild the gif/mp4).</p>
+<p>Copied to <code>PROJ_activeattack_website/www/</code> (byte-identical, <code>cmp</code>-verified). <code>0_set_up.R</code> could not be sourced from Rscript because the repo’s <code>renv</code> activates and has no <code>pacman</code>; used plain <code>cp</code> instead — equivalent to <code>update_aa_graphics()</code>.</p>
 </section>
-<section id="this-week" class="level2">
-<h2 class="anchored" data-anchor-id="this-week">This Week</h2>
+<section id="verification" class="level2">
+<h2 class="anchored" data-anchor-id="verification">Verification</h2>
 <ul>
-<li>DONE 2026-09-09: clones current; weapon-plot arrow colour + dropped zero-count points fixed; toolbar icons hidden on all four widgets; deployed and verified live — see <code>docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md</code></li>
-<li>DONE 2026-09-09 (Hunter): 2025 victim memorial roster added, scroll regenerated, deployed</li>
-<li>Ask Peter for explicit approval to (a) untrack <code>output/*_files/</code> + <code>.DS_Store</code> in graphics and (b) remove the defunct Shiny app (<code>PROJ_activeattack_app</code>: local folder + GitHub repo)</li>
-<li>Tell Hunter about the two fixes and the ggiraph 0.9.1 (Mac) vs 0.9.6 (his) drift; agree on pinning</li>
+<li>Decoded girafe JSON → SVG for all four widgets: <code>"hidden":["selection","zoom","misc","saveaspng"]</code>, zero external <code>_files/</code> refs, sizes 0.46–0.74 MB (self-contained).</li>
+<li>Weapon widget: 1,254 circles = 2 × 628 events − 2 (the two &gt; 60-wounded arrow cases, excluded from the wounded axis by design); 628 distinct <code>data-id</code>s. Both arrow strokes match their row’s dot fill.</li>
+<li>Viewed regenerated PNG: zero columns solid at x = 0 in both panels; vehicle arrow blue.</li>
+<li>Live after deploy: same checks against <code>https://activeattackdata.org/www/*.html</code> pass.</li>
 </ul>
 </section>
-<section id="upcoming-milestones" class="level2">
-<h2 class="anchored" data-anchor-id="upcoming-milestones">Upcoming Milestones</h2>
+<section id="environment-notes" class="level2">
+<h2 class="anchored" data-anchor-id="environment-notes">Environment notes</h2>
 <ul>
-<li>Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026</li>
-<li>Annual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump <code>version &lt;- "2026"</code> in DATA_aa (2 scripts), graphics <code>0_packages.R</code>, website <code>0_set_up.R</code> + <code>1_visuals.qmd</code> + <code>2_victims.qmd</code></li>
+<li>Peter’s Mac: R 4.5.1, ggplot2 4.0.3, ggiraph <strong>0.9.1</strong>; Hunter rendered with ggiraph <strong>0.9.6</strong>. Widgets from either work; bytes differ. Neither <code>DATA_aa</code> nor graphics has a lockfile.</li>
+<li><code>saveWidget(selfcontained = TRUE)</code> leaves a sibling <code>&lt;name&gt;_files/</code> dir behind each run. Those dirs have been <em>tracked</em> in the graphics repo since 2024-11 and now hold both 0.8.10 and 0.9.4 ggiraph libs (~2 MB dead weight) plus a tracked <code>output/.DS_Store</code>. My render’s <code>girafe-binding-0.9.1</code> leftovers were deleted before commit. Untracking the folders is a deletion → needs Peter’s approval.</li>
+<li><code>pacman</code> auto-installed <code>tidytext</code> on first run (was missing locally).</li>
+<li><code>gh</code> CLI is not installed; deploy verified by fetching <code>origin/gh-pages</code> and curling the live widgets.</li>
 </ul>
 </section>
-<section id="start-here-next-session" class="level2">
-<h2 class="anchored" data-anchor-id="start-here-next-session">Start Here Next Session</h2>
-<ul>
-<li>Run <code>git -C &lt;repo&gt; status -sb</code> in all three repos; if behind, <code>git pull --ff-only</code> (Hunter pushes directly to main)</li>
-<li>Then work the OPEN items in Notes below; nothing user-visible is currently wrong on the live site</li>
-<li>Never render <code>1_visuals.qmd</code>/<code>2_victims.qmd</code> locally without the sibling repos checked out beside this one; the update functions copy from <code>../DATA_aa</code> and <code>../PROJ_activeattack_graphics</code></li>
-<li>Push requires Peter’s explicit approval; deploy is automatic on push to <code>main</code></li>
-</ul>
-</section>
-<section id="notes" class="level2">
-<h2 class="anchored" data-anchor-id="notes">Notes</h2>
-<ul>
-<li>Pipeline coupling: relative <code>../</code> paths + md5 checksum copies (<code>copy_ifelse_checksums</code>). All three repos must sit as siblings under <code>~/Documents/GitHub/</code>. Website <code>data/</code> and <code>www/</code> are committed so GitHub Actions renders without the feeders (update calls are skipped when <code>GITHUB_ACTIONS == "true"</code>)</li>
-<li>Deploy: <code>.github/workflows/publish.yml</code> on push to <code>main</code> → <code>gh-pages</code>; CNAME <code>activeattackdata.org</code>. Runner pins R 4.2.0 while <code>renv.lock</code> was written under R 4.3.3 and Peter’s Mac runs 4.5.1 — works today, fragile if the lock is regenerated</li>
-<li>Only the website has an <code>renv.lock</code>; <code>DATA_aa</code> and graphics have none. Hunter renders with ggiraph 0.9.6 (Windows), Peter with 0.9.1 (Mac, R 4.5.1, ggplot2 4.0.3) — both work, bytes differ. <code>opts_toolbar(saveaspng=FALSE)</code> alone no longer hides download/fullscreen in ggiraph ≥ 0.9; use <code>hidden = c("selection","zoom","misc")</code> (now applied to all four widgets)</li>
-<li>OPEN (graphics repo): <code>output/*_files/</code> dirs are <code>saveWidget</code> staging leftovers, tracked since 2024-11, now holding both ggiraph 0.8.10 and 0.9.4 libs (~2 MB) plus a tracked <code>output/.DS_Store</code>. Widgets themselves are fully self-contained. Fix: <code>save_girafe_widget()</code> deletes the sibling dir; untrack + gitignore (deletion → approval)</li>
-<li>OPEN (v2025): fact-sheet numbers in <code>1_visuals.qmd</code> are hand-typed, not computed from the data; now 2 decimals where v2024 used 1. Fact sheet is a static <code>data/aa_fact_sheet_2025.pdf</code>; <code>aa_fact_sheet_template.docx</code> and unversioned <code>aa_data_wide_codebook.docx</code> are orphaned, as are the v2023/v2024 data copies in <code>data/</code> and <code>bivar_kill_yr.png</code>/<code>bivar_kill_year.html</code> in <code>www/</code></li>
-<li><code>zip_coords_completed.csv</code> lives under <code>input/events/2023/</code> on purpose — cumulative non-ZCTA lookup, do not re-point at <code>{version}</code>; <code>code_events.R</code> now warns on any event that fails to geocode</li>
-<li>Site policy: never name attackers (Don’t Name Them); Remembrance page lists victims only</li>
-<li>TO-DO (needs Peter’s explicit approval, not done): <code>PROJ_activeattack_app</code> (Shiny predecessor, last commit 2024-10-21) is defunct — remove local folder and GitHub repo <code>ALERRT-Research/PROJ_activeattack_app</code></li>
-<li>Sibling project: Research Ring Website (<code>PROJ_researchring_website</code>) — index.qmd now links to alerrtresearch.org</li>
-<li>Full orientation (pipeline, Hunter’s v2025 changes, fix items, env fragility): <code>docs/logs/2026-09-09_registration-and-v2025-orientation.md</code>; today’s fixes: <code>docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md</code></li>
-</ul>
-<!-- Budget: ≤ 150 lines total. History lives in docs/logs/, conventions in CLAUDE.md. -->
+<section id="open-items-carried-on-bob.md" class="level2">
+<h2 class="anchored" data-anchor-id="open-items-carried-on-bob.md">Open items (carried on bob.md)</h2>
+<ol type="1">
+<li>Untrack <code>output/*_files/</code> + <code>output/.DS_Store</code> in graphics; make <code>save_girafe_widget()</code> delete the sibling dir after saving.</li>
+<li>Fact-sheet numbers hand-typed; compute from data during the overhaul.</li>
+<li>Orphaned files in website <code>data/</code> and <code>www/</code>.</li>
+<li>Pin package versions across the three repos (R runner 4.2.0 / lock 4.3.3 / Mac 4.5.1; ggiraph 0.9.1 vs 0.9.6).</li>
+<li>Remove defunct <code>PROJ_activeattack_app</code> (local + GitHub) — needs explicit approval.</li>
+<li>Visual overhaul before December 2026 ALERRT conference.</li>
+</ol>
+<p>Victims-roster item from the orientation log is <strong>closed</strong>: Hunter added the 2025 memorial list (62 names, total 1,447) and regenerated the scroll; deployed 19:07 UTC.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
