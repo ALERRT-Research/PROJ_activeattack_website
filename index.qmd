@@ -66,9 +66,13 @@ The [Contact](./3_contact.qmd) page provides contact information for members of 
 
 To learn more about the work and research conducted at the ALERRT Center, please visit [ALERRT.org](https://www.alerrt.org).
 
+The Research Ring, the team that maintains the Active Attack Data and this website, has its own site at [ALERRTResearch.org](https://alerrtresearch.org).
+
 ## Updates
 
--   09/08/26 - Update to v2025 data. The downloadable fact sheet is now a *.pdf*.
+-   09/09/26 - Added a link to the Research Ring website.
+
+-   *09/08/26* - Update to v2025 data. The downloadable fact sheet is now a *.pdf*.
 
 -   *12/04/25* - Added "fact sheet" tab and downloadable fact sheet to the Active Attacks page.
 
