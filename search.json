@@ -60,13 +60,13 @@
     "href": "index.html#the-alerrt-center",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "The ALERRT Center",
-    "text": "The ALERRT Center\nTo learn more about the work and research conducted at the ALERRT Center, please visit ALERRT.org."
+    "text": "The ALERRT Center\nTo learn more about the work and research conducted at the ALERRT Center, please visit ALERRT.org.\nThe Research Ring, the team that maintains the Active Attack Data and this website, has its own site at ALERRTResearch.org."
   },
   {
     "objectID": "index.html#updates",
     "href": "index.html#updates",
     "title": "Welcome to the Active Attack Data Explorer",
     "section": "Updates",
-    "text": "Updates\n\n09/08/26 - Update to v2025 data. The downloadable fact sheet is now a .pdf.\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
+    "text": "Updates\n\n09/09/26 - Added a link to the Research Ring website.\n09/08/26 - Update to v2025 data. The downloadable fact sheet is now a .pdf.\n12/04/25 - Added “fact sheet” tab and downloadable fact sheet to the Active Attacks page.\n08/29/25 - Changed the section title “fatalities” to “casualities” and added information on the number of wounded.\n08/27/25 - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.\n06/20/25 - Disaggregated the “Business” category of the “location_primary” variable in the downloadable data. The original category is now split into three: office, factory/warehouse, and retail. The codebook has also been updated to reflect the change.\n06/12/25 - Update to v2024 data.\n01/23/25 - Initial launch of the Active Attack Data Explorer (v2023)."
   }
 ]
