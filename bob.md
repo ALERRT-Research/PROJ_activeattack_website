@@ -34,6 +34,7 @@ sync: github
 
 - DONE 2026-09-09: clones current; weapon-plot arrow colour + dropped zero-count points fixed; toolbar icons hidden on all four widgets; deployed and verified live — see `docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md`
 - DONE 2026-09-09 (Hunter): 2025 victim memorial roster added, scroll regenerated, deployed
+- DONE 2026-09-10: dark-theme wounded/killed dotplot for Pete (graphics `bw=` switch), pushed; light/dark theming logged as overhaul requirement
 - Ask Peter for explicit approval to (a) untrack `output/*_files/` + `.DS_Store` in graphics and (b) remove the defunct Shiny app (`PROJ_activeattack_app`: local folder + GitHub repo)
 - Tell Hunter about the two fixes and the ggiraph 0.9.1 (Mac) vs 0.9.6 (his) drift; agree on pinning
 

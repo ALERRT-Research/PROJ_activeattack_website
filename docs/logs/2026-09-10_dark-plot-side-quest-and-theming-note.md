@@ -62,3 +62,10 @@ Implementation sketch, so the next session does not start from zero:
   though the 2026-09-09 orientation log says it was added; restored today. Cause unknown.
 - Still OPEN and awaiting Peter's explicit approval: untrack `output/*_files/` + `.DS_Store` in the
   graphics repo; remove the defunct Shiny app repo/folder. Neither was touched today.
+
+## Status at session end
+
+Both repos committed and pushed to `main` with Peter's explicit approval (graphics `a93de54`,
+website `39e25bc`). The website push triggered the Quarto Publish workflow; the commit touches only
+`bob.md` and this log, so the live site is unchanged. Final dark PNG delivered to Peter's Desktop
+for handoff to Pete. Registry entry restored. Session ended here; Peter switched tasks.
