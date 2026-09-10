@@ -9,7 +9,7 @@ deadline: null
 target: Post-v2025 fixes (quick, Hunter did the heavy lifting); visual overhaul before ALERRT conference Dec 2026
 effort_remaining: ~2h housekeeping (untrack lib dirs, orphans, version pins); overhaul unscoped
 weekly_commitment: 1h
-last_updated: 2026-09-09
+last_updated: 2026-09-10
 blockers: null
 blocking_others: null
 phase: in-progress
@@ -39,7 +39,7 @@ sync: github
 
 ## Upcoming Milestones
 
-- Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026
+- Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast) — see `docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md`
 - Annual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump `version <- "2026"` in DATA_aa (2 scripts), graphics `0_packages.R`, website `0_set_up.R` + `1_visuals.qmd` + `2_victims.qmd`
 
 ## Start Here Next Session
@@ -60,6 +60,7 @@ sync: github
 - Site policy: never name attackers (Don't Name Them); Remembrance page lists victims only
 - TO-DO (needs Peter's explicit approval, not done): `PROJ_activeattack_app` (Shiny predecessor, last commit 2024-10-21) is defunct — remove local folder and GitHub repo `ALERRT-Research/PROJ_activeattack_app`
 - Sibling project: Research Ring Website (`PROJ_researchring_website`) — index.qmd now links to alerrtresearch.org
+- 2026-09-10: dark-theme wounded/killed dotplot for Pete via new `bw=` switch in graphics `plots_cartesian.R` (uncommitted; prototype for the two-variant plan) — same log as above
 - Full orientation (pipeline, Hunter's v2025 changes, fix items, env fragility): `docs/logs/2026-09-09_registration-and-v2025-orientation.md`; today's fixes: `docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md`
 
 <!-- Budget: ≤ 150 lines total. History lives in docs/logs/, conventions in CLAUDE.md. -->
