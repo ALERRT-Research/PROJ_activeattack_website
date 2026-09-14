@@ -70,6 +70,8 @@ To learn more about the work conducted at the ALERRT Center, please visit [ALERR
 
 ## Updates
 
+-   *09/14/26* - Moved medical facilities (e.g., hospitals) into the "Business" location type so that the website matches the fact sheet. The "location_primary" variable in the downloadable data now carries a separate "Medical facility" level; these events were previously pooled into "other". The codebook has also been updated to reflect the change.
+
 -   09/09/26 - Added a link to the Research Ring website.
 
 -   *09/08/26* - Update to v2025 data. The downloadable fact sheet is now a *.pdf*.

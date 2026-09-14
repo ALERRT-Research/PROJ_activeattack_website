@@ -237,7 +237,7 @@ in `{r} rifle_pct`% and `{r} shotgun_pct`% of the time, respectively.
 #LOCATION TYPE
 
 # Business %
-business_pct <- get_pct(aa_data, location_primary, c("Office", "Factory/warehouse", "Retail"))
+business_pct <- get_pct(aa_data, location_primary, c("Office", "Factory/warehouse", "Retail", "Medical facility"))
 
 # outdoor %
 outdoors_pct <- get_pct(aa_data, location_primary, "Outdoors")
@@ -250,7 +250,7 @@ other_pct <- get_pct(aa_data, location_primary, "Other")
 
 #get n's
 # Business n
-business_n <- get_count(aa_data, location_primary, c("Office", "Factory/warehouse", "Retail"))
+business_n <- get_count(aa_data, location_primary, c("Office", "Factory/warehouse", "Retail", "Medical facility"))
 
 # outdoor n
 outdoors_n <- get_count(aa_data, location_primary, "Outdoors")
@@ -291,7 +291,7 @@ school_norel_pct <- get_pct(aa_data |> filter(location_primary=="School"), relat
 
 #business
 business_coworker_pct <- get_pct(
-  aa_data |> filter(location_primary %in% c("Office", "Factory/warehouse", "Retail")),
+  aa_data |> filter(location_primary %in% c("Office", "Factory/warehouse", "Retail", "Medical facility")),
   relationship, 
   "Coworker")
 
@@ -308,14 +308,15 @@ distinctions in mind when examining the visualizations in this section.
 
 **Location Type**\
 As seen here, the plurality of events happen at places of business
-(`{r} business_pct`%). Places of business include factories/warehouse,
-retail locations, and office space. Around a quarter of attacks
+(`{r} business_n` attacks; `{r} business_pct`%). Places of business
+include retail locations, factories/warehouses, office space, and
+medical facilities (e.g., hospitals). Around a quarter of attacks
 (`{r} outdoors_pct`%) happened in public (outdoor) spaces. Schools were
 attacked `{r} school_n` times (`{r} school_pct`%). These events are
 aggregated and include attacks on all types of educational facilities,
 including K-12 and institutes of higher education. Lastly, `{r} other_n`
 attacks (`{r} other_pct`%) happened at "Other" locations (e.g., houses
-of worship).
+of worship, government buildings, residences, and military bases).
 
 **Relationship to Location**\
 In a vast majority of attacks (`{r} norel_pct`% of all attacks), the
