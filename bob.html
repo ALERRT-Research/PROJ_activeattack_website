@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-65ab6f6afcc98c2005f3bec1c5e98b7d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7100700a5d4657facf49b32369185e6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version</li>
 <li>Umbrella card for the three-repo pipeline: <code>DATA_aa</code> (build) → <code>PROJ_activeattack_graphics</code> (figures) → <code>PROJ_activeattack_website</code> (Quarto site, GitHub Pages)</li>
-<li>Near term: verify and tidy after Hunter’s v2025 update (2026-09-08/09); later: visual overhaul of the site for the December 2026 ALERRT conference</li>
+<li>Near term: finish housekeeping after Hunter’s v2025 update; later: visual overhaul of the site for the December 2026 ALERRT conference</li>
 </ul>
 </section>
 <section id="team-dependencies" class="level2">
@@ -190,26 +190,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="this-week" class="level2">
 <h2 class="anchored" data-anchor-id="this-week">This Week</h2>
 <ul>
-<li>DONE 2026-09-09: clones current; weapon-plot arrow colour + dropped zero-count points fixed; toolbar icons hidden on all four widgets; deployed and verified live — see <code>docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md</code></li>
-<li>DONE 2026-09-09 (Hunter): 2025 victim memorial roster added, scroll regenerated, deployed</li>
-<li>DONE 2026-09-10: dark-theme wounded/killed dotplot for Pete (graphics <code>bw=</code> switch), pushed; light/dark theming logged as overhaul requirement</li>
-<li>Ask Peter for explicit approval to (a) untrack <code>output/*_files/</code> + <code>.DS_Store</code> in graphics and (b) remove the defunct Shiny app (<code>PROJ_activeattack_app</code>: local folder + GitHub repo)</li>
-<li>Tell Hunter about the two fixes and the ggiraph 0.9.1 (Mac) vs 0.9.6 (his) drift; agree on pinning</li>
+<li>Delete <code>ALERRT-Research/PROJ_activeattack_app</code> on GitHub (local clone already removed 2026-09-24). Blocked on Peter’s side: needs <code>gh auth refresh -h github.com -s delete_repo</code> in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org</li>
+<li>Tell Hunter about the 09-09 fixes and that graphics <code>0_packages.R</code> now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)</li>
 </ul>
 </section>
 <section id="upcoming-milestones" class="level2">
 <h2 class="anchored" data-anchor-id="upcoming-milestones">Upcoming Milestones</h2>
 <ul>
-<li>Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast) — see <code>docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md</code></li>
+<li>Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; <code>bw=</code> switch in graphics <code>plots_cartesian.R</code> is the prototype) — see <code>docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md</code></li>
 <li>Annual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump <code>version &lt;- "2026"</code> in DATA_aa (2 scripts), graphics <code>0_packages.R</code>, website <code>0_set_up.R</code> + <code>1_visuals.qmd</code> + <code>2_victims.qmd</code></li>
 </ul>
 </section>
 <section id="start-here-next-session" class="level2">
 <h2 class="anchored" data-anchor-id="start-here-next-session">Start Here Next Session</h2>
 <ul>
-<li>Run <code>git -C &lt;repo&gt; status -sb</code> in all three repos; if behind, <code>git pull --ff-only</code> (Hunter pushes directly to main)</li>
-<li>Then work the OPEN items in Notes below; nothing user-visible is currently wrong on the live site</li>
-<li>Never render <code>1_visuals.qmd</code>/<code>2_victims.qmd</code> locally without the sibling repos checked out beside this one; the update functions copy from <code>../DATA_aa</code> and <code>../PROJ_activeattack_graphics</code></li>
+<li>Run <code>git -C &lt;repo&gt; status -sb</code> in all three sibling repos; if behind, <code>git pull --ff-only</code> (Hunter pushes directly to main)</li>
+<li>Nothing user-visible is wrong on the live site; the work is the two This Week items, then the OPEN item in Notes</li>
+<li>Never render <code>1_visuals.qmd</code>/<code>2_victims.qmd</code> locally without <code>../DATA_aa</code> and <code>../PROJ_activeattack_graphics</code> checked out beside this repo</li>
 <li>Push requires Peter’s explicit approval; deploy is automatic on push to <code>main</code></li>
 </ul>
 </section>
@@ -218,15 +215,13 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Pipeline coupling: relative <code>../</code> paths + md5 checksum copies (<code>copy_ifelse_checksums</code>). All three repos must sit as siblings under <code>~/Documents/GitHub/</code>. Website <code>data/</code> and <code>www/</code> are committed so GitHub Actions renders without the feeders (update calls are skipped when <code>GITHUB_ACTIONS == "true"</code>)</li>
 <li>Deploy: <code>.github/workflows/publish.yml</code> on push to <code>main</code> → <code>gh-pages</code>; CNAME <code>activeattackdata.org</code>. Runner pins R 4.2.0 while <code>renv.lock</code> was written under R 4.3.3 and Peter’s Mac runs 4.5.1 — works today, fragile if the lock is regenerated</li>
-<li>Only the website has an <code>renv.lock</code>; <code>DATA_aa</code> and graphics have none. Hunter renders with ggiraph 0.9.6 (Windows), Peter with 0.9.1 (Mac, R 4.5.1, ggplot2 4.0.3) — both work, bytes differ. <code>opts_toolbar(saveaspng=FALSE)</code> alone no longer hides download/fullscreen in ggiraph ≥ 0.9; use <code>hidden = c("selection","zoom","misc")</code> (now applied to all four widgets)</li>
-<li>OPEN (graphics repo): <code>output/*_files/</code> dirs are <code>saveWidget</code> staging leftovers, tracked since 2024-11, now holding both ggiraph 0.8.10 and 0.9.4 libs (~2 MB) plus a tracked <code>output/.DS_Store</code>. Widgets themselves are fully self-contained. Fix: <code>save_girafe_widget()</code> deletes the sibling dir; untrack + gitignore (deletion → approval)</li>
+<li>Only the website has an <code>renv.lock</code>; <code>DATA_aa</code> and graphics have none. Graphics <code>0_packages.R</code> pins ggiraph 0.9.6 since 2026-09-24 (Peter’s Mac was on 0.9.0, R 4.5.1, ggplot2 4.0.3; Hunter already on 0.9.6). <code>opts_toolbar(saveaspng=FALSE)</code> alone no longer hides download/fullscreen in ggiraph ≥ 0.9; use <code>hidden = c("selection","zoom","misc")</code> (applied to all four widgets)</li>
+<li>Graphics <code>output/*_files/</code> and <code>.DS_Store</code> untracked + gitignored 2026-09-24 (59 files; <code>saveWidget</code> staging, widgets are self-contained). Dirs still on disk, harmless</li>
 <li>OPEN (v2025): fact-sheet numbers in <code>1_visuals.qmd</code> are hand-typed, not computed from the data; now 2 decimals where v2024 used 1. Fact sheet is a static <code>data/aa_fact_sheet_2025.pdf</code>; <code>aa_fact_sheet_template.docx</code> and unversioned <code>aa_data_wide_codebook.docx</code> are orphaned, as are the v2023/v2024 data copies in <code>data/</code> and <code>bivar_kill_yr.png</code>/<code>bivar_kill_year.html</code> in <code>www/</code></li>
-<li><code>zip_coords_completed.csv</code> lives under <code>input/events/2023/</code> on purpose — cumulative non-ZCTA lookup, do not re-point at <code>{version}</code>; <code>code_events.R</code> now warns on any event that fails to geocode</li>
+<li><code>zip_coords_completed.csv</code> lives under <code>input/events/2023/</code> on purpose — cumulative non-ZCTA lookup, do not re-point at <code>{version}</code>; <code>code_events.R</code> warns on any event that fails to geocode</li>
 <li>Site policy: never name attackers (Don’t Name Them); Remembrance page lists victims only</li>
-<li>TO-DO (needs Peter’s explicit approval, not done): <code>PROJ_activeattack_app</code> (Shiny predecessor, last commit 2024-10-21) is defunct — remove local folder and GitHub repo <code>ALERRT-Research/PROJ_activeattack_app</code></li>
-<li>Sibling project: Research Ring Website (<code>PROJ_researchring_website</code>) — index.qmd now links to alerrtresearch.org</li>
-<li>2026-09-10: dark-theme wounded/killed dotplot for Pete via new <code>bw=</code> switch in graphics <code>plots_cartesian.R</code> (uncommitted; prototype for the two-variant plan) — same log as above</li>
-<li>Full orientation (pipeline, Hunter’s v2025 changes, fix items, env fragility): <code>docs/logs/2026-09-09_registration-and-v2025-orientation.md</code>; today’s fixes: <code>docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md</code></li>
+<li>Sibling project: Research Ring Website (<code>PROJ_researchring_website</code>) — index.qmd links to alerrtresearch.org</li>
+<li>Orientation (pipeline, Hunter’s v2025 changes, fix items, env fragility): <code>docs/logs/2026-09-09_registration-and-v2025-orientation.md</code>; fixes: <code>docs/logs/2026-09-09_weapon-plot-and-toolbar-fixes.md</code>; prune history: <code>docs/logs/2026-09-24_bob-prune.md</code></li>
 </ul>
 <!-- Budget: ≤ 150 lines total. History lives in docs/logs/, conventions in CLAUDE.md. -->
 
