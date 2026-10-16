@@ -32,6 +32,7 @@ sync: github
 
 ## This Week
 
+- [ ] Scope update with Hunter (10-16): a lighter update rather than the full visual overhaul, given the ~11-13 deadline before the ALERRT conference Nov 16–19.
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 - Tell Hunter about the 09-09 fixes and that graphics `0_packages.R` now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)
 
