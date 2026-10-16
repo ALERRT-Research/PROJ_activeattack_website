@@ -88,14 +88,14 @@
     "href": "bob.html",
     "title": "Active Attack Data Explorer",
     "section": "",
-    "text": "Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version\nUmbrella card for the three-repo pipeline: DATA_aa (build) → PROJ_activeattack_graphics (figures) → PROJ_activeattack_website (Quarto site, GitHub Pages)\nNear term: finish housekeeping after Hunter’s v2025 update; later: visual overhaul of the site for the December 2026 ALERRT conference"
+    "text": "Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version\nUmbrella card for the three-repo pipeline: DATA_aa (build) → PROJ_activeattack_graphics (figures) → PROJ_activeattack_website (Quarto site, GitHub Pages)\nNear term: finish housekeeping after Hunter’s v2025 update; then: update the site before the ALERRT conference, Nov 16–19, 2026 (deadline ~11-13)"
   },
   {
     "objectID": "bob.html#objectives",
     "href": "bob.html#objectives",
     "title": "Active Attack Data Explorer",
     "section": "",
-    "text": "Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version\nUmbrella card for the three-repo pipeline: DATA_aa (build) → PROJ_activeattack_graphics (figures) → PROJ_activeattack_website (Quarto site, GitHub Pages)\nNear term: finish housekeeping after Hunter’s v2025 update; later: visual overhaul of the site for the December 2026 ALERRT conference"
+    "text": "Keep activeattackdata.org (Research Ring’s public Active Attack Data site) accurate and current with each annual data version\nUmbrella card for the three-repo pipeline: DATA_aa (build) → PROJ_activeattack_graphics (figures) → PROJ_activeattack_website (Quarto site, GitHub Pages)\nNear term: finish housekeeping after Hunter’s v2025 update; then: update the site before the ALERRT conference, Nov 16–19, 2026 (deadline ~11-13)"
   },
   {
     "objectID": "bob.html#team-dependencies",
@@ -109,14 +109,14 @@
     "href": "bob.html#this-week",
     "title": "Active Attack Data Explorer",
     "section": "This Week",
-    "text": "This Week\n\nDelete ALERRT-Research/PROJ_activeattack_app on GitHub (local clone already removed 2026-09-24). Blocked on Peter’s side: needs gh auth refresh -h github.com -s delete_repo in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org\nTell Hunter about the 09-09 fixes and that graphics 0_packages.R now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)"
+    "text": "This Week\n\nScope update with Hunter (10-16): a lighter update rather than the full visual overhaul, given the ~11-13 deadline before the ALERRT conference Nov 16–19.\nDelete ALERRT-Research/PROJ_activeattack_app on GitHub (local clone already removed 2026-09-24). Blocked on Peter’s side: needs gh auth refresh -h github.com -s delete_repo in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org\nTell Hunter about the 09-09 fixes and that graphics 0_packages.R now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)"
   },
   {
     "objectID": "bob.html#upcoming-milestones",
     "href": "bob.html#upcoming-milestones",
     "title": "Active Attack Data Explorer",
     "section": "Upcoming Milestones",
-    "text": "Upcoming Milestones\n\nFall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; bw= switch in graphics plots_cartesian.R is the prototype) — see docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md\nAnnual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump version &lt;- \"2026\" in DATA_aa (2 scripts), graphics 0_packages.R, website 0_set_up.R + 1_visuals.qmd + 2_victims.qmd"
+    "text": "Upcoming Milestones\n\n~2026-11-13: site updated before the ALERRT conference, Nov 16–19, 2026 (was recorded as December — corrected 2026-10-16). Scope with Hunter now; a full overhaul may not fit around IACP and the biosocial course. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; bw= switch in graphics plots_cartesian.R is the prototype) — see docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md\nAnnual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump version &lt;- \"2026\" in DATA_aa (2 scripts), graphics 0_packages.R, website 0_set_up.R + 1_visuals.qmd + 2_victims.qmd"
   },
   {
     "objectID": "bob.html#start-here-next-session",
