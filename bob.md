@@ -1,4 +1,5 @@
 ---
+card_schema: bob/2
 project: Active Attack Data Explorer (activeattackdata.org)
 type: web
 status: active
