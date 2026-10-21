@@ -6,11 +6,11 @@ status: active
 priority: medium
 importance: medium
 path: /Users/PTT2/Documents/GitHub/PROJ_activeattack_website
-deadline: null
-target: Post-v2025 housekeeping (quick); visual overhaul before ALERRT conference Dec 2026
+deadline: 2026-11-13  # site updated before the ALERRT conference, Nov 16–19 (Peter, 2026-10-16; approximate)
+target: Site updated before the ALERRT conference (Nov 16–19, 2026); post-v2025 housekeeping first
 effort_remaining: ~1h housekeeping (orphans, app-repo deletion on GitHub); overhaul unscoped
 weekly_commitment: 1h
-last_updated: 2026-09-24
+last_updated: 2026-10-16
 blockers: null
 blocking_others: null
 phase: in-progress
@@ -22,7 +22,7 @@ sync: github
 
 - Keep activeattackdata.org (Research Ring's public Active Attack Data site) accurate and current with each annual data version
 - Umbrella card for the three-repo pipeline: `DATA_aa` (build) → `PROJ_activeattack_graphics` (figures) → `PROJ_activeattack_website` (Quarto site, GitHub Pages)
-- Near term: finish housekeeping after Hunter's v2025 update; later: visual overhaul of the site for the December 2026 ALERRT conference
+- Near term: finish housekeeping after Hunter's v2025 update; then: update the site before the ALERRT conference, Nov 16–19, 2026 (deadline ~11-13)
 
 ## Team & Dependencies
 
@@ -33,12 +33,13 @@ sync: github
 
 ## This Week
 
+- [ ] Scope update with Hunter (10-16): a lighter update rather than the full visual overhaul, given the ~11-13 deadline before the ALERRT conference Nov 16–19.
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 - Tell Hunter about the 09-09 fixes and that graphics `0_packages.R` now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)
 
 ## Upcoming Milestones
 
-- Fall 2026 (TBD): visual overhaul of the site — scope with Hunter; must land before the ALERRT conference, December 2026. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; `bw=` switch in graphics `plots_cartesian.R` is the prototype) — see `docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md`
+- **~2026-11-13: site updated** before the ALERRT conference, **Nov 16–19, 2026** (was recorded as December — corrected 2026-10-16). Scope with Hunter now; a full overhaul may not fit around IACP and the biosocial course. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; `bw=` switch in graphics `plots_cartesian.R` is the prototype) — see `docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md`
 - Annual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump `version <- "2026"` in DATA_aa (2 scripts), graphics `0_packages.R`, website `0_set_up.R` + `1_visuals.qmd` + `2_victims.qmd`
 
 ## Start Here Next Session
