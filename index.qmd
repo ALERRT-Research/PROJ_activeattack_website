@@ -70,6 +70,8 @@ To learn more about the work conducted at the ALERRT Center, please visit [ALERR
 
 ## Updates
 
+-   *11/06/26* - Redesigned the Fact Sheet tab and the downloadable fact sheet PDF. Both now show each figure for 2025 next to 2024 and the 2020–2024 average, add a map of where the 2025 attacks happened, and are built directly from the data. The numbers themselves are unchanged.
+
 -   *11/06/26* - Corrected the "relationship" variable in the downloadable data: 33 attacks by former employees had been coded as "other" instead of "coworker" (coworker is now 99 attacks, other 7). The relationship figures on the Active Attacks page are updated to match. The "location_primary" variable now also carries separate "Church" and "Military base" levels, previously pooled into "other"; the figures still group them with other locations. The codebook has been updated to reflect both changes.
 
 -   *09/14/26* - Moved medical facilities (e.g., hospitals) into the "Business" location type so that the website matches the fact sheet. The "location_primary" variable in the downloadable data now carries a separate "Medical facility" level; these events were previously pooled into "other". The codebook has also been updated to reflect the change.

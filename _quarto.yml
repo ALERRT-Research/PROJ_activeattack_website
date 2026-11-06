@@ -1,5 +1,8 @@
 project:
   type: website
+  # only the .qmd pages; bob.md (internal status card) was being published as bob.html
+  render:
+    - "*.qmd"
   resources: 
   - "CNAME"
   
