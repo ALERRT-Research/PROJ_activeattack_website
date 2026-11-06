@@ -92,18 +92,20 @@ fs_tiles_html <- function(fs) {
 
 #--section tables---------------------------------------------------------------
 
-fs_table_html <- function(fs, section_name) {
+# prev_col: show the prior-year count. Off on the web, where "vs. <prev>" carries
+# it (Peter, 11-06); the PDF keeps it as the full reference.
+fs_table_html <- function(fs, section_name, prev_col = FALSE) {
 
   yrs <- attr(fs, "years")
   d   <- filter(fs, section == section_name)
-  ncol <- 7
+  ncol <- if (prev_col) 7 else 6
 
   head <- glue(
     '<thead><tr>',
     '<th scope="col">Category</th>',
     '<th scope="col" class="fs-num">{yrs$first}&ndash;<wbr>{yrs$curr}</th>',
     '<th scope="col" class="fs-num fs-pct">%</th>',
-    '<th scope="col" class="fs-num fs-prev">{yrs$prev}</th>',
+    if (prev_col) '<th scope="col" class="fs-num fs-prev">{yrs$prev}</th>' else '',
     '<th scope="col" class="fs-num fs-curr">{yrs$curr}</th>',
     '<th scope="col" class="fs-num">vs. {yrs$prev}</th>',
     '<th scope="col" class="fs-num fs-avg">{yrs$window[1]}&ndash;<wbr>{substr(yrs$window[2], 3, 4)} avg.</th>',
@@ -130,7 +132,7 @@ fs_table_html <- function(fs, section_name) {
       '<th scope="row">{gsub("/", "/<wbr>", r$item, fixed = TRUE)}</th>',
       '<td class="fs-num">{fs_fmt_n(r$n_all, r$kind)}</td>',
       '<td class="fs-num fs-pct">{pct}</td>',
-      '<td class="fs-num fs-prev">{fs_fmt_n(r$n_prev, r$kind)}</td>',
+      if (prev_col) '<td class="fs-num fs-prev">{fs_fmt_n(r$n_prev, r$kind)}</td>' else '',
       '<td class="fs-num fs-curr">{fs_fmt_n(r$n_curr, r$kind)}</td>',
       '<td class="fs-num">{fs_fmt_change(r$change)}</td>',
       '<td class="fs-num fs-avg">{avg}</td>',

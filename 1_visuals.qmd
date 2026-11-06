@@ -641,8 +641,8 @@ fs_table_html(fs, "Victims")
 ::: {.card .flow title="Reading these numbers"}
 **Columns.** The first column covers every attack in the data, with its
 share of the total (firearm types are a share of firearm attacks). The
-two single-year columns are counts, and *vs. `{r} fs_yrs$prev`* is the latest year minus
-the year before. Single years hold few attacks, so a change of a few
+`{r} fs_yrs$curr` column is a count, and *vs. `{r} fs_yrs$prev`* is the change from the
+year before (`{r} fs_yrs$prev` counts are in the PDF). Single years hold few attacks, so a change of a few
 events is within normal year-to-year variation; the five-year average
 gives the longer view.
 
