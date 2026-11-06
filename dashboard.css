@@ -48,11 +48,12 @@
 /*--tab pages: header, notes, downloads (plan: 2026-11-06_page-format.md)--*/
 
 /* each tab's colour matches its figures; maroon stays for the latest year */
-#timing     { --aa-tab: #b8843f; }
-#attackers  { --aa-tab: #3d6b9e; }
-#locations  { --aa-tab: #3f8a73; }
-#casualties { --aa-tab: #7d68ad; }
-#across-the-usa, #download-the-data { --aa-tab: var(--aa-ink); }
+/* --aa-tab-bar: the same hue deep enough for white text (>= 4.5:1) */
+#timing     { --aa-tab: #b8843f; --aa-tab-bar: #8a6026; }
+#attackers  { --aa-tab: #3d6b9e; --aa-tab-bar: #3d6b9e; }
+#locations  { --aa-tab: #3f8a73; --aa-tab-bar: #2f6e5b; }
+#casualties { --aa-tab: #7d68ad; --aa-tab-bar: #6c5a9c; }
+#across-the-usa, #download-the-data { --aa-tab: var(--aa-ink); --aa-tab-bar: var(--aa-ink); }
 
 .quarto-dashboard .card.aa-head {
   border-top: 3px solid var(--aa-tab, var(--aa-ink));
@@ -95,10 +96,11 @@
 .aa-subhead {
   display: block;
   font-weight: 600;
-  color: var(--aa-ink);
-  margin-top: 0.5rem;
-  padding-left: 0.6rem;
-  border-left: 3px solid var(--aa-tab, var(--aa-ink));
+  color: #fff;
+  background: var(--aa-tab-bar, var(--aa-ink));
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  margin: 0.9rem 0 0.45rem;
 }
 
 /* downloads: one row of buttons under a chart */
