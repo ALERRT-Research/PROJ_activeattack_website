@@ -29,8 +29,8 @@
   --fs-rule: #d3d8de;
   --fs-muted: #5b6672;
   --fs-prev: #9aa5b1;
-  --fs-maroon: #501214;
-  --fs-band: rgba(80, 18, 20, 0.06);
+  --fs-maroon: #9e1b32;   /* brighter than the logo maroon #501214, so 2025 reads first */
+  --fs-band: rgba(158, 27, 50, 0.08);
 
   font-family: "Public Sans", "Helvetica Neue", Arial, sans-serif;
   font-variant-numeric: tabular-nums;
@@ -133,24 +133,29 @@
   margin: 0;
 }
 
+/* one grid for all three rows, so every bar starts at the same zero line;
+   labels are right-aligned against it, like a plain bar chart's axis */
 #fact-sheet .fs-bars {
   display: grid;
-  gap: 0.375rem;
+  grid-template-columns: max-content minmax(3rem, 1fr) 3.25em;
+  column-gap: 0.5rem;
+  row-gap: 0;
+  align-items: center;
+  font-size: 0.875rem;
   margin-top: 0.75rem;
 }
 
-#fact-sheet .fs-bar-row {
-  display: grid;
-  grid-template-columns: max-content minmax(3rem, 1fr) 3.25em;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-}
+#fact-sheet .fs-bar-row { display: contents; }
 
-#fact-sheet .fs-bar-label { color: var(--fs-muted); white-space: nowrap; }
+#fact-sheet .fs-bar-label { color: var(--fs-muted); white-space: nowrap; text-align: right; }
 #fact-sheet .fs-bar-val   { text-align: right; }
 
-#fact-sheet .fs-bar-track { display: block; }
+/* the zero line: a continuous rule down the left of the bar column */
+#fact-sheet .fs-bar-track {
+  display: block;
+  border-left: 1.5px solid var(--fs-ink);
+  padding: 0.2rem 0;
+}
 
 #fact-sheet .fs-bar {
   display: block;
@@ -167,6 +172,7 @@
 #fact-sheet .fs-bar-avg .fs-bar {
   background: transparent;
   border: 1.5px solid var(--fs-muted);
+  border-left: 0;
 }
 
 /*--tables-----------------------------------------------------------------*/
@@ -205,8 +211,9 @@
 
 /* the latest year reads straight down every table */
 #fact-sheet .fs-curr { background: var(--fs-band); }
-#fact-sheet thead .fs-curr { color: var(--fs-maroon); }
-#fact-sheet td.fs-curr { font-weight: 600; }
+#fact-sheet thead .fs-curr { background: var(--fs-maroon); color: #fff; }
+.quarto-dark #fact-sheet thead .fs-curr { color: var(--fs-paper); }
+#fact-sheet td.fs-curr { font-weight: 600; color: var(--fs-maroon); }
 
 #fact-sheet tr.fs-group th {
   background: var(--fs-surface);
