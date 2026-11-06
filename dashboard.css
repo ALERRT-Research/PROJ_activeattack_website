@@ -61,6 +61,19 @@
 
 .quarto-dashboard .aa-head .card-body { padding: 1.1rem 1.5rem 1.25rem; }
 
+/* the header never scrolls: the card grows to its content (a 1-2px rounding
+   overflow was showing a vertical slider in desktop Chrome) */
+.quarto-dashboard .card.aa-head,
+.quarto-dashboard .card.aa-head .card-body,
+.quarto-dashboard .card.aa-head .cell-output-display,
+.quarto-dashboard .card.aa-head .aa-head-inner,
+.quarto-dashboard .bslib-grid:has(> .card.aa-head) {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
 /* Quarto marks this a column fill container; it is a row: text left, numbers right */
 .quarto-dashboard .aa-head-inner {
   display: flex;
