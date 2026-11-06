@@ -72,7 +72,7 @@ early_aft_pct <- get_pct(aa_data, hour, 13:16)
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 yr_counts <- count(aa_data, year)
 peak     <- yr_counts[which.max(yr_counts$n), ]
@@ -210,7 +210,7 @@ shotgun_pct <- get_pct(aa_data, weapon_primary, "Shotgun")
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 tab_header("Attackers",
            "Who carried out the attacks, and the weapons they used.",
@@ -353,7 +353,7 @@ business_coworker_pct <- get_pct(
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 tab_header("Locations",
            "Where attacks happened, and the attacker's relationship to the place.",
@@ -507,7 +507,7 @@ casualty_lt10_pct <- get_pct(aa_data |>
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 tab_header("Casualties",
            "People killed and wounded: by year, in each attack, and by weapon.",
@@ -623,7 +623,7 @@ states_miss <- tibble(abb = state.abb,
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 top_st    <- count(aa_data, state, sort = TRUE)[1, ]
 top_name  <- if (top_st$state == "DC") "DC" else state.name[match(top_st$state, state.abb)]
@@ -777,7 +777,7 @@ are counted in the year they happened.
 
 ## {height="auto"}
 
-::: {.card .aa-head}
+::: {.card .aa-head expandable="false"}
 ```{r}
 tab_header("Download the data",
            "The full dataset and its codebook, free to download and use.",
