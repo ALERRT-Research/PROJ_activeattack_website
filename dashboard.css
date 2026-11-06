@@ -75,17 +75,56 @@
 
 /*--lead card: intro, download, headline boxes------------------------------*/
 
-#fact-sheet .fs-intro {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 2rem;
-  margin-bottom: 1.5rem;
+/* page header: title and lead on the left, the PDF panel on the right */
+#fact-sheet .fs-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  gap: 1.5rem 3rem;
+  align-items: start;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--fs-rule);
 }
 
-#fact-sheet .fs-intro p {
-  margin: 0;
-  max-width: 62ch;
+#fact-sheet .fs-title {
+  font-size: 1.953rem;       /* 31px */
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.25rem;
+  color: var(--fs-ink);
+  border-bottom: 0;          /* Quarto rules h2 by default */
+  padding-bottom: 0;
+}
+
+#fact-sheet .fs-sub {
+  color: var(--fs-muted);
+  margin: 0 0 1rem;
+}
+
+#fact-sheet .fs-header-text p { max-width: 68ch; }
+#fact-sheet .fs-onpage { color: var(--fs-muted); margin-bottom: 0; }
+
+#fact-sheet .fs-download {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  background: var(--fs-surface);
+  border: 1px solid var(--fs-rule);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+#fact-sheet .fs-download p { margin: 0 0 0.5rem; }
+#fact-sheet .fs-download figure,
+#fact-sheet .fs-download p:has(> img) { margin: 0; }
+
+#fact-sheet .fs-thumb {
+  display: block;
+  width: 5.5rem;
+  height: auto;
+  border: 1px solid var(--fs-rule);
+  background: #fff;
 }
 
 #fact-sheet button.downloadthis {
@@ -253,6 +292,11 @@
 
 @media (max-width: 1100px) {
   #fact-sheet .fs-lead-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  #fact-sheet .fs-header { grid-template-columns: 1fr; }
+  #fact-sheet .fs-download { max-width: 28rem; }
 }
 
 @media (max-width: 640px) {

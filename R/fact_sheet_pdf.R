@@ -284,3 +284,8 @@ res <- system2("quarto",
                stdout = TRUE, stderr = TRUE)
 if (!is.null(attr(res, "status"))) stop(paste(res, collapse = "\n"))
 message("Wrote ", out_pdf)
+
+# page-1 thumbnail for the download panel on the Fact Sheet tab (poppler's pdftoppm)
+res <- system2("pdftoppm", c("-png", "-r", "40", "-f", "1", "-l", "1", "-singlefile",
+                             out_pdf, "www/fact_sheet_preview"), stdout = TRUE, stderr = TRUE)
+if (!is.null(attr(res, "status"))) warning("Preview not made: ", paste(res, collapse = " "))

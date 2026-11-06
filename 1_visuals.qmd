@@ -593,13 +593,24 @@ fs_total <- scales::comma(fs$n_all[fs$item == "Active attacks"])
 ## row 1 {height="auto"}
 
 ::: {.card .flow .fs-lead}
-::: {.fs-intro}
-Common statistics from the Active Attack Data, `{r} fs_yrs$first` through
-`{r} fs_yrs$curr` (`{r} fs_total` attacks). Each box compares
-`{r} fs_yrs$curr` with `{r} fs_yrs$prev` and with the average year from
-`{r} fs_yrs$window[1]` to `{r} fs_yrs$window[2]`.
+::: {.fs-header}
+::: {.fs-header-text}
+```{r}
+fs_header_html(fs)
+```
+:::
 
-{{< downloadthis data/aa_fact_sheet_2025.pdf dname="active_attack_factsheet_v2025" label="Fact sheet (PDF)" >}}
+::: {.fs-download}
+![](www/fact_sheet_preview.png){.fs-thumb alt="Page 1 of the fact sheet PDF"}
+
+::: {.fs-download-text}
+**Two-page PDF**
+
+The same numbers, laid out for printing, briefings and sharing.
+
+{{< downloadthis data/aa_fact_sheet_2025.pdf dname="active_attack_factsheet_v2025" label="Download the fact sheet" >}}
+:::
+:::
 :::
 
 ```{r}
@@ -627,7 +638,7 @@ fs_table_html(fs, "Locations")
 ```
 
 ```{r}
-#| title: Resolution
+#| title: How attacks ended
 fs_table_html(fs, "Resolution")
 ```
 

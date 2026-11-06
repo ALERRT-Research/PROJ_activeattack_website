@@ -102,6 +102,26 @@ fs_tiles_html <- function(fs, map_src = "www/map_latest_year.svg") {
                             paste(tiles, collapse = ""), '</div>', map, '</div>'))
 }
 
+#--page header------------------------------------------------------------------
+
+# title and lead for the tab; the PDF panel beside it lives in 1_visuals.qmd
+# because the downloadthis shortcode has to sit in the page source
+fs_header_html <- function(fs) {
+  yrs   <- attr(fs, "years")
+  total <- scales::comma(fs$n_all[fs$item == "Active attacks"][1])
+  win   <- glue("{yrs$window[1]}&ndash;{substr(yrs$window[2], 3, 4)}")
+  knitr::asis_output(paste0(
+    '<h2 class="fs-title">Active attacks in the United States, ',
+    yrs$first, '&ndash;', yrs$curr, '</h2>',
+    '<p class="fs-sub">Fact sheet, updated with ', yrs$curr, ' data</p>',
+    '<p>The most-requested numbers from the Active Attack Data on one page: how many attacks ',
+    'there were, who carried them out, where they happened, how they ended and how many people ',
+    'were hurt. Every figure covers all ', total, ' attacks since ', yrs$first, ', with ',
+    yrs$curr, ' set beside ', yrs$prev, ' and the ', win, ' average.</p>',
+    '<p class="fs-onpage">Below: headline numbers and a map of ', yrs$curr, ', then tables on ',
+    'weapons, attackers, locations, how attacks ended and victims. Definitions are at the end.</p>'))
+}
+
 #--section tables---------------------------------------------------------------
 
 # prev_col: show the prior-year count. Off on the web, where "vs. <prev>" carries
