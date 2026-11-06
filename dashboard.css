@@ -45,6 +45,114 @@
   padding: 0.75rem 1.25rem 1.25rem;
 }
 
+/*--tab pages: header, notes, downloads (plan: 2026-11-06_page-format.md)--*/
+
+/* each tab's colour matches its figures; maroon stays for the latest year */
+#timing     { --aa-tab: #b8843f; }
+#attackers  { --aa-tab: #3d6b9e; }
+#locations  { --aa-tab: #3f8a73; }
+#casualties { --aa-tab: #7d68ad; }
+#across-the-usa, #download-the-data { --aa-tab: var(--aa-ink); }
+
+.quarto-dashboard .card.aa-head {
+  border-top: 3px solid var(--aa-tab, var(--aa-ink));
+}
+
+.quarto-dashboard .aa-head .card-body { padding: 1.1rem 1.5rem 1.25rem; }
+
+/* Quarto marks this a column fill container; it is a row: text left, numbers right */
+.quarto-dashboard .aa-head-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 3rem;
+}
+
+.aa-head-title {
+  font-size: 1.953rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.25rem;
+  border: 0;
+  padding: 0;
+  color: var(--aa-ink);
+}
+
+.aa-head-lead {
+  color: var(--aa-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* key numbers: figure in the tab colour, label beneath */
+.aa-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  margin: 0;
+}
+
+.aa-stats div { display: flex; flex-direction: column-reverse; }
+
+.aa-stats dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--aa-tab, var(--aa-ink));
+  font-variant-numeric: tabular-nums;
+}
+
+.aa-stats dt {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--aa-muted);
+}
+
+.aa-stats .aa-latest dd { color: var(--aa-maroon); }
+
+/* notes column: each chart's paragraph under a heading named like its tab */
+.aa-notes .card-body { font-size: 0.975rem; }
+.aa-notes p { max-width: 62ch; }
+
+.aa-subhead {
+  display: block;
+  font-weight: 600;
+  color: var(--aa-ink);
+  margin-top: 0.5rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--aa-tab, var(--aa-ink));
+}
+
+/* downloads: one row of buttons under a chart */
+.aa-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.aa-downloads p { margin: 0; display: contents; }
+
+/* below 900px the chart and its notes stack (they are too narrow side by side);
+   the dashboard sets the columns inline, hence !important */
+@media (max-width: 900px) {
+  .quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+  }
+}
+
+/* each card takes its own height: a short chart card no longer stretches to
+   the length of its notes card and shows an empty box */
+.quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid > .card,
+.quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid > .tabset {
+  align-self: start;
+}
+
 /* interactive (ggiraph) plots: the iframe takes the plot's own 10:7 shape at
    the card's width, and the widget inside fills it, so nothing scrolls */
 .quarto-dashboard iframe.aa-widget {

@@ -18,6 +18,7 @@ editor:
 
 #load packages
 source("0_set_up.R")
+source("R/page_helpers.R")   # tab headers (tab_header)
 
 #set version
 version <- "2025"
@@ -35,10 +36,6 @@ aa_data_long <- import(glue("data/aa_data_long_nogeo_{version}.rds", trust=TRUE)
 ```
 
 # Timing
-
-## row 1
-
-### row 1, column 1 {width="40%"}
 
 ```{r, r_objs_yr}
 #| include: false
@@ -73,14 +70,67 @@ early_aft_pct <- get_pct(aa_data, hour, 13:16)
 
 ```
 
-::: {.card .flow title="Attack Timing" expandable="false"}
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+yr_counts <- count(aa_data, year)
+peak     <- yr_counts[which.max(yr_counts$n), ]
+tab_header("Timing",
+           "When active attacks happened: by year, month, day of the week and hour of the day.",
+           setNames(c(scales::comma(nrow(aa_data)), sum(aa_data$year == years_max, na.rm = TRUE),
+                      glue("{peak$year} ({peak$n})")),
+                    c(glue("Attacks, 2000\u2013{years_max}"), glue("In {years_max}"), "Peak year")),
+           latest = glue("In {years_max}"))
+```
+:::
+
+## row 1
+
+### {.tabset width="62%"}
+
+::: {.card .flow title="By year" expandable="true"}
+![](www/univar_yr.png){fig-alt="By year"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_yr.png dname="aa_by_year" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="By month" expandable="true"}
+![](www/univar_month.png){fig-alt="By month"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_month.png dname="aa_by_month" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="By day of the week" expandable="true"}
+![](www/univar_wday.png){fig-alt="By day of the week"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_wday.png dname="aa_by_wday" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="By hour of the day" expandable="true"}
+![](www/univar_hr.png){fig-alt="By hour of the day"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_hr.png dname="aa_by_hour" label="Download PNG" >}}
+:::
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="What the figures show" expandable="false"}
 Active attacks occur for a variety of reasons, sometimes they are
 planned and other times not. Here, we show the timing of active attacks
 from 2000 to `{r} years_max`, a critical element for premeditated
 attacks with the goal of maximizing casualties. As the plots
 demonstrate, some dimensions of time are more informative than others.
 
-**By Year**\
+[By year]{.aa-subhead}
 There appears to be more events in the last five years (mean =
 `{r} mean_last_5yr`) than the first five years (mean =
 `{r} mean_first_5yr`) or second five years (mean =
@@ -90,7 +140,7 @@ collection period likely did not get the national coverage that they do
 now. Furthermore, technology and search engines have improved
 dramatically over the `{r} years` years of this data collection period.
 
-**By Month**\
+[By month]{.aa-subhead}
 In contrast to the obvious upward trend in attacks across years, there
 appear to be only a modest trend related to months of the year. Active
 Attacks tend to peak during the warmer months of the year (e.g., April
@@ -100,13 +150,13 @@ similar to trends observed for certain types of violent crime (e.g.,
 aggravated assault, homicide) that also tend to peak during the warmest
 parts of the year.
 
-**By Day of the Week**\
+[By day of the week]{.aa-subhead}
 Active attacks share no observable association with day of the week.
 This can be seen by the flat distribution of attacks across the week. So
 while there may be trends by year and month, attacks appear to be nearly
 equally likely on any given day of the week.
 
-**By Hour of the Day**\
+[By hour of the day]{.aa-subhead}
 Active attacks tend to cluster around midday. While attacks that begin
 at midday exactly are relatively infrequent (only `{r} midday_pct`% of
 attacks), the majority of attacks occur immediately before midday
@@ -114,31 +164,11 @@ attacks), the majority of attacks occur immediately before midday
 midday (1-4pm hours account for `{r} early_aft_pct`% of attacks).
 :::
 
-### row 1, column 2 {.tabset width="60%"}
-
-::: {.card .flow title="By Year" expandable="true"}
-![{{< downloadthis www/univar_yr.png dname="aa_by_year" >}}](www/univar_yr.png)
-:::
-
-::: {.card .flow title="By Month" expandable="true"}
-![{{< downloadthis www/univar_month.png dname="aa_by_month" >}}](www/univar_month.png)
-:::
-
-::: {.card .flow title="By Day of the Week" expandable="true"}
-![{{< downloadthis www/univar_wday.png dname="aa_by_wday" >}}](www/univar_wday.png)
-:::
-
-::: {.card .flow title="By Hour of the Day" expandable="true"}
-![{{< downloadthis www/univar_hr.png dname="aa_by_hour" >}}](www/univar_hr.png)
-:::
-
 # Attackers
 
-## row 1 {height="50%"}
-
-### row 1, column 1 {width="35%"}
-
 ```{r}
+#| include: false
+#| echo: false
 
 #male % of shooters (long data)
 male_pct <- get_pct(aa_data_long, sex, "Male")
@@ -178,14 +208,55 @@ shotgun_pct <- get_pct(aa_data, weapon_primary, "Shotgun")
 
 ```
 
-::: {.card .flow title="Attackers" expandable="false"}
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+tab_header("Attackers",
+           "Who carried out the attacks, and the weapons they used.",
+           c("Male" = paste0(round(male_pct), "%"), "Acted alone" = paste0(round(solo_pct), "%"),
+             "Median age" = age_median))
+```
+:::
+
+## row 1
+
+### {.tabset width="62%"}
+
+::: {.card .flow title="Race and ethnicity" expandable="true"}
+![](www/univar_race.png){fig-alt="Race and ethnicity"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_race.png dname="aa_by_race" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Age" expandable="true"}
+![](www/univar_age.png){fig-alt="Age"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_age.png dname="aa_by_age" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Weapon" expandable="true"}
+![](www/univar_weapon.png){fig-alt="Weapon"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_weapon.png dname="aa_by_weapon" label="Download PNG" >}}
+:::
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="What the figures show" expandable="false"}
 Many in the media attempt to create a profile describing the “average”
 attacker. The data do not support a profile beyond sex and number of
 attackers. Attackers were male `{r} male_pct`% of the time. Furthermore,
 the attacker commits the attack by him/herself `{r} solo_pct`% of the
 time. Beyond these characteristics, attackers are somewhat more varied.
 
-**Attacker Race/Ethnicity**\
+[Race and ethnicity]{.aa-subhead}
 The racial/ethnic makeup of attackers roughly mirrored that of the
 general population, though Caucasians were under-represented and African
 Americans were over-represented. Most attackers were either Caucasian
@@ -193,7 +264,7 @@ Americans were over-represented. Most attackers were either Caucasian
 racial/ethnic groups (e.g., Latino, Asian, Middle Eastern) only
 accounted for around a quarter of attackers (`{r} other_pct`%).
 
-**Attacker Age**\
+[Age]{.aa-subhead}
 While the median age of attackers was `{r} age_median` years old,
 attackers ranged in age from `{r} age_min` to `{r} age_max`. Attackers
 in their twenties were the most plentiful group compared to any other
@@ -202,7 +273,7 @@ decade of life. The age-trend of attackers adheres to the classic
 adolescence/early adulthood and steadily declining throughout the rest
 of the life course.
 
-**Weapon Type**\
+[Weapon]{.aa-subhead}
 Active attacks can be carried out using any weapon though, in reality,
 only a very small minority of attacks (`{r} non_gun_pct`%) were carried
 out using weapons other than firearms (e.g., knife, vehicle). Among
@@ -211,25 +282,7 @@ types of firearms, handguns made up a clear majority
 in `{r} rifle_pct`% and `{r} shotgun_pct`% of the time, respectively.
 :::
 
-### row 1, column 2 {.tabset width="65%"}
-
-::: {.card .fill title="Attacker Race/Ethnicity" expandable="true"}
-![{{< downloadthis www/univar_race.png dname="aa_by_race" >}}](www/univar_race.png)
-:::
-
-::: {.card .fill title="Attacker Age" expandable="true"}
-![{{< downloadthis www/univar_age.png dname="aa_by_age" >}}](www/univar_age.png)
-:::
-
-::: {.card .fill title="Weapon Type" expandable="true"}
-![{{< downloadthis www/univar_weapon.png dname="aa_by_weapon" >}}](www/univar_weapon.png)
-:::
-
 # Locations
-
-## row 1
-
-### row 1, column 1 {width="35%"}
 
 ```{r, r_objs_loc}
 #| include: false
@@ -298,7 +351,56 @@ business_coworker_pct <- get_pct(
 
 ```
 
-::: {.card .flow title="Attack Location" expandable="false"}
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+tab_header("Locations",
+           "Where attacks happened, and the attacker's relationship to the place.",
+           c("At a business" = paste0(round(business_pct), "%"), "At a school" = paste0(round(school_pct), "%"),
+             "No relationship to the place" = paste0(round(norel_pct), "%")))
+```
+:::
+
+## row 1
+
+### {.tabset width="62%"}
+
+::: {.card .flow title="Location type" expandable="false"}
+![](www/univar_loc.png){fig-alt="Location type"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_loc.png dname="aa_by_loc_type" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Relationship to the location" expandable="true"}
+![](www/univar_rel.png){fig-alt="Relationship to the location"}
+
+::: {.aa-downloads}
+{{< downloadthis www/univar_rel.png dname="aa_by_rel_type" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Relationship by location type" expandable="true"}
+![](www/bivar_loctype_rel.png){fig-alt="Relationship by location type"}
+
+::: {.aa-downloads}
+{{< downloadthis www/bivar_loctype_rel.png dname="aa_rel_loctype" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Time of day by location type" expandable="true"}
+![](www/bivar_loc_hr.png){fig-alt="Time of day by location type"}
+
+::: {.aa-downloads}
+{{< downloadthis www/bivar_loc_hr.png dname="aa_hour_by_log_type" label="Download PNG" >}}
+:::
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="What the figures show" expandable="false"}
 Defining where an attack occurred can be difficult. For instance, on
 January 8, 2011 a shooter attacked a meeting for U.S. Representative
 Gabrielle Giffords. This attack happened in the parking lot of a local
@@ -307,7 +409,7 @@ been classified as a business event; however, since the attack occurred
 in the parking lot it is coded as an outdoor event. Bear these fine
 distinctions in mind when examining the visualizations in this section.
 
-**Location Type**\
+[Location type]{.aa-subhead}
 As seen here, the plurality of events happen at places of business
 (`{r} business_n` attacks; `{r} business_pct`%). Places of business
 include retail locations, factories/warehouses, office space, and
@@ -319,7 +421,7 @@ including K-12 and institutes of higher education. Lastly, `{r} other_n`
 attacks (`{r} other_pct`%) happened at "Other" locations (e.g., houses
 of worship, government buildings, residences, and military bases).
 
-**Relationship to Location**\
+[Relationship to the location]{.aa-subhead}
 In a vast majority of attacks (`{r} norel_pct`% of all attacks), the
 attacker(s) had no prior association with the attack location. For
 attackers with some relationship to the location, former/current
@@ -328,11 +430,10 @@ students (`{r} student_pct`%) and current/former employees
 by indirect (e.g., the attacker's wife was associated with the location;
 (`{r} indirect_pct`%)) and "other" associations (`{r} other_rel_pct`%).
 
-**Relationship by Location Type**\
+[Relationship by location type]{.aa-subhead}
 When looking within location types, we find that most attackers had no
 relationship to the locations. Going beyond attackers with no
-relationship,\
-we find some interesting patterns. Despite making up only
+relationship, we find some interesting patterns. Despite making up only
 `{r} coworker_pct`% of attackers generally, attackers of businesses were
 current/former employees `{r} business_coworker_pct`% of the time. A
 similar trend is observable in schools, though in this case, the vast
@@ -341,7 +442,7 @@ majority of attackers were current/former students
 schools (`{r} school_norel_pct`%) were perpetrated by an attacker with
 no relationship to the school.
 
-**Time of Day by Location Type**\
+[Time of day by location type]{.aa-subhead}
 When grouped by location type, the tendency of attacks to occur around
 midday is still observable, though it is modest. The most noticeable
 trend can be see with attacks at schools, where there is a strong
@@ -352,29 +453,7 @@ within the same location type and *not* to concentrations displayed for
 other location types.
 :::
 
-### row 1, column 2 {.tabset width="65%"}
-
-::: {.card .flow title="Location Type" expandable="false"}
-![{{< downloadthis www/univar_loc.png dname="aa_by_loc_type" >}}](www/univar_loc.png)
-:::
-
-::: {.card .flow title="Relationship to Location" expandable="true"}
-![{{< downloadthis www/univar_rel.png dname="aa_by_rel_type" >}}](www/univar_rel.png)
-:::
-
-::: {.card .flow title="Relationship by Location Type" expandable="true"}
-![{{< downloadthis www/bivar_loctype_rel.png dname="aa_rel_loctype" >}}](www/bivar_loctype_rel.png)
-:::
-
-::: {.card .flow title="Time of Day by Location Type" expandable="true"}
-![{{< downloadthis www/bivar_loc_hr.png dname="aa_hour_by_log_type" >}}](www/bivar_loc_hr.png)
-:::
-
 # Casualties
-
-## row 1
-
-### row 1, column 1 {width="35%"}
 
 ```{r, r_objs_vic}
 #| include: false
@@ -426,13 +505,56 @@ casualty_lt10_pct <- get_pct(aa_data |>
 
 ```
 
-::: {.card .flow title="Victims" expandable="false"}
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+tab_header("Casualties",
+           "People killed and wounded: by year, in each attack, and by weapon.",
+           c("Killed" = format_num(kill_tot), "Wounded" = format_num(wound_tot),
+             "Attacks with no deaths" = paste0(round(deaths_0_pct), "%")))
+```
+:::
+
+## row 1
+
+### {.tabset width="62%"}
+
+::: {.card .flow title="Attacks and casualties by year" expandable="true"}
+![](www/bivar_eventkilled.png){fig-alt="Attacks and casualties by year"}
+
+::: {.aa-downloads}
+{{< downloadthis www/bivar_eventkilled.png dname="attack_killed_year" label="Download PNG" >}}
+:::
+:::
+
+::: {.card .flow title="Wounded and killed per attack" expandable="true"}
+<iframe class="aa-widget" src="www/bivar_wound_kill.html" title="Interactive plot" scrolling="no"></iframe>
+
+::: {.aa-downloads}
+{{< downloadthis www/bivar_wound_kill.png dname="wounded_fatalities_year" label="Download PNG" >}}
+{{< downloadthis www/bivar_wound_kill.html dname="wounded_fatalities_year" label="Download interactive (HTML)" >}}
+:::
+:::
+
+::: {.card .flow title="Wounded and killed by weapon" expandable="true"}
+<iframe class="aa-widget" src="www/bivar_kill_weapon.html" title="Interactive plot" scrolling="no"></iframe>
+
+::: {.aa-downloads}
+{{< downloadthis www/bivar_kill_weapon.png dname="fatalities_weapon_type" label="Download PNG" >}}
+{{< downloadthis www/bivar_kill_weapon.html dname="fatalities_weapon_type" label="Download interactive (HTML)" >}}
+:::
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="What the figures show" expandable="false"}
 There were `{r} format_num(casualty_tot)` casualties from active attacks
 between 2000 and `{r} years_max`. Of these, `{r} format_num(kill_tot)`
 people died. The visualizations in this section examine the casualties
 of active attacks.
 
-**Attacks vs. Casualties by Year**\
+[Attacks and casualties by year]{.aa-subhead}
 Attacks and total casualties (fatalities and wounded) have been
 increasing over the course of data collection (2000-`{r} years_max`).
 For specific years, however, there are noticeable spikes in the number
@@ -441,17 +563,17 @@ attacks. For example:
 
 -   **2007**: The attack on Apr. 16th at Virginia Tech, Virginia,
     resulted in `{r} virginia_tech_kill_tot` deaths, accounting for
-    `{r} virginia_tech_kill_tot_pct`% of all attacks that year.
+    `{r} virginia_tech_kill_tot_pct`% of all deaths that year.
 -   **2009**: The attack on Nov. 5th at Fort Hood (now Fort Cavazos),
     Texas, resulted in `{r} fort_hood_kill_tot` deaths, accounting for
-    `{r} fort_hood_kill_tot_pct`% of all attacks that year.
+    `{r} fort_hood_kill_tot_pct`% of all deaths that year.
 -   **2012**: The school shooting on Dec. 14th at Sandy Hook Elementary
     School, Connecticut, resulted in `{r} sandy_hook_kill_tot` deaths,
-    accounting for `{r} sandy_hook_kill_tot_pct`% of all attacks that
+    accounting for `{r} sandy_hook_kill_tot_pct`% of all deaths that
     year.
 -   **2017**: The attack on Oct. 1st in Las Vegas, Nevada, resulted in
     `{r} las_vegas_kill_tot` deaths, accounting for
-    `{r} las_vegas_kill_tot_pct`% of all attacks that year.
+    `{r} las_vegas_kill_tot_pct`% of all deaths that year.
 
 Of note, while the number of active attacks did not decrease during the
 COVID-19 pandemic, the lethality of attacks in 2020 decreased to less
@@ -459,7 +581,7 @@ than half the number of any of the four years previous. In 2021,
 however, the number of attacks increased and the number of deaths
 returned to pre-pandemic levels.
 
-**Wounded vs. Fatalities per Attack** (Interactive)\
+[Wounded and killed per attack]{.aa-subhead}
 Most attacks (`{r} casualty_lt10_pct`%) resulted in fewer than 10
 casualties (killed and/or wounded) and `{r} deaths_0_pct`% of attacks
 resulted in no deaths at all. Hover over the points on this plot to get
@@ -467,7 +589,7 @@ information about that specific attack. Note: hovering over a point on
 one side of the plot will highlight a corresponding point on the other
 side.
 
-**Wounded vs. Fatalities per Weapon Type** (Interactive)\
+[Wounded and killed by weapon]{.aa-subhead}
 Most attacks (`{r} pistol_pct`%) were committed using handguns. Among
 these, total fatalities were generally less than 20 (except for the
 attacks at Virginia Tech, 2007). Similarly, nearly all handgun attacks
@@ -478,39 +600,11 @@ all attacks with more than 20 wounded. Hover over the points on this
 plot to get information about that specific attack.
 :::
 
-### row 1, column 2 {.tabset width="65%"}
-
-::: {.card .flow title="Attacks Vs. Casualties by Year" expandable="true"}
-![{{< downloadthis www/bivar_eventkilled.png dname="attack_killed_year" >}}](www/bivar_eventkilled.png)
-:::
-
-::: {.card .fill title="Wounded Vs. Fatalities per Attack" expandable="true"}
-<iframe class="aa-widget" src="www/bivar_wound_kill.html" title="Interactive plot" scrolling="no"></iframe>
-
-{{< downloadthis www/bivar_wound_kill.png dname="wounded_fatalities_year" >}}
-Static plot (*.png*)
-
-{{< downloadthis www/bivar_wound_kill.html dname="wounded_fatalities_year" >}}
-Interactive plot (*.html*)
-:::
-
-::: {.card .fill title="Wounded Vs. Fatalities per Weapon Type" expandable="true"}
-<iframe class="aa-widget" src="www/bivar_kill_weapon.html" title="Interactive plot" scrolling="no"></iframe>
-
-{{< downloadthis www/bivar_kill_weapon.png dname="fatalities_weapon_type" >}}
-Static plot (*.png*)
-
-{{< downloadthis www/bivar_kill_weapon.html dname="fatalities_weapon_type" >}}
-Interactive plot (*.html*)
-:::
-
 # Across the USA
 
-## row 1
-
-### row 1, column 21 {width="40%"}
-
 ```{r}
+#| include: false
+#| echo: false
 
 #number of states represented
 states_n <- aa_data |> 
@@ -527,7 +621,43 @@ states_miss <- tibble(abb = state.abb,
   
 ```
 
-::: {.card .fill title="Attacks across the USA" expandable="false"}
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+top_st    <- count(aa_data, state, sort = TRUE)[1, ]
+top_name  <- if (top_st$state == "DC") "DC" else state.name[match(top_st$state, state.abb)]
+tab_header("Across the USA",
+           "Where attacks happened across the states.",
+           c("States with an attack" = glue("{states_n} and DC"),
+             "Most attacks" = glue("{top_name} ({top_st$n})")))
+```
+:::
+
+## row 1
+
+### {.tabset width="62%"}
+
+::: {.card .flow title="Attacks and fatalities by state" expandable="true"}
+<iframe class="aa-widget" src="www/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no"></iframe>
+
+::: {.aa-downloads}
+{{< downloadthis www/bicol_map_attackxkilled.png dname="aa_attack_fatalities_map" label="Download PNG" >}}
+{{< downloadthis www/bicol_map_attackxkilled.html dname="aa_attack_fatalities_map" label="Download interactive (HTML)" >}}
+:::
+:::
+
+::: {.card .flow title="Attacks by year (animation)" expandable="true"}
+![](www/rolling_map.gif){fig-alt="Attacks by year (animation)"}
+
+::: {.aa-downloads}
+{{< downloadthis www/rolling_map.gif dname="aa_attacks_year_map" label="Download GIF" >}}
+:::
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="What the figures show" expandable="false"}
 Active attacks have been recorded in `{r} states_n` states and the
 District of Columbia. States with no recorded attacks include
 `{r} states_miss`. While most states have at least some number of
@@ -535,7 +665,7 @@ attacks, the number of attacks (and fatalities) tend to cluster
 geographically. The visualizations in this section show that geographic
 dimension.
 
-**Attacks & Fatalities by State** (Interactive)\
+[Attacks and fatalities by state]{.aa-subhead}
 The number of active attacks in a state strongly corresponds to the
 number of fatalities; however, there are some cases where the relative
 numbers of attacks and fatalities might not align. This map shows how
@@ -545,29 +675,12 @@ or over the legend to see which states are grouped together. Tip: click
 states or legend tiles to freeze selections to make comparisons with
 other states/groups.
 
-**Attacks, Fatalities, & Weapon by Year** (Animation)\
+[Attacks by year (animation)]{.aa-subhead}
 The number of attacks and fatalities has been increasing annually. This
 animation documents to specific locations, primary weapon used, and
 number of fatalities (\<4, 4+) per attack for individual years from 2000
 to `{r} years_max`.
 :::
-
-### row 1 column 2 {.tabset width="60%"}
-
-::: {.card .flow title="Attacks & Fatalities by State" expandable="true"}
-<iframe class="aa-widget" src="www/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no"></iframe>
-
-{{< downloadthis www/bicol_map_attackxkilled.png dname="aa_attack_fatalities_map" >}}
-Static plot (*.png*)
-
-{{< downloadthis www/bicol_map_attackxkilled.html dname="aa_attack_fatalities_map" >}}
-Interactive plot (*.html*)
-:::
-
-::: {.card .flow title="Attacks, Fatalities, & Weapon by Year" expandable="true"}
-![{{< downloadthis www/rolling_map.gif dname="aa_attacks_year_map" >}}](www/rolling_map.gif)
-:::
-
 
 # Fact Sheet
 
@@ -662,9 +775,20 @@ are counted in the year they happened.
 
 # Download the Data
 
+## {height="auto"}
+
+::: {.card .aa-head}
+```{r}
+tab_header("Download the data",
+           "The full dataset and its codebook, free to download and use.",
+           c("Attacks" = scales::comma(nrow(aa_data)), "Variables" = ncol(aa_data),
+             "Data version" = version))
+```
+:::
+
 ## row 1
 
-### row 1, column 1 {width="35%"}
+### {width="38%"}
 
 ::: {.card .flow title="About the Data" expandable="false"}
 It is the mission of the Research Ring at ALERRT to make the Active
@@ -710,14 +834,13 @@ following notes:
     attackers leave the scene before law enforcement arrive, these are
     combined in the resolution data as ending prior to LE arrival. 
 
-{{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" >}}
-Data (*.csv*)
-
-{{< downloadthis data/aa_data_wide_codebook_2025.docx dname="active_attack_data_v2025_codebook" >}}
-Codebook (*.docx*)
+::: {.aa-downloads}
+{{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" label="Download data (CSV)" >}}
+{{< downloadthis data/aa_data_wide_codebook_2025.docx dname="active_attack_data_v2025_codebook" label="Download codebook (DOCX)" >}}
+:::
 :::
 
-### row 1, column 2 {width="65%"}
+### {width="62%"}
 
 ```{r}
 datatable(aa_data, filter = "top")
