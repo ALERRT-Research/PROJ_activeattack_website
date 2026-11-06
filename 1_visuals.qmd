@@ -246,7 +246,7 @@ outdoors_pct <- get_pct(aa_data, location_primary, "Outdoors")
 school_pct <- get_pct(aa_data, location_primary, "School")
 
 # Other %
-other_pct <- get_pct(aa_data, location_primary, "Other")
+other_pct <- get_pct(aa_data, location_primary, c("Other", "Church", "Military base"))
 
 #get n's
 # Business n
@@ -259,7 +259,7 @@ outdoors_n <- get_count(aa_data, location_primary, "Outdoors")
 school_n <- get_count(aa_data, location_primary, "School")
 
 # Other n
-other_n <- get_count(aa_data, location_primary, "Other")
+other_n <- get_count(aa_data, location_primary, c("Other", "Church", "Military base"))
 
 #RELATIONSHIP TO LOC
 
@@ -332,7 +332,7 @@ When looking within location types, we find that most attackers had no
 relationship to the locations. Going beyond attackers with no
 relationship,\
 we find some interesting patterns. Despite making up only
-`{r} coworker_pct` of attackers generally, attackers of businesses were
+`{r} coworker_pct`% of attackers generally, attackers of businesses were
 current/former employees `{r} business_coworker_pct`% of the time. A
 similar trend is observable in schools, though in this case, the vast
 majority of attackers were current/former students
