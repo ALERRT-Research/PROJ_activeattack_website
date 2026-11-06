@@ -23,9 +23,16 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   have dropped 91 → 62); missing `%` added in the coworker sentence; `index.qmd` changelog entry. Local render
   of `1_visuals.qmd` checked.
 
+## Later the same day: steps 2 and 3
+
+- Step 2: Fact Sheet tab rebuilt from `R/fact_sheet_stats.R` via `R/fact_sheet_html.R`; hand-typed list removed.
+  `1_visuals.qmd` is `format: dashboard`, which does NOT inherit `format: html` css from `_quarto.yml`; the page
+  now links `dashboard.css`. The downloadthis extension caps buttons at 125px with an ellipsis (overridden).
+- Step 3: design direction approved (`plans/2026-11-06_fact-sheet-design.md`); built and checked at 375-1400px.
+
 ## Still to do
 
 - Tell Hunter (pipeline is his): the recode fix and new location levels; his next Windows render of graphics
   will re-byte the reverted figures, which is harmless.
-- Plan steps 2-5 (web tab, styling via frontend-design, Typst PDF, wire-up).
+- Plan steps 4-5 (Typst PDF in the same design, wire-up). Light/dark toggle and site-wide rollout after the conference.
 - Nothing pushed.

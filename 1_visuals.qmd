@@ -587,67 +587,27 @@ source("R/fact_sheet_html.R")
 fs     <- fact_sheet_stats(aa_data)
 fs_yrs <- attr(fs, "years")
 
-# headline values for the value boxes
-fs_get <- function(item, col) fs[[col]][fs$item == item & !is.na(fs$item)][1]
-fs_fmt_avg <- function(x) scales::number(x, accuracy = 0.1)
-
-tile_attacks_curr <- fs_get("Active attacks", "n_curr")
-tile_attacks_prev <- fs_get("Active attacks", "n_prev")
-tile_attacks_avg  <- fs_fmt_avg(fs_get("Active attacks", "avg_window"))
-tile_killed_curr  <- fs_get("Killed", "n_curr")
-tile_killed_prev  <- fs_get("Killed", "n_prev")
-tile_killed_avg   <- fs_fmt_avg(fs_get("Killed", "avg_window"))
-tile_wounded_curr <- fs_get("Wounded", "n_curr")
-tile_wounded_prev <- fs_get("Wounded", "n_prev")
-tile_wounded_avg  <- fs_fmt_avg(fs_get("Wounded", "avg_window"))
-tile_pre_le_curr  <- fs_get("Before police arrived", "n_curr")
-tile_pre_le_prev  <- fs_get("Before police arrived", "n_prev")
-tile_pre_le_avg   <- fs_fmt_avg(fs_get("Before police arrived", "avg_window"))
-
-fs_total     <- scales::comma(fs_get("Active attacks", "n_all"))
-fs_window    <- glue("{fs_yrs$window[1]}&ndash;{fs_yrs$window[2]}")
+fs_total <- scales::comma(fs$n_all[fs$item == "Active attacks"])
 ```
 
 ## row 1 {height="auto"}
 
-::: {.card .flow title="Fact Sheet"}
+::: {.card .flow .fs-lead}
+::: {.fs-intro}
 Common statistics from the Active Attack Data, `{r} fs_yrs$first` through
-`{r} fs_yrs$curr` (`{r} fs_total` attacks), with the latest year
-(`{r} fs_yrs$curr`) compared against the year before
-(`{r} fs_yrs$prev`) and the average of the five years before that.
+`{r} fs_yrs$curr` (`{r} fs_total` attacks). Each box compares
+`{r} fs_yrs$curr` with `{r} fs_yrs$prev` and with the average year from
+`{r} fs_yrs$window[1]` to `{r} fs_yrs$window[2]`.
 
 {{< downloadthis data/aa_fact_sheet_2025.pdf dname="active_attack_factsheet_v2025" label="Fact sheet (PDF)" >}}
 :::
 
+```{r}
+fs_tiles_html(fs)
+```
+:::
+
 ## row 2 {height="auto"}
-
-::: {.valuebox title="Active attacks in `r fs_yrs$curr`"}
-`{r} tile_attacks_curr`
-
-`{r} fs_yrs$prev`: `{r} tile_attacks_prev` · `{r} fs_window` avg.: `{r} tile_attacks_avg`
-:::
-
-::: {.valuebox title="Killed in `r fs_yrs$curr`"}
-`{r} tile_killed_curr`
-
-`{r} fs_yrs$prev`: `{r} tile_killed_prev` · `{r} fs_window` avg.: `{r} tile_killed_avg`
-:::
-
-::: {.valuebox title="Wounded in `r fs_yrs$curr`"}
-`{r} tile_wounded_curr`
-
-`{r} fs_yrs$prev`: `{r} tile_wounded_prev` · `{r} fs_window` avg.: `{r} tile_wounded_avg`
-:::
-
-::: {.valuebox title="Ended before police arrived, `r fs_yrs$curr`"}
-`{r} tile_pre_le_curr`
-
-of `{r} tile_attacks_curr` attacks
-
-`{r} fs_yrs$prev`: `{r} tile_pre_le_prev` of `{r} tile_attacks_prev` · `{r} fs_window` avg.: `{r} tile_pre_le_avg`
-:::
-
-## row 3 {height="auto"}
 
 ```{r}
 #| title: Weapons
@@ -659,7 +619,7 @@ fs_table_html(fs, "Weapons")
 fs_table_html(fs, "Attackers")
 ```
 
-## row 4 {height="auto"}
+## row 3 {height="auto"}
 
 ```{r}
 #| title: Locations
@@ -671,7 +631,7 @@ fs_table_html(fs, "Locations")
 fs_table_html(fs, "Resolution")
 ```
 
-## row 5 {height="auto"}
+## row 4 {height="auto"}
 
 ```{r}
 #| title: Victims
@@ -681,7 +641,7 @@ fs_table_html(fs, "Victims")
 ::: {.card .flow title="Reading these numbers"}
 **Columns.** The first column covers every attack in the data, with its
 share of the total (firearm types are a share of firearm attacks). The
-two single-year columns are counts, and *Change* is the latest year minus
+two single-year columns are counts, and *vs. `{r} fs_yrs$prev`* is the latest year minus
 the year before. Single years hold few attacks, so a change of a few
 events is within normal year-to-year variation; the five-year average
 gives the longer view.
