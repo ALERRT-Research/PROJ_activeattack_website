@@ -36,3 +36,13 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   will re-byte the reverted figures, which is harmless.
 - Plan steps 4-5 (Typst PDF in the same design, wire-up). Light/dark toggle and site-wide rollout after the conference.
 - Data fix pushed 11-06 (all three repos); steps 2-3 committed locally, not pushed.
+
+## Step 4: PDF
+
+- `R/fact_sheet_pdf.R` writes Typst from `fact_sheet_stats()` and compiles it with Quarto's bundled Typst 0.11
+  (`Rscript R/fact_sheet_pdf.R`), overwriting `data/aa_fact_sheet_2025.pdf` (the hand-made v2025 sheet is in git
+  history). Two letter pages, same tokens as the web tab; keeps the 2024 column. Not part of the site render.
+- Static Public Sans (OFL) in `fact_sheet/fonts/`: Typst 0.11 sees only the Thin instance of the installed
+  variable font. Generated `.typ` is gitignored.
+- Web tab revisions the same day: bars on a shared zero line, maroon `#9E1B32`, 2024 column dropped from web tables,
+  "One weapon" row added (weapon_tot <= 1; 18 attacks with weapon_tot 0 are vehicle/unknown-firearm attacks).
