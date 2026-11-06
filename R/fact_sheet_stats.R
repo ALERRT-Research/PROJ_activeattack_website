@@ -79,7 +79,11 @@ fs_tally <- function(d) {
     cnt("Weapons", "Firearm", firearm,                          group = "Primary weapon"),
     cnt("Weapons", "Blade",   d$weapon_primary %in% "Knife",    group = "Primary weapon"),
     cnt("Weapons", "Vehicle", d$weapon_primary %in% "Vehicle",  group = "Primary weapon"),
-    cnt("Weapons", "More than one weapon", d$weapon_tot > 1, group = "Weapons per attack"),
+    # weapon_tot is 0 for 18 attacks (vehicle-only and unknown-firearm attacks, where the
+    # vehicle or gun is not tallied as a carried weapon); every attack had one, so <= 1
+    # is "one weapon" and the two rows sum to all attacks
+    cnt("Weapons", "One weapon",           d$weapon_tot <= 1, group = "Weapons per attack"),
+    cnt("Weapons", "More than one weapon", d$weapon_tot > 1,  group = "Weapons per attack"),
     cnt("Weapons", "Pistol",  firearm & d$weapon_primary %in% "Pistol",  n_fire, "Firearm type"),
     cnt("Weapons", "Rifle",   firearm & d$weapon_primary %in% "Rifle",   n_fire, "Firearm type"),
     cnt("Weapons", "Shotgun", firearm & d$weapon_primary %in% "Shotgun", n_fire, "Firearm type"),

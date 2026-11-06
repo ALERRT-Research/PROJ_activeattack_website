@@ -646,7 +646,7 @@ year before (`{r} fs_yrs$prev` counts are in the PDF). Single years hold few att
 events is within normal year-to-year variation; the five-year average
 gives the longer view.
 
-**Definitions.** Race is that of the first-listed attacker. *Shot by
+**Definitions.** *One weapon* includes vehicle attacks and attacks with a firearm of unknown type. Race is that of the first-listed attacker. *Shot by
 civilian* includes off-duty officers and security guards. *Fled the
 scene* includes a small number of attackers who fled after police
 arrived. Victim counts follow ALERRT's definitions, which are stricter
