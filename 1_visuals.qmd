@@ -485,9 +485,7 @@ plot to get information about that specific attack.
 :::
 
 ::: {.card .fill title="Wounded Vs. Fatalities per Attack" expandable="true"}
-<iframe width="100%" height="650" src="www/bivar_wound_kill.html">
-
-</iframe>
+<iframe class="aa-widget" src="www/bivar_wound_kill.html" title="Interactive plot" scrolling="no"></iframe>
 
 {{< downloadthis www/bivar_wound_kill.png dname="wounded_fatalities_year" >}}
 Static plot (*.png*)
@@ -497,9 +495,7 @@ Interactive plot (*.html*)
 :::
 
 ::: {.card .fill title="Wounded Vs. Fatalities per Weapon Type" expandable="true"}
-<iframe width="100%" height="650" src="www/bivar_kill_weapon.html">
-
-</iframe>
+<iframe class="aa-widget" src="www/bivar_kill_weapon.html" title="Interactive plot" scrolling="no"></iframe>
 
 {{< downloadthis www/bivar_kill_weapon.png dname="fatalities_weapon_type" >}}
 Static plot (*.png*)
@@ -559,9 +555,7 @@ to `{r} years_max`.
 ### row 1 column 2 {.tabset width="60%"}
 
 ::: {.card .flow title="Attacks & Fatalities by State" expandable="true"}
-<iframe width="90%" height="650" src="www/bicol_map_attackxkilled.html">
-
-</iframe>
+<iframe class="aa-widget" src="www/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no"></iframe>
 
 {{< downloadthis www/bicol_map_attackxkilled.png dname="aa_attack_fatalities_map" >}}
 Static plot (*.png*)

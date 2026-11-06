@@ -45,6 +45,17 @@
   padding: 0.75rem 1.25rem 1.25rem;
 }
 
+/* interactive (ggiraph) plots: the iframe takes the plot's own 10:7 shape at
+   the card's width, and the widget inside fills it, so nothing scrolls */
+.quarto-dashboard iframe.aa-widget {
+  display: block;
+  width: 100%;
+  aspect-ratio: 10 / 7;
+  height: auto;
+  border: 0;
+  margin: 0 0 0.75rem;
+}
+
 /*--lead card: intro, download, headline boxes------------------------------*/
 
 /* page header: title and lead on the left, the PDF panel on the right */
