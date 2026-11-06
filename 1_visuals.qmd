@@ -4,7 +4,7 @@ format:
   dashboard: 
     orientation: rows
     scrolling: true
-    css: dashboard.css   # format: html options in _quarto.yml do not reach dashboard pages
+    css: [aa-theme.css, dashboard.css]   # format: html options in _quarto.yml do not reach dashboard pages
 resources: 
   - "www/"
 editor: 

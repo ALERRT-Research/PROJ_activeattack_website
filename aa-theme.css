@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap");
+
+/* aa-theme.css: shared look for every page of activeattackdata.org.
+   Loaded by _quarto.yml (html pages) and by 1_visuals.qmd (the dashboard,
+   which does not inherit format: html options). Page-specific rules live in
+   styles.css (html pages) and dashboard.css (dashboard).
+
+   Design: docs/logs/plans/2026-11-06_fact-sheet-design.md and
+   docs/logs/plans/2026-11-06_site-wide-look.md.
+   Rule of the site: maroon means "the latest year" and nothing else, so links,
+   buttons and active tabs use ink, never maroon. */
+
+/*--tokens------------------------------------------------------------------*/
+
+:root {
+  --aa-ink: #1f2a36;
+  --aa-paper: #ffffff;
+  --aa-surface: #f4f6f8;
+  --aa-rule: #d3d8de;
+  --aa-muted: #5b6672;
+  --aa-prev: #9aa5b1;
+  --aa-maroon: #9e1b32;   /* brighter than the logo maroon #501214, so the latest year reads first */
+  --aa-band: rgba(158, 27, 50, 0.08);
+  --aa-font: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* dark values, ready for the light/dark toggle (not switched on yet) */
+.quarto-dark {
+  --aa-ink: #e4e8ec;
+  --aa-paper: #141a21;
+  --aa-surface: #1b232c;
+  --aa-rule: #2e3843;
+  --aa-muted: #9aa5b1;
+  --aa-prev: #5b6672;
+  --aa-maroon: #d29aa0;
+  --aa-band: rgba(210, 154, 160, 0.10);
+}
+
+/*--type---------------------------------------------------------------------*/
+
+body {
+  font-family: var(--aa-font);
+  color: var(--aa-ink);
+  background: var(--aa-paper);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.navbar, .nav, .btn, button {
+  font-family: var(--aa-font);
+}
+
+h1, h2, h3, h4, .title {
+  color: var(--aa-ink);
+  font-weight: 600;
+}
+
+/* tables of numbers line up */
+table { font-variant-numeric: tabular-nums; }
+
+/*--links and buttons--------------------------------------------------------*/
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item),
+.quarto-dashboard .card-body a:not(.btn) {
+  color: var(--aa-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--aa-prev);
+  text-underline-offset: 0.15em;
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):hover,
+.quarto-dashboard .card-body a:not(.btn):hover {
+  text-decoration-color: var(--aa-ink);
+}
+
+button.downloadthis,
+.btn-primary {
+  background: var(--aa-ink);
+  border: 0;
+  border-radius: 4px;
+  color: var(--aa-paper);
+  font-weight: 600;
+}
+
+button.downloadthis:hover,
+.btn-primary:hover {
+  background: #33414f;
+  color: var(--aa-paper);
+}
+
+button.downloadthis:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--aa-ink);
+  outline-offset: 2px;
+}
+
+/* table of contents: active entry in ink, not the theme's teal (the theme
+   sets it with !important, hence the same here) */
+.sidebar nav[role=doc-toc] ul > li > a.active,
+.sidebar nav[role=doc-toc] ul > li > ul > li > a.active {
+  color: var(--aa-ink) !important;
+  border-left-color: var(--aa-ink) !important;
+  font-weight: 600;
+}
+.sidebar nav[role=doc-toc] ul > li > a { color: var(--aa-muted); }

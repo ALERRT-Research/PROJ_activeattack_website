@@ -29,7 +29,7 @@ website:
 format:
   html:
     theme: flatly
-    css: styles.css
+    css: [aa-theme.css, styles.css]
     toc: true
     
 # filters: 
