@@ -86,3 +86,17 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   Categories inside a tab are shaded by rank (`rank_shades()`). Where colour is the identity (relationship chart,
   weapons on the animated map) the stronger validated set `aa_cat` is used, since muted blue/violet fail all-pairs.
   gganimate measures text before the font applies: a subtitle overlapped the GIF title, so the GIF has none.
+
+## Page format (plan: `plans/2026-11-06_page-format.md`)
+
+- Every dashboard tab: header card (`tab_header()` in `R/page_helpers.R`) with title, lead and key numbers computed
+  from the data, top rule in the tab's figure colour; charts first (62%), notes second (38%) titled "What the figures
+  show" with `.aa-subhead` headings named like the chart tabs; one row of download buttons; sentence-case tab names;
+  cards sized to content; columns stack below 900px.
+- Quarto dashboards mark wrapper divs `html-fill-container` (flex column): any flex row inside a card needs an explicit
+  `flex-direction: row` (tab header, download row).
+- Home: front section (`home_front()`): four headline numbers and links into each tab. Fixed the dead Website Guide
+  link (`#fatalities` -> `#casualties`). Phone navbar logo capped at 56px.
+- Text fix: the Casualties notes said each big attack's deaths were a share "of all attacks that year"; they are a
+  share of that year's deaths.
+- Graphics pushed 11-06 evening (16 commits). Website not yet pushed.

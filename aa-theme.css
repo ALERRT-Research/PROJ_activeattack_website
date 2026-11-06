@@ -60,7 +60,7 @@ table { font-variant-numeric: tabular-nums; }
 
 /*--links and buttons--------------------------------------------------------*/
 
-main a:not(.btn):not(.nav-link):not(.dropdown-item),
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link),
 .quarto-dashboard .card-body a:not(.btn) {
   color: var(--aa-ink);
   text-decoration: underline;
@@ -68,7 +68,7 @@ main a:not(.btn):not(.nav-link):not(.dropdown-item),
   text-underline-offset: 0.15em;
 }
 
-main a:not(.btn):not(.nav-link):not(.dropdown-item):hover,
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link):hover,
 .quarto-dashboard .card-body a:not(.btn):hover {
   text-decoration-color: var(--aa-ink);
 }
@@ -104,3 +104,60 @@ a:focus-visible {
   font-weight: 600;
 }
 .sidebar nav[role=doc-toc] ul > li > a { color: var(--aa-muted); }
+
+/*--key numbers (tab headers, Home)-----------------------------------------*/
+
+/* figure in the tab colour (ink where there is none), label above */
+.aa-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  margin: 0;
+}
+
+.aa-stats div { display: flex; flex-direction: column-reverse; }
+
+.aa-stats dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--aa-tab, var(--aa-ink));
+  font-variant-numeric: tabular-nums;
+}
+
+.aa-stats dt {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--aa-muted);
+}
+
+.aa-stats .aa-latest dd { color: var(--aa-maroon); }
+
+/*--Home: front section-----------------------------------------------------*/
+
+.aa-home-front { margin: 1.5rem 0 2.5rem; }
+.aa-home-front .aa-stats { margin-bottom: 1.75rem; }
+
+.aa-home-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.75rem;
+}
+
+main a.aa-home-link,
+main a.aa-home-link:hover {
+  display: block;
+  border: 1px solid var(--aa-rule);
+  border-top: 3px solid var(--aa-tab, var(--aa-ink));
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem 0.85rem;
+  text-decoration: none;
+  color: var(--aa-ink);
+}
+
+main a.aa-home-link:hover { border-color: var(--aa-ink); border-top-color: var(--aa-tab, var(--aa-ink)); }
+
+.aa-home-link strong { display: block; font-weight: 600; }
+.aa-home-link span   { display: block; color: var(--aa-muted); font-size: 0.9375rem; line-height: 1.4; }

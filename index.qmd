@@ -10,6 +10,13 @@ The Active Attack Data is a dataset maintained by the Advanced Law Enforcement R
 
 All of the media on this website are easily downloadable, and we encourage their use. Please take some time to learn more about the history and definitions of the Active Attack Data in the sections that follow. At the bottom of this page, you will also find a guide listing the website's contents for easy navigation.
 
+```{r}
+#| echo: false
+source("R/page_helpers.R")
+home_data <- readRDS(tail(sort(Sys.glob("data/aa_data_wide_nogeo_*.rds")), 1))
+home_front(home_data)
+```
+
 ## History
 
 ALERRT started collecting data from active shooter events in 2010 to better understand how these attacks unfold and to inform ALERRT’s curriculum. This original dataset focused on events where the attacker used a firearm. Around 2018, we expanded the definition to include attacks involving any weapon used in an attempt to commit mass murder. We started referring to this expanded data as the Active Attack Data.
@@ -44,7 +51,7 @@ The [Active Attacks](./1_visuals.qmd) page presents many visualizations created 
 
 -   [Locations](./1_visuals.qmd#locations): Topics like the type of location attacked, the relationship of the attack to the location, and the timing of attacks across location types.
 
--   [Fatalities](./1_visuals.qmd#fatalities): The lethality of specific active attacks and changes in fatalities versus attacks over the years.
+-   [Casualties](./1_visuals.qmd#casualties): People killed and wounded, the lethality of specific attacks, and changes in casualties versus attacks over the years.
 
 -   [Across the USA](./1_visuals.qmd#across-the-usa): Geographic distribution of attacks and fatalities across the USA, along with the accumulation of attacks over the years.
 
