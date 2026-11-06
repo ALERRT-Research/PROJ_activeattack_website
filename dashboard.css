@@ -101,33 +101,41 @@
 
 .quarto-dashboard button.downloadthis { padding: 0.5rem 1rem; }
 
-/* card tabsets (e.g. By Year / By Month): plain text tabs, the open one
-   underlined in ink; the header keeps a hairline under it */
+/* card tabsets (e.g. By Year / By Month) are controls, not part of the chart:
+   they sit on a grey band with a rule under it, and the open tab is a white
+   tab joined to the white card body, like a folder tab */
 .quarto-dashboard .card-header:has(.nav-tabs) {
+  background: var(--aa-surface);
   border-bottom: 1px solid var(--aa-rule);
-  padding-bottom: 0;
+  padding: 0.5rem 0.75rem 0;
 }
 
-.quarto-dashboard .card-header .nav-tabs { border-bottom: 0; }
+.quarto-dashboard .card-header .nav-tabs {
+  border-bottom: 0;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-start;
+}
 
 .quarto-dashboard .card-header .nav-tabs .nav-link {
   background: transparent;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
   color: var(--aa-muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 400;
-  padding: 0.5rem 0.25rem;
-  margin-right: 1.25rem;
+  padding: 0.4rem 0.85rem;
+  margin: 0 0 -1px;
 }
 
 .quarto-dashboard .card-header .nav-tabs .nav-link:hover { color: var(--aa-ink); }
 
 .quarto-dashboard .card-header .nav-tabs .nav-link.active {
+  background: var(--aa-paper);
+  border-color: var(--aa-rule);
   color: var(--aa-ink);
   font-weight: 600;
-  border-bottom-color: var(--aa-ink);
 }
 
 /* boxes 2 x 2 on the left, latest-year map on the right */

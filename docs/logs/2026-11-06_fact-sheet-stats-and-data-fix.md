@@ -67,3 +67,8 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   attacks slate, fatalities ink, wounded light. All figures re-rendered and committed.
 - Not restyled: the two dark maps (bivariate choropleth, rolling GIF). The race figure counts every attacker
   (300 Caucasian) while the fact sheet uses the first-listed attacker (299); both are right, but they differ.
+- Revised the same evening after Peter's review ("dull and in places garish"; tabs looked like they sat in the plot):
+  one colour per tab again, palette B chosen from a preview (Timing ochre #b06f1a, Attackers blue #2a63a8,
+  Locations green #378a62, Casualties violet #9070cc; validator all-pairs pass). Ochre, not the old vermilion,
+  because a maroon latest-year bar disappears in vermilion. The relationship chart uses the tab colours + grey.
+  Card tabsets now sit on a grey band with folder-style tabs.
