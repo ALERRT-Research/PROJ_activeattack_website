@@ -50,3 +50,20 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   `PROJ_activeattack_graphics/code/plots_latest_year_map.R` -> `output/map_latest_year.svg` -> `www/` via
   `update_aa_graphics()`. One maroon dot per attack, plain outlines, no sizing or shading. The script sets the tigris
   cache with `Sys.setenv()`; `tigris_cache_dir()` (used in `plots_geospatial.R`) rewrites `~/.Renviron` each run.
+
+## Deploy outage and site-wide look (evening)
+
+- Every deploy on 11-06 failed until the runner pin: `ubuntu-latest` became Ubuntu 26.04, the locked `later` would
+  not compile under R 4.2.0, and the renv cache (keyed by OS) missed. `runs-on: ubuntu-24.04` fixed it; live from
+  the 2071508 deploy. `bob.md` had been published as `bob.html` since it was added; the site now renders `*.qmd` only
+  (verified 404 live).
+- Part A (website): `aa-theme.css` holds the tokens (`--aa-*`), Public Sans, links, buttons and TOC; loaded by
+  `_quarto.yml` and `1_visuals.qmd`. Dashboard cards and card tabsets restyled on every tab.
+- Part B (graphics): `0_packages.R` defines the palette (slate single series, maroon latest year, `rel_pal` for the
+  one categorical chart, validated with the dataviz script) and wraps the cowplot/ggplot themes with Public Sans.
+  Static fonts in `fonts/` are registered as "AA Public Sans" (the installed variable font renders Thin, and
+  systemfonts refuses to re-register an installed family). Rscript's pdf() device cannot resolve the font, so bare
+  plot prints go to ragg. Ridges at `scale = 1` (one colour would merge overlapping rows). Casualties pyramid:
+  attacks slate, fatalities ink, wounded light. All figures re-rendered and committed.
+- Not restyled: the two dark maps (bivariate choropleth, rolling GIF). The race figure counts every attacker
+  (300 Caucasian) while the fact sheet uses the first-listed attacker (299); both are right, but they differ.
