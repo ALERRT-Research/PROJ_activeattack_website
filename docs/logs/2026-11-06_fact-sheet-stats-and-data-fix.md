@@ -79,3 +79,10 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   full_join (`n()`), now `sum(!is.na(year))`; Puerto Rico dropped. Rolling GIF is light, weapon in tab colours,
   legend titled, rendered with ragg (the default png device dropped all text). Widgets swap the R font name for the
   web font and embed Public Sans.
+- Figure refinement (Peter: "clear, but not appealing"): `theme_aa()` house theme in graphics `0_packages.R`
+  (regular-weight title + muted subtitle instead of axis titles, muted axis text, faint one-direction grid, one
+  dark baseline, values in ink past the bar ends, two-line caption); `univar_plot()` rewritten on it. Palette A
+  (muted) chosen from a preview: ochre #b8843f, steel blue #3d6b9e, sea green #3f8a73, dusty violet #7d68ad.
+  Categories inside a tab are shaded by rank (`rank_shades()`). Where colour is the identity (relationship chart,
+  weapons on the animated map) the stronger validated set `aa_cat` is used, since muted blue/violet fail all-pairs.
+  gganimate measures text before the font applies: a subtitle overlapped the GIF title, so the GIF has none.
