@@ -69,7 +69,7 @@ cmp <- published |>
   mutate(ok = computed == published)
 
 # multiple weapons is published as a percent only
-mw <- fs$pct_all[fs$item == "Multiple weapons used"]
+mw <- fs$pct_all[fs$item == "More than one weapon"]
 cmp <- bind_rows(cmp, tibble(item = "Multiple weapons used (%)", published = 30.28,
                              computed = round(mw, 2), ok = round(mw, 2) == 30.28))
 

@@ -79,7 +79,7 @@ fs_tally <- function(d) {
     cnt("Weapons", "Firearm", firearm,                          group = "Primary weapon"),
     cnt("Weapons", "Blade",   d$weapon_primary %in% "Knife",    group = "Primary weapon"),
     cnt("Weapons", "Vehicle", d$weapon_primary %in% "Vehicle",  group = "Primary weapon"),
-    cnt("Weapons", "Multiple weapons used", d$weapon_tot > 1,   group = "Primary weapon"),
+    cnt("Weapons", "More than one weapon", d$weapon_tot > 1, group = "Weapons per attack"),
     cnt("Weapons", "Pistol",  firearm & d$weapon_primary %in% "Pistol",  n_fire, "Firearm type"),
     cnt("Weapons", "Rifle",   firearm & d$weapon_primary %in% "Rifle",   n_fire, "Firearm type"),
     cnt("Weapons", "Shotgun", firearm & d$weapon_primary %in% "Shotgun", n_fire, "Firearm type"),

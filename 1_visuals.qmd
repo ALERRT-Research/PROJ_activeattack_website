@@ -4,6 +4,7 @@ format:
   dashboard: 
     orientation: rows
     scrolling: true
+    css: dashboard.css   # format: html options in _quarto.yml do not reach dashboard pages
 resources: 
   - "www/"
 editor: 
@@ -576,132 +577,122 @@ Interactive plot (*.html*)
 
 # Fact Sheet
 
+```{r, fact_sheet_data}
+#| include: false
+#| echo: false
+
+source("R/fact_sheet_stats.R")
+source("R/fact_sheet_html.R")
+
+fs     <- fact_sheet_stats(aa_data)
+fs_yrs <- attr(fs, "years")
+
+# headline values for the value boxes
+fs_get <- function(item, col) fs[[col]][fs$item == item & !is.na(fs$item)][1]
+fs_fmt_avg <- function(x) scales::number(x, accuracy = 0.1)
+
+tile_attacks_curr <- fs_get("Active attacks", "n_curr")
+tile_attacks_prev <- fs_get("Active attacks", "n_prev")
+tile_attacks_avg  <- fs_fmt_avg(fs_get("Active attacks", "avg_window"))
+tile_killed_curr  <- fs_get("Killed", "n_curr")
+tile_killed_prev  <- fs_get("Killed", "n_prev")
+tile_killed_avg   <- fs_fmt_avg(fs_get("Killed", "avg_window"))
+tile_wounded_curr <- fs_get("Wounded", "n_curr")
+tile_wounded_prev <- fs_get("Wounded", "n_prev")
+tile_wounded_avg  <- fs_fmt_avg(fs_get("Wounded", "avg_window"))
+tile_pre_le_curr  <- fs_get("Before police arrived", "n_curr")
+tile_pre_le_prev  <- fs_get("Before police arrived", "n_prev")
+tile_pre_le_avg   <- fs_fmt_avg(fs_get("Before police arrived", "avg_window"))
+
+fs_total     <- scales::comma(fs_get("Active attacks", "n_all"))
+fs_window    <- glue("{fs_yrs$window[1]}&ndash;{fs_yrs$window[2]}")
+```
+
+## row 1 {height="auto"}
+
 ::: {.card .flow title="Fact Sheet"}
-For common statistics and a quick reference guide, feel free to download
-our active attack fact sheet.
+Common statistics from the Active Attack Data, `{r} fs_yrs$first` through
+`{r} fs_yrs$curr` (`{r} fs_total` attacks), with the latest year
+(`{r} fs_yrs$curr`) compared against the year before
+(`{r} fs_yrs$prev`) and the average of the five years before that.
 
-Here you will be able to find the counts, and/or percents of common
-variables in active attacks like:
-
--   Weapons
-
--   Attackers
-
--   Locations
-
--   Resolutions
-
--   Victims
-
-{{< downloadthis data/aa_fact_sheet_2025.pdf dname="active_attack_factsheet_v2025" >}}
+{{< downloadthis data/aa_fact_sheet_2025.pdf dname="active_attack_factsheet_v2025" label="Fact sheet (PDF)" >}}
 :::
 
-::: {.card .flow title="2000 - 2025"}
-There have been 634 active attacks identified.
+## row 2 {height="auto"}
 
-# **Weapons**
+::: {.valuebox title="Active attacks in `r fs_yrs$curr`"}
+`{r} tile_attacks_curr`
 
-Primary Weapon:
+`{r} fs_yrs$prev`: `{r} tile_attacks_prev` · `{r} fs_window` avg.: `{r} tile_attacks_avg`
+:::
 
--   Firearm: 591 (93.22%)
+::: {.valuebox title="Killed in `r fs_yrs$curr`"}
+`{r} tile_killed_curr`
 
--   Blade: 30 (4.73%)
+`{r} fs_yrs$prev`: `{r} tile_killed_prev` · `{r} fs_window` avg.: `{r} tile_killed_avg`
+:::
 
--   Vehicle: 13 (2.05%)
+::: {.valuebox title="Wounded in `r fs_yrs$curr`"}
+`{r} tile_wounded_curr`
 
-Multiple Weapons used in 30.28% of events.
+`{r} fs_yrs$prev`: `{r} tile_wounded_prev` · `{r} fs_window` avg.: `{r} tile_wounded_avg`
+:::
 
-Breakdown of Firearms:
+::: {.valuebox title="Ended before police arrived, `r fs_yrs$curr`"}
+`{r} tile_pre_le_curr`
 
--   Pistol: 347 (58.71%)
+of `{r} tile_attacks_curr` attacks
 
--   Rifle: 185 (31.3%)
+`{r} fs_yrs$prev`: `{r} tile_pre_le_prev` of `{r} tile_attacks_prev` · `{r} fs_window` avg.: `{r} tile_pre_le_avg`
+:::
 
--   Shotgun: 53 (8.97%)
+## row 3 {height="auto"}
 
--   Unknown: 6 (1.02%)
+```{r}
+#| title: Weapons
+fs_table_html(fs, "Weapons")
+```
 
-# **Attackers**
+```{r}
+#| title: Attackers
+fs_table_html(fs, "Attackers")
+```
 
-Number of Attackers:
+## row 4 {height="auto"}
 
--   1 Attacker: 619 (97.63%)
+```{r}
+#| title: Locations
+fs_table_html(fs, "Locations")
+```
 
--   2 Attackers: 12 (1.89%)
+```{r}
+#| title: Resolution
+fs_table_html(fs, "Resolution")
+```
 
--   3 Attackers: 3 (0.47%)
+## row 5 {height="auto"}
 
-Race:
+```{r}
+#| title: Victims
+fs_table_html(fs, "Victims")
+```
 
--   African American: 185 (29.18%)
+::: {.card .flow title="Reading these numbers"}
+**Columns.** The first column covers every attack in the data, with its
+share of the total (firearm types are a share of firearm attacks). The
+two single-year columns are counts, and *Change* is the latest year minus
+the year before. Single years hold few attacks, so a change of a few
+events is within normal year-to-year variation; the five-year average
+gives the longer view.
 
--   Asian: 22 (3.47%)
-
--   Caucasian: 299 (47.16%)
-
--   Latino: 86 (13.56%)
-
--   Middle Eastern: 18 (2.84%)
-
--   Other: 4 (0.63%)
-
--   Unknown: 20 (3.15%)
-
-Attacker/Victim Relationship:
-
--   No Relationship: 415 (65.46%)
-
--   Employee/Former Employee: 99 (15.62%)
-
--   Student/Former Student: 72 (11.36%)
-
--   All Other: 48 (7.57%)
-
-# **Locations**
-
-Location of Attacks:
-
--   Business: 283 (44.64%)
-
--   School: 85 (13.41%)
-
--   Public/Outdoors: 175 (27.6%)
-
--   Church: 22 (3.47%)
-
--   Military Base: 7 (1.1%)
-
--   All Other: 62 (9.78%)
-
-# **Resolutions**
-
-Prior to LE Arrival (374 \[58.99%\])
-
--   Shot by Civilian: 29 (4.57%)
-
--   Subdued by Civilian: 60 (9.46%)
-
--   Suicide before Police Arrival: 87 (13.72%)
-
--   Flee the Scene: 198 (31.23%)
-
-After LE Arrival (260 \[41.01%\])
-
--   Shot by Police: 138 (21.77%)
-
--   Subdued by Police: 57 (8.99%)
-
--   Suicide after Police Arrival: 49 (7.73%)
-
--   Surrendered: 16 (2.52%)
-
-# **Victims**
-
-Total: 4,287 (Median \# of Victims: 4)
-
-Wounded: 2,810 (Median \# of Wounded: 2)
-
-Killed: 1,477 (Median \# of Victims Killed: 1)
+**Definitions.** Race is that of the first-listed attacker. *Shot by
+civilian* includes off-duty officers and security guards. *Fled the
+scene* includes a small number of attackers who fled after police
+arrived. Victim counts follow ALERRT's definitions, which are stricter
+than the FBI's (see *Download the Data*). Year-by-year figures always
+come from the current version of the data, so attacks identified later
+are counted in the year they happened.
 :::
 
 # Download the Data
