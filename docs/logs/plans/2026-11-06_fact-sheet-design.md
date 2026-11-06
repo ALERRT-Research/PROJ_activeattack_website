@@ -112,3 +112,9 @@ draft above, all in that direction:
   `data-quarto-disable-processing="true"`.
 - Dark tokens are defined under `.quarto-dark #fact-sheet`, unused until the light/dark toggle is switched on.
 - All styles live in `dashboard.css`, scoped to `#fact-sheet`; Public Sans loads from Google Fonts.
+
+**Revised same day after Peter's review:** the three bars now share one grid, so they start at a common zero
+line (a vertical rule) with year labels right-aligned against it; previously each row sized its own label and
+the average bar started further right, reading as floating bars. Maroon brightened from the logo's `#501214`
+to `#9E1B32` (the dark logo colour did not pull the eye), 2025 table cells take the maroon, and the 2025 column
+header is a solid maroon cell with white text.
