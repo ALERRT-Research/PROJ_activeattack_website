@@ -30,28 +30,70 @@ tab_header <- function(title, lead, stats = NULL, latest = character()) {
     '</div>'))
 }
 
-# Home: headline numbers and links into each dashboard tab
-home_front <- function(d) {
+# Home: the hero band (title, purpose, headline numbers, latest-year map)
+home_hero <- function(d) {
   yrs <- range(d$year, na.rm = TRUE)
   stats <- setNames(
     c(scales::comma(nrow(d)), scales::comma(sum(d$kill_tot, na.rm = TRUE)),
-      scales::comma(sum(d$wound_tot, na.rm = TRUE)), paste0(yrs[1], "\u2013", yrs[2])),
-    c("Active attacks", "People killed", "People wounded", "Years covered"))
+      scales::comma(sum(d$wound_tot, na.rm = TRUE))),
+    c("active attacks", "people killed", "people wounded"))
+  n_latest <- sum(d$year == yrs[2], na.rm = TRUE)
+  knitr::asis_output(paste0(
+    '<div class="aa-hero-inner">',
+    '<div class="aa-hero-text">',
+    '<p class="aa-hero-kicker">ALERRT Center, Texas State University</p>',
+    '<h1 class="aa-hero-title">Active Attack Data Explorer</h1>',
+    '<p class="aa-hero-lead">Every active attack in the United States from ', yrs[1], ' through ', yrs[2],
+    ': when and where they happened, who carried them out, and the people killed and wounded. ',
+    'Free to explore, download and cite.</p>',
+    aa_stats_html(stats),
+    '</div>',
+    '<figure class="aa-hero-map">',
+    '<img src="www/map_latest_year.svg" alt="Map of the United States with one dot for each of the ',
+    n_latest, ' active attacks in ', yrs[2], '">',
+    '<figcaption>The ', n_latest, ' attacks in ', yrs[2], ', one dot each</figcaption>',
+    '</figure>',
+    '</div>'))
+}
+
+# Home: cards into each dashboard tab, plus Remembrance and Contact
+home_cards <- function(d) {
+  yrs <- range(d$year, na.rm = TRUE)
   links <- data.frame(
-    href  = c("timing", "attackers", "locations", "casualties", "across-the-usa", "fact-sheet", "download-the-data"),
-    title = c("Timing", "Attackers", "Locations", "Casualties", "Across the USA", "Fact Sheet", "Download the Data"),
+    href  = c("1_visuals.html#timing", "1_visuals.html#attackers", "1_visuals.html#locations",
+              "1_visuals.html#casualties", "1_visuals.html#across-the-usa", "1_visuals.html#fact-sheet",
+              "1_visuals.html#download-the-data", "2_victims.html"),
+    title = c("Timing", "Attackers", "Locations", "Casualties", "Across the USA", "Fact Sheet",
+              "Download the Data", "Remembrance"),
     text  = c("By year, month, day of the week and hour",
               "Who carried out the attacks, and their weapons",
               "Where attacks happened, and the attacker's tie to the place",
               "People killed and wounded",
               "Attacks and fatalities by state",
               paste0("The key numbers for ", yrs[2], ", with a PDF to share"),
-              "The full dataset and codebook"),
-    col   = c("#b8843f", "#3d6b9e", "#3f8a73", "#7d68ad", "#1f2a36", "#1f2a36", "#1f2a36"))
-  cards <- paste0('<a class="aa-home-link" href="1_visuals.html#', links$href,
+              "The full dataset and codebook",
+              "The names of the people who were killed"),
+    col   = c("#b8843f", "#3d6b9e", "#3f8a73", "#7d68ad", "#1f2a36", "#1f2a36", "#1f2a36", "#1f2a36"))
+  cards <- paste0('<a class="aa-home-link" href="', links$href,
                   '" style="--aa-tab:', links$col, '"><strong>', links$title,
                   '</strong><span>', links$text, '</span></a>', collapse = "")
-  knitr::asis_output(paste0('<div class="aa-home-front">', aa_stats_html(stats),
-                            '<nav class="aa-home-links" aria-label="Explore the data">', cards,
-                            '</nav></div>'))
+  knitr::asis_output(paste0('<nav class="aa-home-links" aria-label="Explore the data">', cards, '</nav>'))
+}
+
+# Home: the latest year at a glance (numbers from fact_sheet_stats())
+home_latest <- function(fs) {
+  yrs <- attr(fs, "years")
+  g   <- function(item, col) fs[[col]][fs$item == item][1]
+  pre <- g("Before police arrived", "n_curr"); tot <- g("Active attacks", "n_curr")
+  stats <- setNames(
+    c(tot, g("Killed", "n_curr"), g("Wounded", "n_curr"), paste0(round(100 * pre / tot), "%")),
+    c(glue::glue("attacks ({g('Active attacks', 'n_prev')} in {yrs$prev})"),
+      glue::glue("killed ({g('Killed', 'n_prev')} in {yrs$prev})"),
+      glue::glue("wounded ({g('Wounded', 'n_prev')} in {yrs$prev})"),
+      "ended before police arrived"))
+  knitr::asis_output(paste0(
+    '<div class="aa-latest-strip">',
+    '<h2 class="aa-latest-title">', yrs$curr, ' at a glance</h2>',
+    aa_stats_html(stats, latest = names(stats)),
+    '</div>'))
 }
