@@ -209,16 +209,25 @@ typ <- glue(.open = "<<", .close = ">>", '
 
 // ---- page 1 ------------------------------------------------------------------
 
-#grid(columns: (1fr, auto), align: (left + bottom, right + bottom),
-  [
-    #text(size: 20pt, weight: "semibold")[Active attacks in the United States, <<yrs$first>>–<<yrs$curr>>]
-    #v(-6pt)
-    #text(size: 9.5pt, fill: muted)[Fact sheet from the Active Attack Data, ALERRT Center, Texas State University]
-  ],
-  image("/www/alerrt_logo.png", height: 0.7in),
-)
-#v(2pt)
-#par(justify: false)[<<ty(intro)>>]
+// header: the logo runs the full height of the text block beside it. The text
+// width depends on the logo width, so measure and settle in a few passes.
+// fact_sheet/alerrt_logo_trimmed.png is www/alerrt_logo.png with its margins trimmed.
+#let head-text(w) = block(width: w)[
+  #text(size: 18pt, weight: "semibold")[Active attacks in the United States, <<yrs$first>>–<<yrs$curr>>]
+  #v(-6pt)
+  #text(size: 9.5pt, fill: muted)[Fact sheet from the Active Attack Data, ALERRT Center, Texas State University]
+  #v(2pt)
+  #par(justify: false)[<<ty(intro)>>]
+]
+#layout(size => {
+  let gap = 14pt
+  let aspect = 516 / 701
+  let h = 1.2in
+  for _ in range(4) { h = measure(head-text(size.width - h * aspect - gap)).height }
+  grid(columns: (size.width - h * aspect - gap, h * aspect), column-gutter: gap,
+    head-text(size.width - h * aspect - gap),
+    image("alerrt_logo_trimmed.png", height: h))
+})
 #v(8pt)
 
 #grid(columns: (1.1fr, 1fr), column-gutter: 18pt,
