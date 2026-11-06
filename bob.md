@@ -3,14 +3,14 @@ card_schema: bob/2
 project: Active Attack Data Explorer (activeattackdata.org)
 type: web
 status: active
-priority: medium
+priority: high  # 11-06: update is happening before the conference
 importance: medium
 path: /Users/PTT2/Documents/GitHub/PROJ_activeattack_website
 deadline: 2026-11-13  # site updated before the ALERRT conference, Nov 16–19 (Peter, 2026-10-16; approximate)
 target: Site updated before the ALERRT conference (Nov 16–19, 2026); post-v2025 housekeeping first
-effort_remaining: ~1h housekeeping (orphans, app-repo deletion on GitHub); overhaul unscoped
-weekly_commitment: 1h
-last_updated: 2026-10-16
+effort_remaining: ~4-6h updated fact sheet (priority) + ~1h housekeeping; site aesthetics (light/dark) are a stretch goal
+weekly_commitment: ~3h through 11-13
+last_updated: 2026-11-06
 blockers: null
 blocking_others: null
 phase: in-progress
@@ -33,7 +33,7 @@ sync: github
 
 ## This Week
 
-- [ ] Scope update with Hunter (10-16): a lighter update rather than the full visual overhaul, given the ~11-13 deadline before the ALERRT conference Nov 16–19.
+- [ ] **Scope settled 11-06 (Peter): the update happens before the conference.** Priority is an updated fact sheet: numbers computed from the v2025 data rather than hand-typed (the OPEN item in Notes), fresh PDF. Site aesthetics (light/dark toggle, figure variants) are a stretch goal; fine if they slip. Tell Hunter.
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 - Tell Hunter about the 09-09 fixes and that graphics `0_packages.R` now pins ggiraph 0.9.6 (his version; nothing for him to do but re-source)
 
