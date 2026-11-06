@@ -72,3 +72,10 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   Locations green #378a62, Casualties violet #9070cc; validator all-pairs pass). Ochre, not the old vermilion,
   because a maroon latest-year bar disappears in vermilion. The relationship chart uses the tab colours + grey.
   Card tabsets now sit on a grey band with folder-style tabs.
+- Grouped charts got shades of the tab colour per group (validated families); interactive widgets now fill their
+  iframe (no 960px default, no padding; iframe at the plot's 10:7 shape), so no scrollbars at any width.
+- Maps restyled to match the Fact Sheet map: pale land, white borders, Public Sans. State map is a teal (attacks) x
+  violet (fatalities) bivariate; **bug fixed**: states with no attacks (Delaware) counted as 1 attack after the
+  full_join (`n()`), now `sum(!is.na(year))`; Puerto Rico dropped. Rolling GIF is light, weapon in tab colours,
+  legend titled, rendered with ragg (the default png device dropped all text). Widgets swap the R font name for the
+  web font and embed Public Sans.
