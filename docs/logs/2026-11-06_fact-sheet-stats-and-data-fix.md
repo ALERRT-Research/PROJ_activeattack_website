@@ -35,4 +35,4 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
 - Tell Hunter (pipeline is his): the recode fix and new location levels; his next Windows render of graphics
   will re-byte the reverted figures, which is harmless.
 - Plan steps 4-5 (Typst PDF in the same design, wire-up). Light/dark toggle and site-wide rollout after the conference.
-- Nothing pushed.
+- Data fix pushed 11-06 (all three repos); steps 2-3 committed locally, not pushed.
