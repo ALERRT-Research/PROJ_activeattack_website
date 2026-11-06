@@ -102,10 +102,32 @@
   outline-offset: 2px;
 }
 
+/* boxes 2 x 2 on the left, latest-year map on the right */
+#fact-sheet .fs-lead-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.5rem 2.5rem;
+  align-items: start;
+}
+
 #fact-sheet .fs-tiles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem 2.5rem;
+}
+
+#fact-sheet .fs-map {
+  border-top: 2px solid var(--fs-ink);
+  padding-top: 0.75rem;
+  margin: 0;
+}
+
+#fact-sheet .fs-map img {
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  margin: 0.75rem 0 0.5rem;
 }
 
 #fact-sheet .fs-tile {
@@ -230,7 +252,7 @@
 /*--small screens------------------------------------------------------------*/
 
 @media (max-width: 1100px) {
-  #fact-sheet .fs-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #fact-sheet .fs-lead-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {

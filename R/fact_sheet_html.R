@@ -57,7 +57,7 @@ fs_tile <- function(title, big, note = NULL, vals, labels, val_text) {
     '</section>')
 }
 
-fs_tiles_html <- function(fs) {
+fs_tiles_html <- function(fs, map_src = "www/map_latest_year.svg") {
 
   yrs <- attr(fs, "years")
   g   <- function(item, col) fs[[col]][fs$item == item][1]
@@ -87,7 +87,19 @@ fs_tiles_html <- function(fs) {
             glue("{pre[2]} of {tot[2]} attacks"), share, labels, pct)
   )
 
-  knitr::asis_output(paste0('<div class="fs-tiles">', paste(tiles, collapse = ""), '</div>'))
+  # the latest-year map sits beside the boxes (see plots_latest_year_map.R in
+  # PROJ_activeattack_graphics); boxes are 2 x 2 so the two blocks match in height
+  n <- scales::comma(tot[2])
+  map <- paste0(
+    '<figure class="fs-map">',
+    '<h3 class="fs-tile-title">Where the ', n, ' attacks in ', yrs$curr, ' happened</h3>',
+    '<img src="', map_src, '" alt="Map of the United States with one dot for each of the ',
+    n, ' active attacks in ', yrs$curr, '">',
+    '<figcaption class="fs-tile-note">One dot per attack; attacks in the same place overlap.</figcaption>',
+    '</figure>')
+
+  knitr::asis_output(paste0('<div class="fs-lead-grid"><div class="fs-tiles">',
+                            paste(tiles, collapse = ""), '</div>', map, '</div>'))
 }
 
 #--section tables---------------------------------------------------------------

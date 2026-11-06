@@ -112,6 +112,9 @@ update_aa_graphics <- function(){
                         "../PROJ_activeattack_graphics/output/rolling_map.gif")
   copy_ifelse_checksums("www/bicol_map_attackxkilled.png",
                         "../PROJ_activeattack_graphics/output/bicol_map_attackxkilled.png")
+  #fact sheet: latest-year map (web tab and PDF)
+  copy_ifelse_checksums("www/map_latest_year.svg",
+                        "../PROJ_activeattack_graphics/output/map_latest_year.svg")
   copy_ifelse_checksums("www/bicol_map_attackxkilled.html",
                         "../PROJ_activeattack_graphics/output/bicol_map_attackxkilled.html")
 }

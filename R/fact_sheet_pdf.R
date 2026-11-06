@@ -82,10 +82,13 @@ tiles <- cbind(
   count_tile(glue("Active attacks in {yrs$curr}"), "Active attacks"),
   count_tile(glue("Killed in {yrs$curr}"),         "Killed"),
   count_tile(glue("Wounded in {yrs$curr}"),        "Wounded"),
-  tile(glue("Ended before police arrived in {yrs$curr}"), pct[2],
-       glue("{pre[2]} of {tot[2]} attacks"), share, pct)
+  tile("Ended before police arrived", pct[2],
+       glue("{pre[2]} of {tot[2]} attacks in {yrs$curr}"), share, pct)
 )
-tiles <- as.vector(t(tiles))   # row-major: all titles, all figures, all notes, all bars
+# boxes 2 x 2 beside the map; row-major within each pair (titles, figures, notes, bars)
+tiles <- c(as.vector(t(tiles[, 1:2])), as.vector(t(tiles[, 3:4])))
+
+map_title <- glue("Where the {tot[2]} attacks in {yrs$curr} happened")
 
 #--section tables--------------------------------------------------------------
 
@@ -188,7 +191,7 @@ typ <- glue(.open = "<<", .close = ">>", '
   #table(
     columns: (1fr, 62pt, 34pt, 38pt, 38pt, 46pt, 76pt),
     align: (x, y) => if x == 0 { left + bottom } else { right + bottom },
-    inset: (x: 4pt, y: 2.6pt),
+    inset: (x: 4pt, y: 2.25pt),
     stroke: (x, y) => (bottom: if y == 0 { 1pt + ink } else { 0.4pt + rule }),
     fill: (x, y) => if x == 4 { if y == 0 { maroon } else { band } },
     table.header(
@@ -218,13 +221,24 @@ typ <- glue(.open = "<<", .close = ">>", '
 #par(justify: false)[<<ty(intro)>>]
 #v(8pt)
 
-#grid(columns: (1fr,) * 4, column-gutter: 14pt, row-gutter: (10pt, 4pt, 6pt),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + ink) },
-  inset: (x, y) => if y == 0 { (top: 5pt) } else { 0pt },
-  align: (x, y) => if y == 0 { left + top } else { left + bottom },
-  <<paste(tiles, collapse = ",\n  ")>>
+#grid(columns: (1.1fr, 1fr), column-gutter: 18pt,
+  grid(columns: (1fr,) * 2, column-gutter: 14pt,
+    row-gutter: (8pt, 3pt, 5pt, 12pt, 8pt, 3pt, 5pt),
+    stroke: (x, y) => if calc.rem(y, 4) == 0 { (top: 1.5pt + ink) },
+    inset: (x, y) => if calc.rem(y, 4) == 0 { (top: 5pt) } else { 0pt },
+    align: (x, y) => if calc.rem(y, 4) == 0 { left + top } else { left + bottom },
+    <<paste(tiles, collapse = ",\n    ")>>
+  ),
+  // latest-year map: PROJ_activeattack_graphics/code/plots_latest_year_map.R
+  block(width: 100%, stroke: (top: 1.5pt + ink), inset: (top: 5pt))[
+    #text(weight: "semibold", size: 8.5pt)[<<map_title>>]
+    #v(2pt)
+    #image("/www/map_latest_year.svg", width: 100%)
+    #v(-4pt)
+    #text(size: 8pt, fill: muted)[One dot per attack; attacks in the same place overlap.]
+  ],
 )
-#v(12pt)
+#v(6pt)
 
 <<section_table("Weapons", "Weapons")>>
 #v(8pt)

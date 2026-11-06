@@ -32,8 +32,8 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
 
 ## Still to do
 
-- Tell Hunter (pipeline is his): the recode fix and new location levels; his next Windows render of graphics
-  will re-byte the reverted figures, which is harmless.
+- Tell Hunter: the recode fix and new location levels. (Correction 11-06: the graphics pipeline and site are
+  Peter's, not Hunter's.) A Windows render of graphics would re-byte the reverted figures, which is harmless.
 - Plan steps 4-5 (Typst PDF in the same design, wire-up). Light/dark toggle and site-wide rollout after the conference.
 - Data fix pushed 11-06 (all three repos); steps 2-3 committed locally, not pushed.
 
@@ -46,3 +46,7 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
   variable font. Generated `.typ` is gitignored.
 - Web tab revisions the same day: bars on a shared zero line, maroon `#9E1B32`, 2024 column dropped from web tables,
   "One weapon" row added (weapon_tot <= 1; 18 attacks with weapon_tot 0 are vehicle/unknown-firearm attacks).
+- Latest-year map added beside the headline boxes (boxes now 2 x 2), web and PDF:
+  `PROJ_activeattack_graphics/code/plots_latest_year_map.R` -> `output/map_latest_year.svg` -> `www/` via
+  `update_aa_graphics()`. One maroon dot per attack, plain outlines, no sizing or shading. The script sets the tigris
+  cache with `Sys.setenv()`; `tigris_cache_dir()` (used in `plots_geospatial.R`) rewrites `~/.Renviron` each run.
