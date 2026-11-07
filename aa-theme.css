@@ -283,3 +283,14 @@ button.downloadthis {
   white-space: nowrap;
   overflow: visible;
 }
+
+/* Quarto gives every cell output overflow:auto; the Home strips never scroll
+   (a sub-pixel overflow showed a scrollbar in desktop Chrome) */
+.aa-glance,
+.aa-glance .cell,
+.aa-glance .cell-output-display,
+.aa-hero .cell,
+.aa-hero .cell-output-display,
+.aa-home-links {
+  overflow: visible !important;
+}
