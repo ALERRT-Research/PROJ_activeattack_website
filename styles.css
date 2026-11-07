@@ -8,3 +8,6 @@
 @media (max-width: 768px) {
   .navbar-logo { max-height: 56px; }
 }
+@media (max-width: 520px) {
+  .navbar-logo { max-height: 42px; }
+}
