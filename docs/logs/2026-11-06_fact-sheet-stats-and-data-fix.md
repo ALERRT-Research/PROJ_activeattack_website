@@ -110,3 +110,9 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
 - Data questions for Hunter: 13 victim rows have no name (1,434 named of 1,447 rows; 1,477 deaths in the events
   data). Some years list more names than the events data's deaths (2016: 88 vs 81; 2017: 149 vs 147) and 2024 fewer
   (29 vs 32): worth checking which events/victims the two files count.
+
+## End of day 11-06
+
+- Live on activeattackdata.org: data fix, Fact Sheet tab + PDF, refined figures and maps, tab headers / chart-first
+  layout, map-led landing page, Remembrance names page (pushed with this note). Graphics repo pushed and in sync.
+- Next candidates: Contact page in the new style; light/dark toggle (stretch); tell Hunter the data items on bob.md.
