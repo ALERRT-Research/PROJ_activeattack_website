@@ -1,13 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600&display=swap");
+/* dashboard.css: the Active Attacks dashboard page (1_visuals.qmd), loaded
+   after aa-theme.css. Dashboard pages do not inherit format: html options from
+   _quarto.yml, so both files are linked from the page YAML.
 
-/* dashboard.css: styles for the Active Attacks dashboard page (1_visuals.qmd).
-   Dashboard pages do not inherit format: html options from _quarto.yml, so
-   styles.css does not load here; this file is linked from the page YAML.
-
-   Fact Sheet tab: pilot of the site look, scoped to #fact-sheet so the other
-   tabs are untouched. Design and rationale:
-   docs/logs/plans/2026-11-06_fact-sheet-design.md
-   Rule of the page: maroon means "the latest year" and nothing else. */
+   Cards, tabsets and buttons apply to every tab; the Fact Sheet's boxes,
+   tables and header stay scoped to #fact-sheet.
+   Design: docs/logs/plans/2026-11-06_fact-sheet-design.md */
 
 /* download buttons inside dashboard cards: the downloadthis extension caps
    buttons at max-width 125px with an ellipsis, which cuts off longer labels */
@@ -20,57 +17,143 @@
   overflow: visible;
 }
 
-/*--tokens------------------------------------------------------------------*/
+/* tokens (--aa-*) come from aa-theme.css */
 
-#fact-sheet {
-  --fs-ink: #1f2a36;
-  --fs-paper: #ffffff;
-  --fs-surface: #f4f6f8;
-  --fs-rule: #d3d8de;
-  --fs-muted: #5b6672;
-  --fs-prev: #9aa5b1;
-  --fs-maroon: #9e1b32;   /* brighter than the logo maroon #501214, so 2025 reads first */
-  --fs-band: rgba(158, 27, 50, 0.08);
-
-  font-family: "Public Sans", "Helvetica Neue", Arial, sans-serif;
-  font-variant-numeric: tabular-nums;
-  color: var(--fs-ink);
-}
-
-/* dark values, ready for the light/dark toggle (not switched on yet) */
-.quarto-dark #fact-sheet {
-  --fs-ink: #e4e8ec;
-  --fs-paper: #141a21;
-  --fs-surface: #1b232c;
-  --fs-rule: #2e3843;
-  --fs-muted: #9aa5b1;
-  --fs-prev: #5b6672;
-  --fs-maroon: #d29aa0;
-  --fs-band: rgba(210, 154, 160, 0.10);
-}
+#fact-sheet { font-variant-numeric: tabular-nums; }
 
 /*--cards------------------------------------------------------------------*/
 
-#fact-sheet .card {
-  background: var(--fs-paper);
-  border: 1px solid var(--fs-rule);
+.quarto-dashboard .card {
+  background: var(--aa-paper);
+  border: 1px solid var(--aa-rule);
   border-radius: 6px;
   box-shadow: none;
 }
 
-#fact-sheet .card-header {
+.quarto-dashboard .card-header {
   background: transparent;
   border-bottom: 0;
-  color: var(--fs-ink);
+  color: var(--aa-ink);
   font-size: 1.25rem;
   font-weight: 600;
   padding: 1rem 1.25rem 0;
 }
 
-#fact-sheet .card-body {
+.quarto-dashboard .card-body {
   font-size: 1rem;
   line-height: 1.5;
   padding: 0.75rem 1.25rem 1.25rem;
+}
+
+/*--tab pages: header, notes, downloads (plan: 2026-11-06_page-format.md)--*/
+
+/* each tab's colour matches its figures; maroon stays for the latest year */
+/* --aa-tab-bar: the same hue deep enough for white text (>= 4.5:1) */
+#timing     { --aa-tab: #b8843f; --aa-tab-bar: #8a6026; }
+#attackers  { --aa-tab: #3d6b9e; --aa-tab-bar: #3d6b9e; }
+#locations  { --aa-tab: #3f8a73; --aa-tab-bar: #2f6e5b; }
+#casualties { --aa-tab: #7d68ad; --aa-tab-bar: #6c5a9c; }
+#across-the-usa, #download-the-data { --aa-tab: var(--aa-ink); --aa-tab-bar: var(--aa-ink); }
+
+.quarto-dashboard .card.aa-head {
+  border-top: 3px solid var(--aa-tab, var(--aa-ink));
+}
+
+.quarto-dashboard .aa-head .card-body { padding: 1.1rem 1.5rem 1.25rem; }
+
+/* the header never scrolls: the card grows to its content (a 1-2px rounding
+   overflow was showing a vertical slider in desktop Chrome) */
+.quarto-dashboard .card.aa-head,
+.quarto-dashboard .card.aa-head .card-body,
+.quarto-dashboard .card.aa-head .cell-output-display,
+.quarto-dashboard .card.aa-head .aa-head-inner,
+.quarto-dashboard .bslib-grid:has(> .card.aa-head) {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+/* Quarto marks this a column fill container; it is a row: text left, numbers right */
+.quarto-dashboard .aa-head-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 3rem;
+}
+
+.aa-head-title {
+  font-size: 1.953rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.25rem;
+  border: 0;
+  padding: 0;
+  color: var(--aa-ink);
+}
+
+.aa-head-lead {
+  color: var(--aa-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* key numbers (.aa-stats): aa-theme.css */
+
+/* notes column: each chart's paragraph under a heading named like its tab */
+.aa-notes .card-body { font-size: 0.975rem; }
+.aa-notes p { max-width: 62ch; }
+
+.aa-subhead {
+  display: block;
+  font-weight: 600;
+  color: #fff;
+  background: var(--aa-tab-bar, var(--aa-ink));
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  margin: 0.9rem 0 0.45rem;
+}
+
+/* downloads: one row of buttons under a chart */
+/* Quarto marks this a column fill container; it is a row */
+.quarto-dashboard .aa-downloads {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.aa-downloads p { margin: 0; display: contents; }
+
+/* below 900px the chart and its notes stack (they are too narrow side by side);
+   the dashboard sets the columns inline, hence !important */
+@media (max-width: 900px) {
+  .quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+  }
+}
+
+/* each card takes its own height: a short chart card no longer stretches to
+   the length of its notes card and shows an empty box */
+.quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid > .card,
+.quarto-dashboard .dashboard-page:not(#fact-sheet) .bslib-grid > .tabset {
+  align-self: start;
+}
+
+/* interactive (ggiraph) plots: the iframe takes the plot's own 10:7 shape at
+   the card's width, and the widget inside fills it, so nothing scrolls */
+.quarto-dashboard iframe.aa-widget {
+  display: block;
+  width: 100%;
+  aspect-ratio: 10 / 7;
+  height: auto;
+  border: 0;
+  margin: 0 0 0.75rem;
 }
 
 /*--lead card: intro, download, headline boxes------------------------------*/
@@ -83,7 +166,7 @@
   align-items: start;
   padding-bottom: 1.5rem;
   margin-bottom: 1.75rem;
-  border-bottom: 1px solid var(--fs-rule);
+  border-bottom: 1px solid var(--aa-rule);
 }
 
 #fact-sheet .fs-title {
@@ -91,26 +174,26 @@
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 0.25rem;
-  color: var(--fs-ink);
+  color: var(--aa-ink);
   border-bottom: 0;          /* Quarto rules h2 by default */
   padding-bottom: 0;
 }
 
 #fact-sheet .fs-sub {
-  color: var(--fs-muted);
+  color: var(--aa-muted);
   margin: 0 0 1rem;
 }
 
 #fact-sheet .fs-header-text p { max-width: 68ch; }
-#fact-sheet .fs-onpage { color: var(--fs-muted); margin-bottom: 0; }
+#fact-sheet .fs-onpage { color: var(--aa-muted); margin-bottom: 0; }
 
 #fact-sheet .fs-download {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
-  background: var(--fs-surface);
-  border: 1px solid var(--fs-rule);
+  background: var(--aa-surface);
+  border: 1px solid var(--aa-rule);
   border-radius: 6px;
   padding: 1rem;
 }
@@ -123,22 +206,47 @@
   display: block;
   width: 5.5rem;
   height: auto;
-  border: 1px solid var(--fs-rule);
+  border: 1px solid var(--aa-rule);
   background: #fff;
 }
 
-#fact-sheet button.downloadthis {
-  background: var(--fs-ink);
-  border: 0;
-  border-radius: 4px;
-  color: var(--fs-paper);
-  font-weight: 600;
-  padding: 0.5rem 1rem;
+.quarto-dashboard button.downloadthis { padding: 0.5rem 1rem; }
+
+/* card tabsets (e.g. By Year / By Month) are controls, not part of the chart:
+   they sit on a grey band with a rule under it, and the open tab is a white
+   tab joined to the white card body, like a folder tab */
+.quarto-dashboard .card-header:has(.nav-tabs) {
+  background: var(--aa-surface);
+  border-bottom: 1px solid var(--aa-rule);
+  padding: 0.5rem 0.75rem 0;
 }
 
-#fact-sheet button.downloadthis:focus-visible {
-  outline: 3px solid var(--fs-maroon);
-  outline-offset: 2px;
+.quarto-dashboard .card-header .nav-tabs {
+  border-bottom: 0;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-start;
+}
+
+.quarto-dashboard .card-header .nav-tabs .nav-link {
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+  color: var(--aa-muted);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  padding: 0.4rem 0.85rem;
+  margin: 0 0 -1px;
+}
+
+.quarto-dashboard .card-header .nav-tabs .nav-link:hover { color: var(--aa-ink); }
+
+.quarto-dashboard .card-header .nav-tabs .nav-link.active {
+  background: var(--aa-paper);
+  border-color: var(--aa-rule);
+  color: var(--aa-ink);
+  font-weight: 600;
 }
 
 /* boxes 2 x 2 on the left, latest-year map on the right */
@@ -156,7 +264,7 @@
 }
 
 #fact-sheet .fs-map {
-  border-top: 2px solid var(--fs-ink);
+  border-top: 2px solid var(--aa-ink);
   padding-top: 0.75rem;
   margin: 0;
 }
@@ -170,7 +278,7 @@
 }
 
 #fact-sheet .fs-tile {
-  border-top: 2px solid var(--fs-ink);
+  border-top: 2px solid var(--aa-ink);
   padding-top: 0.75rem;
 }
 
@@ -181,7 +289,7 @@
 }
 
 #fact-sheet .fs-tile-value {
-  color: var(--fs-maroon);
+  color: var(--aa-maroon);
   font-size: 3.0625rem;      /* 49px */
   font-weight: 300;
   line-height: 1.1;
@@ -189,7 +297,7 @@
 }
 
 #fact-sheet .fs-tile-note {
-  color: var(--fs-muted);
+  color: var(--aa-muted);
   font-size: 0.9375rem;
   margin: 0;
 }
@@ -208,13 +316,13 @@
 
 #fact-sheet .fs-bar-row { display: contents; }
 
-#fact-sheet .fs-bar-label { color: var(--fs-muted); white-space: nowrap; text-align: right; }
+#fact-sheet .fs-bar-label { color: var(--aa-muted); white-space: nowrap; text-align: right; }
 #fact-sheet .fs-bar-val   { text-align: right; }
 
 /* the zero line: a continuous rule down the left of the bar column */
 #fact-sheet .fs-bar-track {
   display: block;
-  border-left: 1.5px solid var(--fs-ink);
+  border-left: 1.5px solid var(--aa-ink);
   padding: 0.2rem 0;
 }
 
@@ -224,15 +332,15 @@
   border-radius: 1px;
 }
 
-#fact-sheet .fs-bar-prev .fs-bar { background: var(--fs-prev); }
-#fact-sheet .fs-bar-curr .fs-bar { background: var(--fs-maroon); }
+#fact-sheet .fs-bar-prev .fs-bar { background: var(--aa-prev); }
+#fact-sheet .fs-bar-curr .fs-bar { background: var(--aa-maroon); }
 #fact-sheet .fs-bar-curr .fs-bar-label,
-#fact-sheet .fs-bar-curr .fs-bar-val { color: var(--fs-maroon); font-weight: 600; }
+#fact-sheet .fs-bar-curr .fs-bar-val { color: var(--aa-maroon); font-weight: 600; }
 
 /* the average is not a year: outline, not fill */
 #fact-sheet .fs-bar-avg .fs-bar {
   background: transparent;
-  border: 1.5px solid var(--fs-muted);
+  border: 1.5px solid var(--aa-muted);
   border-left: 0;
 }
 
@@ -251,12 +359,12 @@
 #fact-sheet .fs-table th,
 #fact-sheet .fs-table td {
   padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid var(--fs-rule);
+  border-bottom: 1px solid var(--aa-rule);
   vertical-align: baseline;
 }
 
 #fact-sheet .fs-table thead th {
-  border-bottom: 2px solid var(--fs-ink);
+  border-bottom: 2px solid var(--aa-ink);
   font-size: 0.875rem;
   font-weight: 600;
   vertical-align: bottom;
@@ -268,23 +376,23 @@
 /* headers may wrap (at the dash or space) so a column never forces overflow */
 #fact-sheet thead th.fs-num { white-space: normal; }
 #fact-sheet td.fs-pct,
-#fact-sheet th.fs-pct { color: var(--fs-muted); padding-left: 0.25rem; }
+#fact-sheet th.fs-pct { color: var(--aa-muted); padding-left: 0.25rem; }
 
 /* the latest year reads straight down every table */
-#fact-sheet .fs-curr { background: var(--fs-band); }
-#fact-sheet thead .fs-curr { background: var(--fs-maroon); color: #fff; }
-.quarto-dark #fact-sheet thead .fs-curr { color: var(--fs-paper); }
-#fact-sheet td.fs-curr { font-weight: 600; color: var(--fs-maroon); }
+#fact-sheet .fs-curr { background: var(--aa-band); }
+#fact-sheet thead .fs-curr { background: var(--aa-maroon); color: #fff; }
+.quarto-dark #fact-sheet thead .fs-curr { color: var(--aa-paper); }
+#fact-sheet td.fs-curr { font-weight: 600; color: var(--aa-maroon); }
 
 #fact-sheet tr.fs-group th {
-  background: var(--fs-surface);
+  background: var(--aa-surface);
   font-weight: 600;
   padding-top: 0.5rem;
 }
 
 #fact-sheet tr.fs-subtotal th,
 #fact-sheet tr.fs-subtotal td {
-  border-top: 1px solid var(--fs-ink);
+  border-top: 1px solid var(--aa-ink);
   font-weight: 600;
 }
 
@@ -301,8 +409,8 @@
 
 @media (max-width: 640px) {
   #fact-sheet .fs-tiles { grid-template-columns: 1fr; }
-  #fact-sheet .card-body { padding-left: 0.75rem; padding-right: 0.75rem; }
-  #fact-sheet .card-header { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .quarto-dashboard .card-body { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .quarto-dashboard .card-header { padding-left: 0.75rem; padding-right: 0.75rem; }
 }
 
 /* stack the section cards one per row before they get too narrow for a table;

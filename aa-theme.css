@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap");
+
+/* aa-theme.css: shared look for every page of activeattackdata.org.
+   Loaded by _quarto.yml (html pages) and by 1_visuals.qmd (the dashboard,
+   which does not inherit format: html options). Page-specific rules live in
+   styles.css (html pages) and dashboard.css (dashboard).
+
+   Design: docs/logs/plans/2026-11-06_fact-sheet-design.md and
+   docs/logs/plans/2026-11-06_site-wide-look.md.
+   Rule of the site: maroon means "the latest year" and nothing else, so links,
+   buttons and active tabs use ink, never maroon. */
+
+/*--tokens------------------------------------------------------------------*/
+
+:root {
+  --aa-ink: #1f2a36;
+  --aa-paper: #ffffff;
+  --aa-surface: #f4f6f8;
+  --aa-rule: #d3d8de;
+  --aa-muted: #5b6672;
+  --aa-prev: #9aa5b1;
+  --aa-maroon: #9e1b32;   /* brighter than the logo maroon #501214, so the latest year reads first */
+  --aa-band: rgba(158, 27, 50, 0.08);
+  --aa-font: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* dark values, ready for the light/dark toggle (not switched on yet) */
+.quarto-dark {
+  --aa-ink: #e4e8ec;
+  --aa-paper: #141a21;
+  --aa-surface: #1b232c;
+  --aa-rule: #2e3843;
+  --aa-muted: #9aa5b1;
+  --aa-prev: #5b6672;
+  --aa-maroon: #d29aa0;
+  --aa-band: rgba(210, 154, 160, 0.10);
+}
+
+/*--type---------------------------------------------------------------------*/
+
+body {
+  font-family: var(--aa-font);
+  color: var(--aa-ink);
+  background: var(--aa-paper);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.navbar, .nav, .btn, button {
+  font-family: var(--aa-font);
+}
+
+h1, h2, h3, h4, .title {
+  color: var(--aa-ink);
+  font-weight: 600;
+}
+
+/* tables of numbers line up */
+table { font-variant-numeric: tabular-nums; }
+
+/*--links and buttons--------------------------------------------------------*/
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link),
+.quarto-dashboard .card-body a:not(.btn) {
+  color: var(--aa-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--aa-prev);
+  text-underline-offset: 0.15em;
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link):hover,
+.quarto-dashboard .card-body a:not(.btn):hover {
+  text-decoration-color: var(--aa-ink);
+}
+
+button.downloadthis,
+.btn-primary {
+  background: var(--aa-ink);
+  border: 0;
+  border-radius: 4px;
+  color: var(--aa-paper);
+  font-weight: 600;
+}
+
+button.downloadthis:hover,
+.btn-primary:hover {
+  background: #33414f;
+  color: var(--aa-paper);
+}
+
+button.downloadthis:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--aa-ink);
+  outline-offset: 2px;
+}
+
+/* table of contents: active entry in ink, not the theme's teal (the theme
+   sets it with !important, hence the same here) */
+.sidebar nav[role=doc-toc] ul > li > a.active,
+.sidebar nav[role=doc-toc] ul > li > ul > li > a.active {
+  color: var(--aa-ink) !important;
+  border-left-color: var(--aa-ink) !important;
+  font-weight: 600;
+}
+.sidebar nav[role=doc-toc] ul > li > a { color: var(--aa-muted); }
+
+/*--key numbers (tab headers, Home)-----------------------------------------*/
+
+/* figure in the tab colour (ink where there is none), label above */
+.aa-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  margin: 0;
+}
+
+.aa-stats div { display: flex; flex-direction: column-reverse; }
+
+.aa-stats dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--aa-tab, var(--aa-ink));
+  font-variant-numeric: tabular-nums;
+}
+
+.aa-stats dt {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--aa-muted);
+}
+
+.aa-stats .aa-latest dd { color: var(--aa-maroon); }
+
+/*--Home: front section-----------------------------------------------------*/
+
+.aa-home-front { margin: 1.5rem 0 2.5rem; }
+.aa-home-front .aa-stats { margin-bottom: 1.75rem; }
+
+.aa-home-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.75rem;
+}
+
+main a.aa-home-link,
+main a.aa-home-link:hover {
+  display: block;
+  border: 1px solid var(--aa-rule);
+  border-top: 3px solid var(--aa-tab, var(--aa-ink));
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem 0.85rem;
+  text-decoration: none;
+  color: var(--aa-ink);
+}
+
+main a.aa-home-link:hover { border-color: var(--aa-ink); border-top-color: var(--aa-tab, var(--aa-ink)); }
+
+.aa-home-link strong { display: block; font-weight: 600; }
+.aa-home-link span   { display: block; color: var(--aa-muted); font-size: 0.9375rem; line-height: 1.4; }
+
+/*--Home: hero band (continues the navbar slate), latest year, about----------*/
+
+.aa-hero {
+  background: #2c3e50;              /* the navbar's slate, so the band reads as one */
+  color: #fff;
+  margin-top: -2.95rem;              /* close the gap under the navbar */
+  margin-bottom: 2.5rem;
+}
+
+/* Quarto adds .page-columns (its own grid) to these wrappers; ours must win */
+.aa-hero .aa-hero-inner,
+.aa-hero .aa-hero-inner.page-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) !important;
+  gap: 2rem 3rem;
+  align-items: center;
+  max-width: 1180px !important;
+  width: 100%;
+  margin: 0 auto !important;
+  padding: 2.75rem 1.5rem 3rem;
+  box-sizing: border-box;
+}
+
+.aa-hero-kicker {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 0.4rem;
+}
+
+h1.aa-hero-title {
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1.12;
+  color: #fff;
+  margin: 0 0 0.9rem;
+  border: 0;
+}
+
+.aa-hero-lead {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 46ch;
+  margin: 0 0 1.75rem;
+}
+
+.aa-hero .aa-stats dd { color: #fff; font-size: 2.1rem; }
+.aa-hero .aa-stats dt { color: rgba(255, 255, 255, 0.72); }
+
+.aa-hero .aa-hero-inner > * { grid-column: auto !important; }
+.aa-hero .aa-hero-map,
+.aa-hero .aa-hero-map.page-columns { display: block !important; margin: 0; }
+/* Quarto moves .column-screen onto the image; keep it inside its column */
+.aa-hero .aa-hero-map img { width: 100% !important; max-width: 100% !important; grid-column: auto !important; }
+.aa-hero-map img { display: block; width: 100%; height: auto; }
+.aa-hero-map figcaption {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.4rem;
+}
+
+h2.aa-home-h2 {
+  font-size: 1.5rem;
+  border-bottom: 0;
+  margin: 2.5rem 0 1rem;
+}
+
+/* the latest year: a quiet band, numbers in maroon (the latest year) */
+.aa-glance {
+  background: var(--aa-surface);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem 1.4rem;
+  margin: 2rem 0 0.5rem;
+}
+
+h2.aa-latest-title {
+  font-size: 1.25rem;
+  border: 0;
+  margin: 0 0 0.9rem;
+  padding: 0;
+}
+
+.aa-glance .aa-stats { gap: 0.75rem 2.75rem; }
+
+.aa-latest-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.1rem;
+}
+.aa-latest-actions p { margin: 0; display: contents; }
+
+main blockquote {
+  border-left: 4px solid var(--aa-maroon);
+  margin: 0 0 1.25rem;
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  color: var(--aa-ink);
+  font-size: 1.125rem;
+}
+
+.aa-updates-more summary {
+  cursor: pointer;
+  color: var(--aa-muted);
+  margin: 0.5rem 0 1rem;
+}
+
+@media (max-width: 860px) {
+  .aa-hero .aa-hero-inner,
+  .aa-hero .aa-hero-inner.page-columns { grid-template-columns: 1fr !important; padding: 2rem 1rem 2.25rem; }
+  h1.aa-hero-title { font-size: 2rem; }
+}
+
+/* download buttons anywhere: the downloadthis extension caps them at 125px
+   with an ellipsis, which cuts longer labels */
+button.downloadthis {
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
+  overflow: visible;
+}

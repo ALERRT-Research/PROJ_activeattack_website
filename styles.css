@@ -3,3 +3,8 @@
 .navbar-logo {
   max-height: 100px;
 }
+
+/* phones: the banner logo at 100px overflows the navbar */
+@media (max-width: 768px) {
+  .navbar-logo { max-height: 56px; }
+}
