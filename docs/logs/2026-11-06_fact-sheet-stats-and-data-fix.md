@@ -100,3 +100,13 @@ Step 1 of `plans/2026-11-06_fact-sheet-retool.md`.
 - Text fix: the Casualties notes said each big attack's deaths were a share "of all attacks that year"; they are a
   share of that year's deaths.
 - Graphics pushed 11-06 evening (16 commits). Website not yet pushed.
+
+## Remembrance page
+
+- Rebuilt as a page of names (Peter chose this over the video): `remembrance_names()` in `R/page_helpers.R`, data
+  copied by `update_aa_victims()` to `data/victims_2025.rds` (committed for CI). Newest year first, then by attack
+  date; officers and minors carry text labels; a search box filters names; year links jump. The memorial video stays
+  as a download. Don't Name Them kept as a closing note.
+- Data questions for Hunter: 13 victim rows have no name (1,434 named of 1,447 rows; 1,477 deaths in the events
+  data). Some years list more names than the events data's deaths (2016: 88 vs 81; 2017: 149 vs 147) and 2024 fewer
+  (29 vs 32): worth checking which events/victims the two files count.

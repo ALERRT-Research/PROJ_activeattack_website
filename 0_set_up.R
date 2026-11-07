@@ -126,6 +126,12 @@ update_aa_victim_scroll <- function() {
                         "../PROJ_activeattack_graphics/output/victim_scroll.mp4")
 }
 
+#names for the Remembrance page (committed to data/ so CI renders without DATA_aa)
+update_aa_victims <- function(version) {
+  copy_ifelse_checksums(glue("data/victims_{version}.rds"),
+                        glue("../DATA_aa/output/victims/victims_{version}.rds"))
+}
+
 #=function to format numbers inline============================================
 format_num <- scales::label_comma(big.mark = ",")
 

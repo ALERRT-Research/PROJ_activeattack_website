@@ -1,7 +1,8 @@
 ---
-format: 
-  html: 
-    toc: true
+pagetitle: "Remembrance"
+format:
+  html:
+    toc: false
     theme: "flatly"
 ---
 
@@ -9,75 +10,71 @@ format:
 #| echo: false
 #| include: false
 
-#load packages
 source("0_set_up.R")
+source("R/page_helpers.R")
 
-#set version
 version <- "2025"
 
-#update victim scroll
-
 if (Sys.getenv("GITHUB_ACTIONS") != "true") {
-update_aa_victim_scroll()
+  update_aa_victim_scroll()
+  update_aa_victims(version)
 }
 
-#import data
 aa_data <- import(glue("data/aa_data_wide_nogeo_{version}.rds", trust=TRUE))
+victims <- readRDS(glue("data/victims_{version}.rds"))
 
+kill_tot  <- sum(aa_data$kill_tot, na.rm = TRUE)
+names_n   <- sum(!is.na(victims$victim) & trimws(victims$victim) != "")
+yr_last   <- max(aa_data$year, na.rm = TRUE)
 ```
 
-```{r, r_objs_vic}
-#| include: false
+::: {.rem-intro}
+# Remembrance
+
+`{r} format_num(names_n)` names of the `{r} format_num(kill_tot)` people killed in active attacks in the United States, 2000 to `{r} yr_last`.
+
+Let us pause to remember them, and to honor with courage and compassion their families and those who risked their lives to save others. We try to record every name we can find. If a name is missing or wrong, please [tell us](3_contact.qmd).
+
+[Officer]{.rem-tag} law enforcement officer  [Under 18]{.rem-tag .rem-minor} under 18 years old
+:::
+
+```{r}
 #| echo: false
-
-casualty_tot <- aa_data |> 
-  drop_na(c(wound_tot,kill_tot)) |> 
-  mutate(casualty_tot = wound_tot+kill_tot) |> 
-  summarise(casualty_tot = sum(casualty_tot)) |> 
-  pull(casualty_tot) 
-
-kill_tot <- aa_data |> 
-  drop_na(kill_tot) |> 
-  summarise(kill_tot = sum(kill_tot)) |> 
-  pull(kill_tot)
-
-wound_tot <- aa_data |> 
-  drop_na(wound_tot) |> 
-  summarise(wound_tot = sum(wound_tot)) |> 
-  pull(wound_tot)
-
+remembrance_names(victims)
 ```
 
-## We Remember
+::: {.rem-video}
+For memorial displays, a scrolling video of these names is available.
 
-Between 2000 and `{r} max(aa_data$year, na.rm=TRUE)`, our nation has 
-experienced `{r} nrow(aa_data)` active attack events. A total of 
-`{r} format_num(casualty_tot)` casualties result from these attacks, and out of 
-that number, `{r} format_num(kill_tot)` people died. This page attempts to list 
-every name of every victim. Please alert us if any mistakes or omissions are 
-found. We attempt to capture every name we can find to remember the victims.  
+{{< downloadthis www/victim_scroll.mp4 dname="aa_victims" label="Download the memorial video (MP4)" >}}
+:::
 
-Let us pause for a moment of silence to remember and honor those lost. ALERRT 
-also strives to honor with courage and compassion the thousands of surviving 
-families and those who risked their lives to save others. 
+::: {.rem-dnt}
+### Don't Name Them
 
+At ALERRT, it is our policy not to name the people responsible for active attacks. Research shows that many attacks are driven by a search for fame; by refusing to name attackers, we aim to remove fame and notoriety as a motive for future attacks. Learn more at [DontNameThem.org](https://www.dontnamethem.org).
+:::
 
-{{< video www/victim_scroll.mp4 >}}
-
-{{< downloadthis www/victim_scroll.mp4 dname="aa_victims" >}}
-
-## Don't Name Them
-
-At ALERRT, it is our policy to refrain from naming the person(s) 
-responsible for active attacks. Research has shown that many attacks are the 
-result of fame-seeking behavior by the attackers. By refusing to name them, we 
-aim to remove fame and notoriety as possible motivators of future attacks. 
-ALERRT hosts a website, [DontNameThem.org](https://www.dontnamethem.org), that provides 
-more information and resources about the "Don't Name Them" movement. 
-
-
-
-
-
-
-
+<script>
+(function () {
+  var box = document.getElementById("rem-search");
+  if (!box) return;
+  var out = document.querySelector(".rem-match");
+  box.addEventListener("input", function () {
+    var q = box.value.trim().toLowerCase(), hits = 0;
+    document.querySelectorAll(".rem-year").forEach(function (sec) {
+      var secHits = 0;
+      sec.querySelectorAll(".rem-date").forEach(function (blk) {
+        var n = 0;
+        blk.querySelectorAll("li").forEach(function (li) {
+          var show = !q || li.textContent.toLowerCase().indexOf(q) !== -1;
+          li.hidden = !show; if (show) n++;
+        });
+        blk.hidden = n === 0; secHits += n;
+      });
+      sec.hidden = secHits === 0; hits += secHits;
+    });
+    out.textContent = q ? (hits === 1 ? "1 name matches" : hits + " names match") : "";
+  });
+})();
+</script>

@@ -97,3 +97,43 @@ home_latest <- function(fs) {
     aa_stats_html(stats, latest = names(stats)),
     '</div>'))
 }
+
+# Remembrance: every recorded name, newest year first, then by attack date.
+# Officers and minors carry a small text label (not colour alone). No attacker
+# is ever named on this site; this list holds victims only.
+remembrance_names <- function(v) {
+  esc <- function(x) htmltools::htmlEscape(x)
+  v <- v |>
+    dplyr::filter(!is.na(victim), trimws(victim) != "") |>
+    dplyr::mutate(victim = trimws(victim),
+                  year = as.integer(format(date, "%Y")),
+                  last_first = dplyr::coalesce(unname(name_last_first), victim)) |>
+    dplyr::arrange(dplyr::desc(year), date, last_first)
+  years <- sort(unique(v$year), decreasing = TRUE)
+
+  nav <- paste0('<nav class="rem-years" aria-label="Jump to a year">',
+                paste0('<a href="#y', years, '">', years, '</a>', collapse = ""), '</nav>')
+
+  body <- vapply(years, function(y) {
+    vy <- v[v$year == y, ]
+    dates <- unique(vy$date)
+    blocks <- vapply(seq_along(dates), function(i) {
+      vd <- vy[vy$date == dates[i], ]
+      tags <- ifelse(vd$le == "Yes", ' <span class="rem-tag">Officer</span>', "")
+      tags <- paste0(tags, ifelse(vd$minor == "Yes", ' <span class="rem-tag rem-minor">Under 18</span>', ""))
+      paste0('<div class="rem-date"><h3>', format(dates[i], "%B %e"), '</h3><ul class="rem-names">',
+             paste0('<li>', esc(vd$victim), tags, '</li>', collapse = ""), '</ul></div>')
+    }, character(1))
+    paste0('<section class="rem-year" id="y', y, '"><h2>', y, ' <span class="rem-count">',
+           nrow(vy), if (nrow(vy) == 1) ' person' else ' people', '</span></h2>',
+           paste(blocks, collapse = ""), '</section>')
+  }, character(1))
+
+  knitr::asis_output(paste0(
+    '<div class="rem-tools">',
+    '<label class="visually-hidden" for="rem-search">Find a name</label>',
+    '<input id="rem-search" class="rem-search" type="search" placeholder="Find a name" autocomplete="off">',
+    '<p class="rem-match" aria-live="polite"></p>',
+    nav, '</div>',
+    '<div class="rem-list">', paste(body, collapse = ""), '</div>'))
+}
