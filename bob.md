@@ -34,7 +34,7 @@ sync: github
 ## This Week
 
 - [x] **Fact sheet retool** done 11-06 (web tab + 2-page Typst PDF + latest-year map), pushed; live once the runner-pin deploy succeeds. PDF rebuild: `Rscript R/fact_sheet_pdf.R`; map: graphics `code/plots_latest_year_map.R`. See `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`
-- [x] **Site-wide look** done and pushed 11-06: page styling, figures (refined, muted palette), maps, tab headers/chart-first layout, map-led landing page. Light/dark is stretch
+- [x] **Site-wide look** done and pushed 11-06: page styling, figures (refined, muted palette), maps, tab headers/chart-first layout, map-led landing page (wording and scrollbar fixes pushed later 11-06). Light/dark is stretch
 - [ ] Tell Hunter: scope settled; DATA_aa relationship recode fix + church/military base levels (11-06, `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`); 09-09 fixes; ggiraph 0.9.6 pin
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 
