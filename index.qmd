@@ -55,6 +55,8 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 ## Updates {.aa-home-h2}
 
+-   *11/06/26* - Redesigned the site: a new home page, a header with key numbers on each Active Attacks tab, figures restyled with one colour per tab, a fixed count on the state map (Delaware, which has no recorded attacks, had been shown with one), and interactive plots that fit any screen.
+
 -   *11/06/26* - Redesigned the Fact Sheet tab and the downloadable fact sheet PDF. Both now show each figure for 2025 next to 2024 and the 2020–2024 average, add a map of where the 2025 attacks happened, and are built directly from the data. The numbers themselves are unchanged.
 
 -   *11/06/26* - Corrected the "relationship" variable in the downloadable data: 33 attacks by former employees had been coded as "other" instead of "coworker" (coworker is now 99 attacks, other 7). The relationship figures on the Active Attacks page are updated to match. The "location_primary" variable now also carries separate "Church" and "Military base" levels, previously pooled into "other"; the figures still group them with other locations. The codebook has been updated to reflect both changes.
