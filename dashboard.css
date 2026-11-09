@@ -536,3 +536,7 @@
 }
 .quarto-dashboard .card-body a.aa-dl:hover { background: var(--aa-muted); }
 .quarto-dashboard .card-body a.aa-dl svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* the dashboard header renders its own light/dark toggle beside the tab bar;
+   the site navbar already has one, so one toggle per page */
+#quarto-dashboard-header .quarto-color-scheme-toggle { display: none; }

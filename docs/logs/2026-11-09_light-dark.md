@@ -45,3 +45,15 @@ tab, Remembrance, Codebook, Contact, the dark widgets and the dark GIF, at 1400 
 
 - The dark state map (additive bivariate blend) is readable but the top corner runs pale; Peter to judge.
 - Deleting `output/bivar_wound_kill_bw.png` (graphics) needs approval.
+
+## Toggle fix (same evening)
+
+Peter: the toggles did nothing on the local pages, and the dashboard showed two. Playwright click test (`scratch
+toggle_test.py`): Quarto 1.7.18's `quartoToggleColorScheme()` switches the stylesheets, saves the choice, then calls
+`toggleGiscusIfUsed()`, which is not in scope; the throw skips the link's `return false`, so `href=""` reloads the
+page. Over http the reload re-applies the saved choice (a flicker); on `file://` Quarto keeps the choice in a JS
+variable and Chrome also blocks the module scripts (CORS), so the reload lands back in light. Fix: `aa-head.html`
+(`include-in-header` on every page) defines a no-op `window.toggleGiscusIfUsed` before Quarto's script. After it,
+the click switches in place over http and on local files, no reload. The dashboard header's own toggle is hidden in
+`dashboard.css` (the site navbar keeps the one). A `jQuery is not defined` page error on the dashboard predates
+this work (checked against the live site).

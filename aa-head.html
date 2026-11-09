@@ -1,0 +1,7 @@
+<!-- aa-head.html: loaded in every page's <head> (_quarto.yml and 1_visuals.qmd).
+     Quarto 1.7's light/dark toggle calls toggleGiscusIfUsed(), which its own
+     script defines in another scope; the call throws after the theme has
+     switched, the link's default is not prevented, and the page reloads
+     (on a file:// page the reload also loses the choice). A no-op fallback
+     keeps the toggle in place. Remove once Quarto fixes it. -->
+<script>window.toggleGiscusIfUsed = window.toggleGiscusIfUsed || function () {};</script>

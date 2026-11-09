@@ -8,6 +8,7 @@ format:
       light: flatly
       dark: [darkly, aa-dark.scss]
     css: [aa-theme.css, dashboard.css]   # format: html options in _quarto.yml do not reach dashboard pages
+    include-in-header: aa-head.html
 resources: 
   - "www/"
   - "data/aa_data_wide_nogeo_2024.csv"

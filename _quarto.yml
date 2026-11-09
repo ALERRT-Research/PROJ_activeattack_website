@@ -32,6 +32,7 @@ format:
       light: flatly
       dark: [darkly, aa-dark.scss]
     css: [aa-theme.css, styles.css]
+    include-in-header: aa-head.html
     toc: true
     
 # filters: 
