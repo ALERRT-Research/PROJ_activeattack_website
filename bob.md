@@ -34,7 +34,7 @@ sync: github
 ## This Week
 
 - [x] **Fact sheet retool** done 11-06 (web tab + 2-page Typst PDF + latest-year map), pushed; live once the runner-pin deploy succeeds. PDF rebuild: `Rscript R/fact_sheet_pdf.R`; map: graphics `code/plots_latest_year_map.R`. See `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`
-- [x] **Site-wide look** done and pushed 11-06: page styling, figures (refined, muted palette), maps, tab headers/chart-first layout, map-led landing page, Remembrance names page; all live 11-06. **Contact page** in the new style done 11-09 (committed, not pushed; see `docs/logs/2026-11-09_contact-page.md`). Next: light/dark (stretch)
+- [x] **Site-wide look** done and pushed 11-06: page styling, figures (refined, muted palette), maps, tab headers/chart-first layout, map-led landing page, Remembrance names page; all live 11-06. **Contact page** (11-09, live) and **Download the Data tab** (11-09, committed, not pushed; `docs/logs/2026-11-09_download-tab.md`) in the new style. Next: light/dark (stretch)
 - [ ] Tell Hunter: victims list vs events deaths differ by year (2016 88 vs 81, 2017 149 vs 147, 2024 29 vs 32; 13 rows unnamed), see log 11-06; scope settled; DATA_aa relationship recode fix + church/military base levels (11-06, `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`); 09-09 fixes; ggiraph 0.9.6 pin
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 
@@ -47,13 +47,14 @@ sync: github
 
 - **Derivative datasets to post**, each with a download and a short page: (1) the **SIA door-locks dataset** built from the Active Attack data for the SIA grant; (2) the **officers-shot dataset** (Hunter's update): Active Attack data to find cases where officers were shot, cross-referenced to LEOKA for detail. Ask Hunter where both live and which versions are releasable
 - **Publications page**: every article that used the Active Attack data, plus a way for the public to tell us about their own papers, presentations and projects that used it (collect, then list them)
-- **Download the Data tab**: tidy the page and review the codebooks
+- **Codebook format**: the DOCX is nested altChunks that only Word can expand; decide between flattening in Word or a codebook page + PDF built from DATA_aa labels (see `docs/logs/2026-11-09_download-tab.md`)
 - **Victim scroll video**: same structure (short front matter for context, then the names scrolling), sharper look to match the site
 
 ## Start Here Next Session
 
 - Run `git -C <repo> status -sb` in all three sibling repos; if behind, `git pull --ff-only` (Hunter pushes directly to main)
-- Website has one unpushed commit (Contact page, 11-09); DATA_aa and graphics in sync with GitHub
+- Unpushed: website (Download tab, backlog), DATA_aa (codebook label fix); graphics in sync
+- On this Mac render the site with `RENV_CONFIG_AUTOLOADER_ENABLED=FALSE quarto render ...` (project renv library is nearly empty)
 - Never render `1_visuals.qmd`/`2_victims.qmd` locally without `../DATA_aa` and `../PROJ_activeattack_graphics` checked out beside this repo
 - Push requires Peter's explicit approval; deploy is automatic on push to `main`
 
