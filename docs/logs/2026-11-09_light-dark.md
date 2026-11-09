@@ -59,3 +59,10 @@ the click switches in place over http and on local files, no reload. The dashboa
 from Quarto 1.7.18's own `quarto-dashboard/datatables.min.js`, which it loads before jQuery; the deploy runner
 (quarto-actions, latest release: 1.11.9 on the live page) does not emit that script, and the live page has no errors.
 Verify the toggle on the live site after the push, since the local Quarto is four minor versions behind CI.
+
+## White bands on the dark GIF (Peter's screenshot, 13:41)
+
+The rolling map keeps a fixed aspect inside the 10 x 7 frame; gganimate's device filled the strip the plot does not
+cover with its default white, so the dark GIF had white letterbox bands top and bottom. `animate(..., bg = aa_paper)`
+in `plots_geospatial.R`; dark GIF and frames re-rendered and copied. The light GIF is unchanged (white on white).
+Re-saving the ggiraph state-map widget changes only its random element ids; that byte-noise was not committed.
