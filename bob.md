@@ -54,7 +54,7 @@ sync: github
 
 - Run `git -C <repo> status -sb` in all three sibling repos; if behind, `git pull --ff-only` (Hunter pushes directly to main)
 - Unpushed: website (Download tab, Codebook, backlog), DATA_aa (label fix + labels CSV export); graphics in sync
-- **DATA_aa output on GitHub is stale** (09-14 build; the 11-06 rerun's rds were never committed). Commit them from the Mac that ran the pipeline. Until then render here with `AA_SKIP_UPDATE=1` or the refresh reverts the data fix (see `docs/logs/2026-11-09_codebook.md`)
+- **Fetch before rendering**: `git fetch` + `pull --ff-only` in all three repos first. A behind DATA_aa clone silently reverted the 11-06 data fix through the checksum refresh (11-09, caught before push; `docs/logs/2026-11-09_codebook.md`). `AA_SKIP_UPDATE=1` skips the refresh if a feeder is known to be behind
 - Codebook rebuild after a data update: `Rscript R/codebook_pdf.R` (page renders itself); labels come from DATA_aa's `codebook_events.R`
 - On this Mac render the site with `RENV_CONFIG_AUTOLOADER_ENABLED=FALSE quarto render ...` (project renv library is nearly empty)
 - Never render `1_visuals.qmd`/`2_victims.qmd` locally without `../DATA_aa` and `../PROJ_activeattack_graphics` checked out beside this repo
