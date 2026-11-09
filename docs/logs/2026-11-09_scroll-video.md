@@ -27,3 +27,8 @@ of the title card, a mid-scroll frame and the closing card approved before the f
   and a plain download link styled as the site button (`main a.aa-dl` in `aa-theme.css`). The downloadthis button
   had embedded the whole MP4 as base64 in the page; a 12 MB video would have made the page unusable.
 - `0_set_up.R` `update_aa_victim_scroll()` also copies the poster. Changelog entry on Home.
+
+## Live
+
+Pushed 20:30 with Peter's approval (website 3 commits, graphics 2 incl. the orphan PNG removal). Both deploy stages
+green; activeattackdata.org serves the 11.9 MB video and the poster, and the Remembrance page carries the lazy player.
