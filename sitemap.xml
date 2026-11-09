@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://activeattackdata.org/index.html</loc>
-    <lastmod>2026-11-09T20:39:23.007Z</lastmod>
-  </url>
-  <url>
-    <loc>https://activeattackdata.org/3_contact.html</loc>
-    <lastmod>2026-11-09T20:39:22.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://activeattackdata.org/1_visuals.html</loc>
-    <lastmod>2026-11-09T20:39:22.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://activeattackdata.org/2_victims.html</loc>
-    <lastmod>2026-11-09T20:39:22.995Z</lastmod>
+    <loc>https://activeattackdata.org/publications.html</loc>
+    <lastmod>2026-11-09T21:05:27.150Z</lastmod>
   </url>
   <url>
     <loc>https://activeattackdata.org/codebook.html</loc>
-    <lastmod>2026-11-09T20:39:22.996Z</lastmod>
+    <lastmod>2026-11-09T21:05:27.138Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/2_victims.html</loc>
+    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/1_visuals.html</loc>
+    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/3_contact.html</loc>
+    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/index.html</loc>
+    <lastmod>2026-11-09T21:05:27.150Z</lastmod>
   </url>
 </urlset>
