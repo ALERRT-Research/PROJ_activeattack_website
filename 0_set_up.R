@@ -8,6 +8,12 @@ p_load(bslib,
        tidyverse)
 
 # function to compare checksums -------------------------------------------
+# The update_* functions copy a feeder file whenever its md5 differs from the
+# local copy, in either direction of staleness. If the sibling DATA_aa or
+# graphics checkout is behind the published data (2026-11-09: a Mac whose
+# DATA_aa output predated the 11-06 recode silently reverted data/), render with
+#   AA_SKIP_UPDATE=1 quarto render ...
+# and bring the feeder repo up to date first.
 
 copy_ifelse_checksums <- function(local_file_path, remote_file_path) {
   
@@ -45,6 +51,11 @@ version_corrected <- as.Date("2026-11-06")   # relationship recode; NA if none y
 #=import data & codebook=======================================================
 
 update_aa_data <- function(){
+  if (Sys.getenv("AA_SKIP_UPDATE") == "1") {
+    message("AA_SKIP_UPDATE=1: not refreshing from the feeder repos")
+    return(invisible(NULL))
+  }
+
   
   #long + no geo
   copy_ifelse_checksums(glue("data/aa_data_long_nogeo_{version}.rds"),
@@ -71,6 +82,11 @@ update_aa_data <- function(){
 # import graphics ---------------------------------------------------------
 
 update_aa_graphics <- function(){
+  if (Sys.getenv("AA_SKIP_UPDATE") == "1") {
+    message("AA_SKIP_UPDATE=1: not refreshing from the feeder repos")
+    return(invisible(NULL))
+  }
+
   
   #timing
   copy_ifelse_checksums("www/univar_yr.png",
@@ -129,6 +145,11 @@ update_aa_graphics <- function(){
 }
 
 update_aa_victim_scroll <- function() {
+  if (Sys.getenv("AA_SKIP_UPDATE") == "1") {
+    message("AA_SKIP_UPDATE=1: not refreshing from the feeder repos")
+    return(invisible(NULL))
+  }
+
   
   #victim scroll
   copy_ifelse_checksums("www/victim_scroll.mp4",
@@ -137,6 +158,11 @@ update_aa_victim_scroll <- function() {
 
 #names for the Remembrance page (committed to data/ so CI renders without DATA_aa)
 update_aa_victims <- function(version) {
+  if (Sys.getenv("AA_SKIP_UPDATE") == "1") {
+    message("AA_SKIP_UPDATE=1: not refreshing from the feeder repos")
+    return(invisible(NULL))
+  }
+
   copy_ifelse_checksums(glue("data/victims_{version}.rds"),
                         glue("../DATA_aa/output/victims/victims_{version}.rds"))
 }
