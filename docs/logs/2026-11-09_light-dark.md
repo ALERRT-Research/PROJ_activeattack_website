@@ -66,3 +66,10 @@ The rolling map keeps a fixed aspect inside the 10 x 7 frame; gganimate's device
 cover with its default white, so the dark GIF had white letterbox bands top and bottom. `animate(..., bg = aa_paper)`
 in `plots_geospatial.R`; dark GIF and frames re-rendered and copied. The light GIF is unchanged (white on white).
 Re-saving the ggiraph state-map widget changes only its random element ids; that byte-noise was not committed.
+
+## Live (pushed 19:50, Peter's approval)
+
+Quarto Publish (CI Quarto 1.11.9) and the Pages deployment both succeeded. Playwright against activeattackdata.org:
+one visible toggle per page, a click switches body to `quarto-dark` in place (no reload, no page errors), dark
+elements visible and light hidden, and the reverse after a second click on the dashboard. Dashboard page 1.19 MB,
+dark GIF served without bands. Conference target met with four days to spare.
