@@ -37,6 +37,11 @@ copy_ifelse_checksums <- function(local_file_path, remote_file_path) {
 
 version <- "2025"
 
+# release history of the current version (shown on the Download tab and the
+# Codebook; the Home page Updates list is the full record)
+version_released  <- as.Date("2026-09-08")
+version_corrected <- as.Date("2026-11-06")   # relationship recode; NA if none yet
+
 #=import data & codebook=======================================================
 
 update_aa_data <- function(){
@@ -49,9 +54,13 @@ update_aa_data <- function(){
   copy_ifelse_checksums(glue("data/aa_data_wide_nogeo_{version}.rds"),
                         glue("../DATA_aa/output/events/{version}/aa_data_wide_nogeo_{version}.rds"))
   
-  #codebook
+  #codebook (.docx, kept for the record; the site builds its own from the labels)
   copy_ifelse_checksums(glue("data/aa_data_wide_codebook_{version}.docx"),
                         glue("../DATA_aa/output/codebook/{version}/aa_data_wide_codebook_{version}.docx"))
+
+  #variable labels: the Codebook page and PDF are built from these (R/codebook.R)
+  copy_ifelse_checksums(glue("data/aa_data_wide_labels_{version}.csv"),
+                        glue("../DATA_aa/output/codebook/{version}/aa_data_wide_labels_{version}.csv"))
   
   #convert data to .csv for download
   aa_data <- import(glue("data/aa_data_wide_nogeo_{version}.rds", trust=TRUE))

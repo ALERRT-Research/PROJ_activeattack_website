@@ -508,3 +508,13 @@
   overflow: visible !important;
 }
 #download-the-data .card.flow .dataTables_scrollBody { overflow-x: auto !important; }
+
+/* suggested citation on the Download tab */
+.quarto-dashboard .aa-cite {
+  background: var(--aa-surface);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.quarto-dashboard .aa-cite p { margin: 0; }
+.quarto-dashboard .aa-downloads .aa-text-link { align-self: center; margin-left: 0.25rem; }

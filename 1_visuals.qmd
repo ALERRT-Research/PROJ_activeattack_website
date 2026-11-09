@@ -23,6 +23,7 @@ editor:
 #load packages
 source("0_set_up.R")
 source("R/page_helpers.R")   # tab headers (tab_header)
+source("R/codebook.R")       # aa_citation()
 
 #set version
 version <- "2025"
@@ -805,7 +806,8 @@ tab_header("Download the data",
 ::: {.card .flow title="The data" expandable="false"}
 ::: {.aa-downloads}
 {{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" label="Download the data (CSV)" >}}
-{{< downloadthis data/aa_data_wide_codebook_2025.docx dname="active_attack_data_v2025_codebook" label="Download the codebook (DOCX)" >}}
+{{< downloadthis data/aa_codebook_2025.pdf dname="active_attack_data_v2025_codebook" label="Download the codebook (PDF)" >}}
+[View the codebook online](codebook.html){.aa-text-link}
 :::
 
 ```{r}
@@ -829,7 +831,7 @@ datatable(aa_data,
 ### {width="38%"}
 
 ::: {.card .flow .aa-notes title="About the data" expandable="false"}
-The Research Ring at ALERRT makes the Active Attack Data freely available. Browse it here, or download the full dataset as a CSV file and its codebook as a Word document. The codebook lists every variable with its label, values and summary statistics.
+The Research Ring at ALERRT makes the Active Attack Data freely available. Browse it here, or download the full dataset as a CSV file. The [codebook](codebook.html) lists every variable with its label, values and missing counts, on its own page and as a PDF.
 
 [One row per attack]{.aa-subhead}
 Each of the `{r} format_num(nrow(aa_data))` rows is one active attack, from `{r} yrs[1]` through `{r} yrs[2]`. The `{r} ncol(aa_data)` variables cover when and where it happened, the attackers and their weapons, the people shot, wounded and killed, and how it ended.
@@ -844,8 +846,17 @@ Variables ending in `_incl` use the FBI's more inclusive definition. ALERRT coun
 `resolution` records how each attack ended, and `resolved_pre_le` whether that happened before law enforcement arrived. The few attackers who fled after police arrived are counted with those who fled before, since nearly all fleeing attackers leave before police reach the scene.
 
 [Versions]{.aa-subhead}
-Version `{r} version` was released September 8, 2026; the `relationship` coding was corrected November 6, 2026. Every change is listed under Updates on the [Home](index.html#updates) page. Earlier versions are kept for reproducing earlier work: [v2024 data](data/aa_data_wide_nogeo_2024.csv) and [codebook](data/aa_data_wide_codebook_2024.docx); [v2023 data](data/aa_data_wide_nogeo_2023.csv) and [codebook](data/aa_data_wide_codebook.docx).
+Version `{r} version` was released `{r} format(version_released, "%B %e, %Y")`; the `relationship` coding was corrected `{r} format(version_corrected, "%B %e, %Y")`. Every change is listed under Updates on the [Home](index.html#updates) page. Earlier versions are kept for reproducing earlier work: [v2024 data](data/aa_data_wide_nogeo_2024.csv) and [codebook](data/aa_data_wide_codebook_2024.docx); [v2023 data](data/aa_data_wide_nogeo_2023.csv) and [codebook](data/aa_data_wide_codebook.docx).
 
 [Using the data]{.aa-subhead}
-Please credit the ALERRT Center's Active Attack Data (v`{r} version`) and link to activeattackdata.org. Questions and corrections: [Contact](3_contact.html).
+Please cite the data when you use them. Suggested citation:
+
+::: {.aa-cite}
+```{r}
+#| echo: false
+knitr::asis_output(paste0("<p>", aa_citation(version, version_released)$html, "</p>"))
+```
+:::
+
+A BibTeX entry is on the [codebook](codebook.html#suggested-citation) page. Questions and corrections: [Contact](3_contact.html).
 :::

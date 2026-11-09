@@ -55,7 +55,7 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 ## Updates {.aa-home-h2}
 
--   *11/09/26* - Redesigned the Download the Data tab: download buttons first, a table that pages and scrolls sideways, shorter notes on how the data are organized, and links to the v2024 and v2023 files for reproducing earlier work. The Contact page now carries our Texas State email addresses.
+-   *11/09/26* - New [Codebook](codebook.html) page and PDF, built from the data: every variable with its label, values, counts and missing values; the Word codebook is retired. Added a suggested citation for the data. Redesigned the Download the Data tab: download buttons first, a table that pages and scrolls sideways, shorter notes, and links to the v2024 and v2023 files for reproducing earlier work. The Contact page now carries our Texas State email addresses.
 
 -   *11/06/26* - Redesigned the site: a new home page, a header with key numbers on each Active Attacks tab, figures restyled with one colour per tab, a fixed count on the state map (Delaware, which has no recorded attacks, had been shown with one), and interactive plots that fit any screen.
 

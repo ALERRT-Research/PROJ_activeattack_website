@@ -7,3 +7,4 @@
 /_site/
 **/*.quarto_ipynb
 fact_sheet/aa_fact_sheet.typ
+fact_sheet/aa_codebook.typ

@@ -35,7 +35,8 @@ out_pdf  <- glue("data/aa_fact_sheet_{version}.pdf")
 #--helpers---------------------------------------------------------------------
 
 # escape text for Typst content blocks
-ty <- function(x) gsub("([\\\\#$*_@<>\\[\\]`~=])", "\\\\\\1", x)
+# (perl = TRUE: in TRE the \] inside the class ends it early and nothing is escaped)
+ty <- function(x) gsub("([\\\\#$*_@<>\\[\\]`~=])", "\\\\\\1", x, perl = TRUE)
 
 fmt_n <- function(x, kind = "count") {
   ifelse(is.na(x), "", scales::comma(x, accuracy = 1))

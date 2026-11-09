@@ -1,0 +1,101 @@
+---
+pagetitle: "Codebook"
+format:
+  html:
+    toc: false
+    theme: "flatly"
+---
+
+```{r}
+#| include: false
+source("0_set_up.R")
+source("R/codebook.R")
+source("R/page_helpers.R")   # aa_stats_html()
+version <- "2025"
+if (Sys.getenv("GITHUB_ACTIONS") != "true") update_aa_data()
+aa_data <- import(glue("data/aa_data_wide_nogeo_{version}.rds"), trust = TRUE)
+labels  <- read.csv(glue("data/aa_data_wide_labels_{version}.csv"), stringsAsFactors = FALSE)
+rows    <- codebook_rows(aa_data, labels)
+yrs     <- range(aa_data$year, na.rm = TRUE)
+cit     <- aa_citation(version, version_released)
+fmt_date <- function(d) gsub("  ", " ", format(d, "%B %e, %Y"))
+version_text <- paste0("Version ", version, " was released ", fmt_date(version_released),
+                       if (!is.na(version_corrected)) paste0(" and corrected ", fmt_date(version_corrected)), ".")
+```
+
+::: {.aa-intro}
+# Codebook
+
+Every variable in the Active Attack Data, version `{r} version`: what it records, its values, and how often it is missing.
+
+The data have one row per attack, `{r} format_num(nrow(aa_data))` attacks from `{r} yrs[1]` through `{r} yrs[2]`, in `{r} ncol(aa_data)` variables. Counts below are from this version of the data. Download the data and this codebook on the [Active Attacks](1_visuals.html#download-the-data) page.
+:::
+
+::: {.cb-facts}
+```{r}
+#| echo: false
+knitr::asis_output(aa_stats_html(c("Attacks" = format_num(nrow(aa_data)), "Variables" = ncol(aa_data),
+                                   "Years" = paste0(yrs[1], "\u2013", yrs[2]), "Version" = version)))
+```
+
+::: {.aa-downloads .cb-downloads}
+{{< downloadthis data/aa_codebook_2025.pdf dname="active_attack_data_v2025_codebook" label="Download the codebook (PDF)" >}}
+{{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" label="Download the data (CSV)" >}}
+:::
+:::
+
+## How to read the data {.cb-h2}
+
+::: {.cb-reading}
+::: {.cb-reason}
+### What counts as an active attack
+An active attack occurs when an individual or individuals is actively killing or attempting to kill multiple unrelated people in a public space. The key word is *actively*: events that law enforcement learns of only after they end are excluded. Any weapon counts.
+:::
+::: {.cb-reason}
+### Attacker variables
+Age, sex and race carry a suffix for each attacker (`age_1`, `age_2`, `age_3`). For an attack with one attacker, the `_2` and `_3` variables are empty. The order is arbitrary.
+:::
+::: {.cb-reason}
+### Inclusive counts
+Variables ending in `_incl` use the FBI's more inclusive definition. ALERRT counts only people shot, wounded or killed by the attacker; an injury suffered while fleeing is not in `wound_tot`.
+:::
+::: {.cb-reason}
+### Versions
+`{r} version_text` Every change is listed under Updates on the [Home](index.html#updates) page.
+:::
+:::
+
+## Variables {.cb-h2}
+
+```{r}
+#| echo: false
+codebook_nav_html(rows)
+```
+
+::: {html-table-processing="none"}
+```{r}
+#| echo: false
+codebook_html(rows)
+```
+:::
+
+## Suggested citation {.cb-h2}
+
+::: {.cb-cite}
+```{r}
+#| echo: false
+knitr::asis_output(paste0("<p>", cit$html, "</p>"))
+```
+
+<details class="cb-bibtex"><summary>BibTeX</summary>
+
+```{r}
+#| echo: false
+#| results: asis
+cat("```bibtex\n", cit$bibtex, "\n```\n", sep = "")
+```
+
+</details>
+
+Questions about a variable, or a value that looks wrong: [Contact](3_contact.html).
+:::

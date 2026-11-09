@@ -71,7 +71,7 @@ home_cards <- function(d) {
               "People killed and wounded",
               "Attacks and fatalities by state",
               paste0("The key numbers for ", yrs[2], ", with a PDF to share"),
-              "The full dataset and codebook",
+              "The full dataset, its codebook, and how to cite it",
               "The names of the people who were killed"),
     col   = c("#b8843f", "#3d6b9e", "#3f8a73", "#7d68ad", "#1f2a36", "#1f2a36", "#1f2a36", "#1f2a36"))
   cards <- paste0('<a class="aa-home-link" href="', links$href,
