@@ -7,6 +7,10 @@ format:
     css: [aa-theme.css, dashboard.css]   # format: html options in _quarto.yml do not reach dashboard pages
 resources: 
   - "www/"
+  - "data/aa_data_wide_nogeo_2024.csv"
+  - "data/aa_data_wide_codebook_2024.docx"
+  - "data/aa_data_wide_nogeo_2023.csv"
+  - "data/aa_data_wide_codebook.docx"
 editor: 
   markdown: 
     wrap: 72
@@ -779,69 +783,69 @@ are counted in the year they happened.
 
 ::: {.card .aa-head expandable="false"}
 ```{r}
+#| echo: false
+yrs <- range(aa_data$year, na.rm = TRUE)
+fmt_size <- function(path) {
+  kb <- file.size(path) / 1024
+  if (kb < 1000) paste0(round(kb), " KB") else paste0(format(round(kb / 1024, 1), nsmall = 1), " MB")
+}
+csv_path <- glue("data/aa_data_wide_nogeo_{version}.csv")
+cb_path  <- glue("data/aa_data_wide_codebook_{version}.docx")
 tab_header("Download the data",
-           "The full dataset and its codebook, free to download and use.",
+           "Every active attack in the United States since 2000, one row per attack, with its codebook. Free to download and use.",
            c("Attacks" = scales::comma(nrow(aa_data)), "Variables" = ncol(aa_data),
-             "Data version" = version))
+             "Years" = paste0(yrs[1], "–", yrs[2]), "Data version" = version))
 ```
 :::
 
 ## row 1
 
-### {width="38%"}
-
-::: {.card .flow title="About the Data" expandable="false"}
-It is the mission of the Research Ring at ALERRT to make the Active
-Attack Data as freely accessible as possible. Please feel free to
-explore the raw data in the window to the right or download the data as
-a *.csv* file using the download button below. The codebook for the data
-is also accessible below as a *.docx* file. The codebook includes
-variable names, value labels (i.e., for factor/character variables), and
-summary statistics.
-
-Before downloading the data, please familiarize yourself with the
-following notes:
-
-1.  The dataset is organized so that each row corresponds to a unique
-    active attack. This means that some variables, like attacker
-    characteristics, need some special handling. Because some events
-    involved multiple attackers, variables like age, race/ethnicity, and
-    sex, are given a special suffix (e.g., *\_1*, *\_2*, *\_3*) that
-    correspond to specific attackers. For an attack with only one
-    shooter, the demographic variables ending in *\_2* and *\_3* will
-    contain missing values. Keep in mind, the suffixes were assigned
-    randomly and should not be taken as an indication that individuals
-    described by variables ending in *\_1* were somehow more central to
-    the attack than the other people involved.
-
-2.  The dataset also includes several variables with the *\_incl*
-    suffix. This suffix refers to an "inclusive definition" applied to
-    the variable coding schemes. ALERRT applies more stringent
-    definitions than does the FBI for coding active attack cases. For
-    instance, injuries that were sustained during an active attack but
-    not directly by the attacker (e.g., sprained ankle from running
-    away) are not counted by ALERRT as injuries in our *wound_tot*
-    variable. For this reason, there may be differences between our
-    numbers (and visualizations) and the official FBI reports
-    (represented in the variables ending in *\_incl*).
-
-3.  The dataset includes two variables detailing event resolution. These
-    variables are named "resolution" and "resolved_pre_le" and describe
-    how each event was resolved and whether that resolution occurred
-    prior to the arrival of law enforcement, respectively. Although
-    rare, there are a small number of events where the attacker fled the
-    scene after law enforcement arrived. As the vast majority of fleeing
-    attackers leave the scene before law enforcement arrive, these are
-    combined in the resolution data as ending prior to LE arrival. 
-
-::: {.aa-downloads}
-{{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" label="Download data (CSV)" >}}
-{{< downloadthis data/aa_data_wide_codebook_2025.docx dname="active_attack_data_v2025_codebook" label="Download codebook (DOCX)" >}}
-:::
-:::
-
 ### {width="62%"}
 
+::: {.card .flow title="The data" expandable="false"}
+::: {.aa-downloads}
+{{< downloadthis data/aa_data_wide_nogeo_2025.csv dname="active_attack_data_v2025" label="Download the data (CSV)" >}}
+{{< downloadthis data/aa_data_wide_codebook_2025.docx dname="active_attack_data_v2025_codebook" label="Download the codebook (DOCX)" >}}
+:::
+
 ```{r}
-datatable(aa_data, filter = "top")
+#| echo: false
+datatable(aa_data,
+          rownames = FALSE,
+          filter   = "top",
+          class    = "display nowrap",
+          # Quarto dashboards switch paging off (bPaginate = FALSE in DT.options); this
+          # card flows, so paging comes back on and the table stays 10 rows tall
+          options  = list(bPaginate = TRUE, paging = TRUE, pageLength = 10,
+                          lengthMenu = c(10, 25, 50, 100), scrollX = TRUE, autoWidth = FALSE,
+                          dom = "lfrtip",
+                          language = list(info = "Showing _START_ to _END_ of _TOTAL_ attacks",
+                                          infoFiltered = "(filtered from _MAX_)",
+                                          lengthMenu = "Show _MENU_ attacks",
+                                          search = "Search:")))
 ```
+:::
+
+### {width="38%"}
+
+::: {.card .flow .aa-notes title="About the data" expandable="false"}
+The Research Ring at ALERRT makes the Active Attack Data freely available. Browse it here, or download the full dataset as a CSV file and its codebook as a Word document. The codebook lists every variable with its label, values and summary statistics.
+
+[One row per attack]{.aa-subhead}
+Each of the `{r} format_num(nrow(aa_data))` rows is one active attack, from `{r} yrs[1]` through `{r} yrs[2]`. The `{r} ncol(aa_data)` variables cover when and where it happened, the attackers and their weapons, the people shot, wounded and killed, and how it ended.
+
+[Attacker variables]{.aa-subhead}
+Because some attacks involved more than one attacker, age, sex and race carry a suffix for each attacker (`age_1`, `age_2`, `age_3`). For an attack with one attacker, the `_2` and `_3` variables are empty. The order is arbitrary: attacker 1 was not more central to the attack than the others.
+
+[Inclusive counts]{.aa-subhead}
+Variables ending in `_incl` use the FBI's more inclusive definition. ALERRT counts only people shot, wounded or killed by the attacker, so an injury suffered while fleeing is not in `wound_tot`. Where our figures differ from the FBI's annual reports, this is usually why.
+
+[How attacks ended]{.aa-subhead}
+`resolution` records how each attack ended, and `resolved_pre_le` whether that happened before law enforcement arrived. The few attackers who fled after police arrived are counted with those who fled before, since nearly all fleeing attackers leave before police reach the scene.
+
+[Versions]{.aa-subhead}
+Version `{r} version` was released September 8, 2026; the `relationship` coding was corrected November 6, 2026. Every change is listed under Updates on the [Home](index.html#updates) page. Earlier versions are kept for reproducing earlier work: [v2024 data](data/aa_data_wide_nogeo_2024.csv) and [codebook](data/aa_data_wide_codebook_2024.docx); [v2023 data](data/aa_data_wide_nogeo_2023.csv) and [codebook](data/aa_data_wide_codebook.docx).
+
+[Using the data]{.aa-subhead}
+Please credit the ALERRT Center's Active Attack Data (v`{r} version`) and link to activeattackdata.org. Questions and corrections: [Contact](3_contact.html).
+:::
