@@ -43,6 +43,13 @@ sync: github
 - **~2026-11-13: site updated** before the ALERRT conference, **Nov 16–19, 2026** (was recorded as December — corrected 2026-10-16). Scope with Hunter now; a full overhaul may not fit around IACP and the biosocial course. Includes native light/dark toggle for the whole site AND every visualization (two variants of each figure; Pete favours dark, high-contrast; `bw=` switch in graphics `plots_cartesian.R` is the prototype) — see `docs/logs/2026-09-10_dark-plot-side-quest-and-theming-note.md`
 - Annual: v2026 data refresh (~mid-year, after FBI active-shooter report cycle); bump `version <- "2026"` in DATA_aa (2 scripts), graphics `0_packages.R`, website `0_set_up.R` + `1_visuals.qmd` + `2_victims.qmd`
 
+## Backlog (after the conference; Peter and Hunter, 2026-11-09)
+
+- **Derivative datasets to post**, each with a download and a short page: (1) the **SIA door-locks dataset** built from the Active Attack data for the SIA grant; (2) the **officers-shot dataset** (Hunter's update): Active Attack data to find cases where officers were shot, cross-referenced to LEOKA for detail. Ask Hunter where both live and which versions are releasable
+- **Publications page**: every article that used the Active Attack data, plus a way for the public to tell us about their own papers, presentations and projects that used it (collect, then list them)
+- **Download the Data tab**: tidy the page and review the codebooks
+- **Victim scroll video**: same structure (short front matter for context, then the names scrolling), sharper look to match the site
+
 ## Start Here Next Session
 
 - Run `git -C <repo> status -sb` in all three sibling repos; if behind, `git pull --ff-only` (Hunter pushes directly to main)

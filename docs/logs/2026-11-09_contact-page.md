@@ -13,3 +13,13 @@
 - Wording that is new, not carried over: the "Using the data" item asks users to credit the ALERRT Center's
   Active Attack Data and link to the site. Peter to confirm or change.
 - Committed (572f1e7), not pushed.
+
+## Pushed; backlog recorded
+
+- Pushed 18:05 UTC with Peter's approval (3 commits); deploy succeeded, gh-pages carries the new page.
+- Peter's to-dos for after the conference, from a conversation with Hunter (now the Backlog section of bob.md):
+  derivative datasets (SIA door-locks set from the SIA grant; officers-shot set built from Active Attack cases
+  cross-referenced to LEOKA), each with a download and a page; a publications page listing every article that used
+  the data, with a way for the public to report their own papers and presentations; tidy the Download the Data tab
+  and review the codebooks; restyle the victim scroll video while keeping its structure (front matter, then names).
+  No local folders for the SIA or officers-shot work were found; locations are Hunter's to supply.
