@@ -47,7 +47,7 @@ sync: github
 
 - **Derivative datasets to post**, each with a download and a short page: (1) the **SIA door-locks dataset** built from the Active Attack data for the SIA grant; (2) the **officers-shot dataset** (Hunter's update): Active Attack data to find cases where officers were shot, cross-referenced to LEOKA for detail. Ask Hunter where both live and which versions are releasable
 - **Publications page**: every article that used the Active Attack data, plus a way for the public to tell us about their own papers, presentations and projects that used it (collect, then list them)
-- **Citation DOI**: consider a Zenodo (or TXST repository) DOI per data version so the suggested citation resolves to a fixed record
+- **DOI + dataset profile** (Peter, 11-09): mint a DOI per data version (Zenodo or the TXST repository) and publish a data-descriptor paper profiling the dataset, so we and others cite one fixed record while the publications page collects the cites
 - **Victim scroll video**: same structure (short front matter for context, then the names scrolling), sharper look to match the site
 
 ## Start Here Next Session
