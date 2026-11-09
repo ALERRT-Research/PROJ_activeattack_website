@@ -408,3 +408,108 @@ h2.aa-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
 @media (min-width: 760px) { .aa-reasons { grid-template-columns: repeat(3, 1fr); } }
 .aa-reason h3 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.35rem; border: 0; }
 .aa-reason p { margin: 0; color: var(--aa-ink); line-height: 1.5; }
+
+/*--Codebook---------------------------------------------------------------------*/
+
+.cb-facts { margin: 1.5rem 0 2.5rem; }
+.cb-facts .aa-stats { margin-bottom: 1.25rem; }
+.cb-downloads { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; }
+.cb-downloads p { margin: 0; display: contents; }
+
+h2.cb-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
+
+.cb-reading {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 2rem;
+}
+@media (min-width: 760px) { .cb-reading { grid-template-columns: repeat(2, 1fr); } }
+.cb-reason h3 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.35rem; border: 0; }
+.cb-reason p { margin: 0; line-height: 1.5; }
+
+main .cb-reason code, main .cb-var code, main .cb-cite code {
+  font-size: 0.875em;
+  color: var(--aa-ink);
+  background: var(--aa-surface);
+  border: 1px solid var(--aa-rule);
+  border-radius: 3px;
+  padding: 0.02em 0.3em;
+}
+
+.cb-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin: 0 0 1.5rem; font-size: 0.9375rem; }
+main nav.cb-nav a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link) { color: var(--aa-muted); text-decoration: none; }
+main nav.cb-nav a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-link):hover { color: var(--aa-ink); text-decoration: underline; }
+
+.cb-group { scroll-margin-top: 1.5rem; margin-bottom: 2.25rem; }
+.cb-group h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--aa-ink);
+  padding-bottom: 0.3rem;
+  margin: 0 0 0.25rem;
+}
+.cb-count { font-size: 0.9375rem; font-weight: 400; color: var(--aa-muted); margin-left: 0.5rem; }
+
+table.cb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  margin: 0;
+}
+table.cb-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--aa-muted);
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem 0.4rem 0;
+  border-bottom: 1px solid var(--aa-rule);
+}
+table.cb-table td {
+  vertical-align: top;
+  padding: 0.65rem 0.75rem 0.65rem 0;
+  border-bottom: 1px solid var(--aa-rule);
+}
+table.cb-table tr:last-child td { border-bottom: 0; }
+table.cb-table > tbody > tr > * { --bs-table-accent-bg: transparent; box-shadow: none; }
+table.cb-table td:last-child, table.cb-table th:last-child { padding-right: 0; }
+
+.cb-var { width: 34%; }
+.cb-var code { font-size: 0.9375rem; }
+.cb-label { margin-top: 0.3rem; }
+.cb-note { margin-top: 0.2rem; font-size: 0.875rem; color: var(--aa-muted); }
+.cb-type { width: 14%; color: var(--aa-muted); white-space: nowrap; }
+.cb-missing { width: 12%; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cb-none { color: var(--aa-prev); }
+.cb-pct { color: var(--aa-muted); }
+
+ul.cb-levels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2 11rem;
+  column-gap: 1.5rem;
+}
+ul.cb-levels li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  break-inside: avoid;
+  padding: 0.08rem 0;
+  border-bottom: 1px dotted var(--aa-rule);
+}
+ul.cb-levels li span { color: var(--aa-muted); font-variant-numeric: tabular-nums; }
+
+.cb-cite { background: var(--aa-surface); border-radius: 6px; padding: 1.1rem 1.4rem; }
+.cb-cite p:first-child { font-size: 1.0625rem; }
+.cb-bibtex summary { cursor: pointer; color: var(--aa-muted); margin: 0.25rem 0 0.5rem; }
+.cb-bibtex pre { background: var(--aa-paper); border: 1px solid var(--aa-rule); border-radius: 4px; padding: 0.75rem 1rem; font-size: 0.8125rem; }
+
+@media (max-width: 700px) {
+  table.cb-table, table.cb-table thead, table.cb-table tbody, table.cb-table tr, table.cb-table td { display: block; width: auto; }
+  table.cb-table thead { display: none; }
+  table.cb-table td { border-bottom: 0; padding: 0.15rem 0; }
+  table.cb-table tr { border-bottom: 1px solid var(--aa-rule); padding: 0.65rem 0; }
+  .cb-type::before { content: "Type: "; }
+  .cb-missing::before { content: "Missing: "; color: var(--aa-muted); }
+  ul.cb-levels { columns: 1; margin-top: 0.25rem; }
+}

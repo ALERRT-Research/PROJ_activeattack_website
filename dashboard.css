@@ -436,3 +436,85 @@
   #fact-sheet .fs-table th,
   #fact-sheet .fs-table td { padding: 0.35rem 0.25rem; }
 }
+
+/*--Download the Data: the browse table (DT)-----------------------------------*/
+
+#download-the-data .dataTables_wrapper { font-size: 0.9375rem; color: var(--aa-ink); }
+
+#download-the-data table.dataTable { border-collapse: collapse; margin: 0.5rem 0 !important; }
+#download-the-data table.dataTable thead th,
+#download-the-data table.dataTable thead td {
+  font-weight: 600;
+  color: var(--aa-ink);
+  border-bottom: 2px solid var(--aa-ink);
+  vertical-align: bottom;
+}
+#download-the-data table.dataTable tbody td { border-top: 1px solid var(--aa-rule); }
+#download-the-data table.dataTable.stripe tbody tr.odd,
+#download-the-data table.dataTable.display tbody tr.odd { background: var(--aa-paper); }
+#download-the-data table.dataTable.hover tbody tr:hover,
+#download-the-data table.dataTable.display tbody tr:hover { background: var(--aa-surface); }
+#download-the-data table.dataTable.display tbody tr > .sorting_1 { background: transparent; }
+
+/* search and column filters */
+#download-the-data .dataTables_filter input,
+#download-the-data table.dataTable thead input[type="search"] {
+  font: inherit;
+  font-size: 0.9375rem;
+  border: 1px solid var(--aa-rule);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+}
+#download-the-data .dataTables_filter input:focus-visible,
+#download-the-data table.dataTable thead input:focus-visible { outline: 3px solid var(--aa-ink); outline-offset: 1px; }
+#download-the-data .dataTables_length select { font: inherit; border: 1px solid var(--aa-rule); border-radius: 4px; padding: 0.2rem 0.4rem; }
+#download-the-data .dataTables_info { color: var(--aa-muted); }
+
+/* pagination in ink, not the theme's teal */
+#download-the-data .dataTables_paginate .paginate_button { color: var(--aa-ink) !important; border-radius: 4px; }
+#download-the-data .dataTables_paginate .paginate_button.current,
+#download-the-data .dataTables_paginate .paginate_button.current:hover {
+  background: var(--aa-ink) !important;
+  border-color: var(--aa-ink);
+  color: #fff !important;
+}
+#download-the-data .dataTables_paginate .paginate_button:hover { background: var(--aa-surface) !important; border-color: var(--aa-rule); color: var(--aa-ink) !important; }
+#download-the-data .dataTables_paginate .paginate_button.disabled { color: var(--aa-prev) !important; }
+
+/* the table card grows to its content; the widget scrolls sideways, not the card */
+#download-the-data .card .cell-output-display { overflow: visible; }
+
+/* variable names in the notes: ink on surface, not the theme's purple */
+.quarto-dashboard .aa-notes code {
+  font-size: 0.875em;
+  color: var(--aa-ink);
+  background: var(--aa-surface);
+  border: 1px solid var(--aa-rule);
+  border-radius: 3px;
+  padding: 0.02em 0.3em;
+}
+
+/* the data card holds two bodies (download row, table). Quarto sizes them as
+   fill items and the table body ends up scrolling inside a short card; let
+   the card grow to its content instead (the table scrolls sideways on its own) */
+#download-the-data .card.flow,
+#download-the-data .card.flow > .card-body,
+#download-the-data .card.flow .cell-output-display,
+#download-the-data .card.flow .datatables {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+}
+#download-the-data .card.flow .dataTables_scrollBody { overflow-x: auto !important; }
+
+/* suggested citation on the Download tab */
+.quarto-dashboard .aa-cite {
+  background: var(--aa-surface);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0 0.75rem;
+}
+.quarto-dashboard .aa-cite p { margin: 0; }
+.quarto-dashboard .aa-downloads .aa-text-link { align-self: center; margin-left: 0.25rem; }
