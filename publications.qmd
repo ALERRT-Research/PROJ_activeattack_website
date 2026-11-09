@@ -1,0 +1,72 @@
+---
+pagetitle: "Publications"
+format:
+  html:
+    toc: false
+---
+
+```{r}
+#| include: false
+source("0_set_up.R")
+source("R/codebook.R")        # aa_citation()
+source("R/page_helpers.R")    # aa_stats_html()
+source("R/publications.R")
+version <- "2025"
+pubs <- publications_load("data/publications.yml")
+cit  <- aa_citation(version, version_released)
+n_pubs <- nrow(pubs); yrs <- range(pubs$year)
+mail_to  <- "peter_tanksley@txstate.edu"
+mail_cc  <- "hunter.martaindale@txstate.edu"
+mail_sub <- "Work using the Active Attack Data"
+mail_body <- paste(
+  "Hello,", "",
+  "I used the Active Attack Data in the following work and would like it listed on activeattackdata.org:", "",
+  "Title:", "Authors:", "Year:", "Type (article, report, thesis, presentation, other):",
+  "Where it appeared (journal, conference, publisher):", "Link or DOI:",
+  "How the data were used (a sentence or two):", "",
+  "Thank you,", sep = "\n")
+mailto <- paste0("mailto:", mail_to, "?cc=", mail_cc, "&subject=", utils::URLencode(mail_sub, reserved = TRUE),
+                 "&body=", utils::URLencode(mail_body, reserved = TRUE))
+```
+
+::: {.aa-intro}
+# Publications
+
+Research, reports and books that used the Active Attack Data, and a way to add yours.
+
+The list starts with the ALERRT Center's own work, from the first FBI study in 2014 to the current articles. We would like it to grow: if you have published, presented or taught with the data, tell us below and we will add it.
+:::
+
+::: {.cb-facts}
+```{r}
+#| echo: false
+knitr::asis_output(aa_stats_html(c("Works listed" = n_pubs, "Years" = paste0(yrs[1], "–", yrs[2]),
+                                   "Data version" = version)))
+```
+:::
+
+```{r}
+#| echo: false
+publications_html(pubs)
+```
+
+## Tell us about your work {.cb-h2}
+
+::: {.pub-submit}
+Have you published an article or report, written a thesis, given a talk, or built something with the Active Attack Data? Send us the details and we will list it here. The button opens an email with the questions filled in; a title and a link are enough to start.
+
+<a class="aa-dl" href="`r mailto`"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Tell us about your work</a>
+
+Or write to [`r mail_to`](mailto:`r mail_to`) with the title, authors, year, where it appeared, a link, and how the data were used.
+:::
+
+## Citing the data {.cb-h2}
+
+::: {.cb-cite}
+```{r}
+#| echo: false
+knitr::asis_output(paste0("<p>", cit$html, "</p>"))
+```
+
+A BibTeX entry is on the [codebook](codebook.html#suggested-citation) page. Any version of the data can be cited by its version year; earlier versions are available on the [Active Attacks](1_visuals.html#download-the-data) page.
+:::

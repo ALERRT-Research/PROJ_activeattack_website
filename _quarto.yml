@@ -17,6 +17,8 @@ website:
         text: Home
       - href: 1_visuals.qmd
         text: Active Attacks
+      - href: publications.qmd
+        text: Publications
       - href: 2_victims.qmd
         text: Remembrance
       - href: 3_contact.qmd

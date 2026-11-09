@@ -69,9 +69,9 @@ home_cards <- function(d) {
   links <- data.frame(
     href  = c("1_visuals.html#timing", "1_visuals.html#attackers", "1_visuals.html#locations",
               "1_visuals.html#casualties", "1_visuals.html#across-the-usa", "1_visuals.html#fact-sheet",
-              "1_visuals.html#download-the-data", "2_victims.html"),
+              "1_visuals.html#download-the-data", "publications.html", "2_victims.html"),
     title = c("Timing", "Attackers", "Locations", "Casualties", "Across the USA", "Fact Sheet",
-              "Download the Data", "Remembrance"),
+              "Download the Data", "Publications", "Remembrance"),
     text  = c("By year, month, day of the week and hour",
               "Who carried out the attacks, and their weapons",
               "Where attacks happened, and the attacker's tie to the place",
@@ -79,9 +79,11 @@ home_cards <- function(d) {
               "Attacks and fatalities by state",
               paste0("The key numbers for ", yrs[2], ", with a PDF to share"),
               "The full dataset, its codebook, and how to cite it",
+              "Research that used the data, and how to add yours",
               "The names of the people who were killed"),
     col   = c("var(--aa-tab-timing)", "var(--aa-tab-attackers)", "var(--aa-tab-locations)",
-              "var(--aa-tab-casualties)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)"))
+              "var(--aa-tab-casualties)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)",
+              "var(--aa-ink)"))
   cards <- paste0('<a class="aa-home-link" href="', links$href,
                   '" style="--aa-tab:', links$col, '"><strong>', links$title,
                   '</strong><span>', links$text, '</span></a>', collapse = "")

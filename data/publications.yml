@@ -1,0 +1,132 @@
+# Work that used the Active Attack Data (or the ALERRT active shooter event
+# data it grew from). Rendered by R/publications.R on publications.qmd.
+#
+# One entry per work. Fields:
+#   type:    article | report | book | chapter | other
+#   year, authors, title, venue (journal, publisher or series)
+#   doi (preferred) or url
+#   uses:    one line on how the work used the data (shown in muted text)
+#   by:      alerrt (default) | others   -- work by researchers outside ALERRT
+# Newest first within a type is handled by the renderer; order here is free.
+# Started 2026-11-09 from the ALERRT publications list (shared drive,
+# published_articles/1_ALERRT_publications.docx) and alerrtresearch.org.
+
+- type: article
+  year: 2025
+  authors: "Blair, J. P., Martaindale, M. H., Tanksley, P. T., & Johncox, J. D."
+  title: "Active attacks with motor vehicles: A short report and case study of the 2025 New Year's Day attack in New Orleans, LA"
+  venue: "American Journal of Criminal Justice"
+  doi: "10.1007/s12103-025-09806-x"
+  uses: "Every vehicle attack in the data, 2000 to 2025, beside the New Orleans case."
+
+- type: article
+  year: 2022
+  authors: "Blair, J. P., & Duron, A."
+  title: "How police officers are shot and killed during active shooter events: Implications for response and training"
+  venue: "The Police Journal: Theory, Practice and Principles"
+  doi: "10.1177/0032258X221087827"
+  uses: "Officers shot during active shooter events, identified from the event data."
+
+- type: article
+  year: 2022
+  authors: "Sandel, W. L., & Martaindale, M. H."
+  title: "What are we talking about? Definitional confusion within active and mass shooting research"
+  venue: "Journal of Mass Violence Research"
+  doi: "10.53076/JMVR47829"
+  uses: "Shows how the active attack definition differs from the mass shooting definitions in use, and what each one counts."
+
+- type: article
+  year: 2021
+  authors: "Duron, A."
+  title: "\"Shots fired! We have many people down!\": Common recommendations for managing high-casualty active shooter events in the USA"
+  venue: "International Journal of Disaster Risk Reduction"
+  doi: "10.1016/j.ijdrr.2021.102548"
+  uses: "High-casualty events drawn from the data."
+
+- type: article
+  year: 2020
+  authors: "Blair, J. P., Sandel, W. L., & Martaindale, M. H."
+  title: "Correlates of the number shot and killed in active shooter events"
+  venue: "Homicide Studies"
+  doi: "10.1177/1088767920976727"
+  uses: "Models of the number shot and killed per event: weapons, location, resolution and year."
+
+- type: article
+  year: 2019
+  authors: "Martaindale, M. H., & Blair, J. P."
+  title: "The evolution of active shooter response training protocols since Columbine: Lessons from the Advanced Law Enforcement Rapid Response Training Center"
+  venue: "Journal of Contemporary Criminal Justice"
+  doi: "10.1177/1043986219840237"
+  uses: "Event trends behind the changes in response training."
+
+- type: article
+  year: 2017
+  authors: "Martaindale, M. H., Sandel, W. L., & Blair, J. P."
+  title: "Active shooter events in the workplace: Findings and policy implications"
+  venue: "Journal of Business Continuity & Emergency Planning"
+  doi: "10.69554/lcym6472"
+  uses: "Attacks at workplaces, 2000 to 2015."
+
+- type: report
+  year: 2026
+  authors: "ALERRT Center, Texas State University"
+  title: "The role of locked doors and access control in school-based active shooter events"
+  venue: "Report for the Security Industry Association"
+  url: "https://alerrtresearch.org/resources/reports/report_2026_sia_locked_doors.pdf"
+  uses: "54 school attacks, 2000 to 2025, with case studies of Uvalde (2022) and Evergreen High School (2025)."
+
+- type: report
+  year: 2020
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2019"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2019
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2018"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2018
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2016 and 2017"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2014
+  authors: "Blair, J. P., & Schweit, K. W."
+  title: "A study of active shooter incidents in the United States between 2000 and 2013"
+  venue: "Texas State University and Federal Bureau of Investigation, U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The first FBI study, from the ALERRT event data that became the Active Attack Data."
+
+- type: other
+  year: 2014
+  authors: "Blair, J. P., Martaindale, M. H., & Nichols, T."
+  title: "Active shooter events from 2000 to 2012"
+  venue: "FBI Law Enforcement Bulletin"
+  url: "https://leb.fbi.gov/articles/featured-articles/active-shooter-events-from-2000-to-2012"
+  uses: "Trends and patterns across the first 13 years of events."
+
+- type: chapter
+  year: 2021
+  authors: "Martaindale, M. H."
+  title: "Active shooter/hostile event overview (data)"
+  venue: "In Introduction to Active Shooter/Hostile Event Response. Fire Protection Publications, Oklahoma State University"
+  url: "https://www.amazon.com/Introduction-Active-Shooter-Hostile-Response/dp/0879397322"
+  uses: "A data-driven overview of events in the United States for a responder textbook."
+
+- type: book
+  year: 2013
+  authors: "Blair, J. P., Nichols, T., Burns, D., & Curnutt, J. R."
+  title: "Active Shooter Events and Response"
+  venue: "CRC Press"
+  doi: "10.1201/b14996"
+  uses: "Includes the first analysis of the events, 2000 to 2010."

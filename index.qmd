@@ -54,6 +54,8 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 ## Updates {.aa-home-h2}
 
+-   *11/09/26* - New [Publications](publications.html) page: the research, reports and books that used the Active Attack Data, with a button to tell us about work of your own so we can list it.
+
 -   *11/09/26* - New memorial video on the Remembrance page: 1080p, the names rolling by year with officer and under-18 marked, playable on the page and downloadable.
 
 -   *11/09/26* - Added a light/dark switch (the half-moon icon in the top bar). It changes the whole site, and every figure, map, interactive plot and animation has a dark version drawn for it; downloads give you the version on screen. Also added a [Codebook](codebook.html) page and PDF built from the data (the Word codebook is retired), a suggested citation, and a redesigned Download the Data tab: download buttons first, a table that pages and scrolls sideways, and links to the v2024 and v2023 files for reproducing earlier work. The Contact page now carries our Texas State email addresses.

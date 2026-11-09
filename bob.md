@@ -46,14 +46,14 @@ sync: github
 ## Backlog (after the conference; Peter and Hunter, 2026-11-09)
 
 - **Derivative datasets to post**, each with a download and a short page: (1) the **SIA door-locks dataset** built from the Active Attack data for the SIA grant; (2) the **officers-shot dataset** (Hunter's update): Active Attack data to find cases where officers were shot, cross-referenced to LEOKA for detail. Ask Hunter where both live and which versions are releasable
-- **Publications page**: every article that used the Active Attack data, plus a way for the public to tell us about their own papers, presentations and projects that used it (collect, then list them)
+- ~~Publications page~~ done 11-09 (15 works from the ALERRT list; mail-in button). **Peter/Hunter to confirm** the five left out as uncertain and add others' work as it arrives: edit `data/publications.yml` (`docs/logs/2026-11-09_publications.md`)
 - **DOI + dataset profile** (Peter, 11-09): mint a DOI per data version (Zenodo or the TXST repository) and publish a data-descriptor paper profiling the dataset, so we and others cite one fixed record while the publications page collects the cites
 - ~~Victim scroll video~~ done 11-09: 1080p rebuild in the site look, in-page player + download (`docs/logs/2026-11-09_scroll-video.md`)
 
 ## Start Here Next Session
 
 - Run `git -C <repo> status -sb` in all three sibling repos; if behind, `git pull --ff-only` (Hunter pushes directly to main)
-- All three repos in sync with GitHub as of 11-09 20:40; light/dark and the new memorial video verified live (toggle in place, dark GIF, 1.2 MB dashboard)
+- Unpushed: website (Publications page + navbar/Home card); graphics and DATA_aa in sync (toggle in place, dark GIF, 1.2 MB dashboard)
 - Dark figures: `AA_MODE=dark Rscript <script>` in graphics `code/` writes `output/dark/`; the website copies them to `www/dark/` on render
 - **Fetch before rendering**: `git fetch` + `pull --ff-only` in all three repos first. A behind DATA_aa clone silently reverted the 11-06 data fix through the checksum refresh (11-09, caught before push; `docs/logs/2026-11-09_codebook.md`). `AA_SKIP_UPDATE=1` skips the refresh if a feeder is known to be behind
 - Codebook rebuild after a data update: `Rscript R/codebook_pdf.R` (page renders itself); labels come from DATA_aa's `codebook_events.R`

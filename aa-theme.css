@@ -548,3 +548,24 @@ ul.cb-levels li span { color: var(--aa-muted); font-variant-numeric: tabular-num
 /* !important: the pair members also carry their own display rules (block
    figures, inline-flex download links, block iframes), which would otherwise win */
 body.quarto-light .dark-content, body.quarto-dark .light-content { display: none !important; }
+
+/*--Publications-----------------------------------------------------------------*/
+
+.pub-group { margin-bottom: 2.25rem; }
+h2.pub-h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--aa-ink);
+  padding-bottom: 0.3rem;
+  margin: 0 0 0.25rem;
+}
+.pub-count { font-size: 0.9375rem; font-weight: 400; color: var(--aa-muted); margin-left: 0.5rem; }
+ul.pub-list { list-style: none; margin: 0; padding: 0; }
+li.pub { padding: 0.8rem 0; border-bottom: 1px solid var(--aa-rule); }
+li.pub:last-child { border-bottom: 0; }
+.pub-ref { line-height: 1.5; max-width: 72ch; }
+.pub-title { font-weight: 600; }
+.pub-uses { color: var(--aa-muted); font-size: 0.9375rem; margin-top: 0.2rem; max-width: 72ch; }
+.pub-submit { background: var(--aa-surface); border-radius: 6px; padding: 1.1rem 1.4rem; }
+.pub-submit p { max-width: 68ch; }
+.pub-submit a.aa-dl { margin: 0.25rem 0 0.75rem; }
