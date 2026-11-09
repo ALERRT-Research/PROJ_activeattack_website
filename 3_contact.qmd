@@ -1,15 +1,49 @@
 ---
-title: ""
-editor: visual
+pagetitle: "Contact"
+format:
+  html:
+    toc: false
+    theme: "flatly"
 ---
 
-# Contact Us
+::: {.aa-intro}
+# Contact
 
-If you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:
+Questions about the Active Attack Data, this website, or a name on the Remembrance page? Write to either of us.
 
-| Name | Email | Position |
-|:---|:---|:---|
-| M. Hunter Martaindale, Ph.D. | [martaindale\@alerrt.org](mailto:martaindale@alerrt.org){target="_blank"} | Director of Research |
-| Peter T. Tanksley, Ph.D. | [tanksley\@alerrt.org](mailto:tanksley@alerrt.org){target="_blank"} | Research Scientist |
+We are the two members of the ALERRT Center's research team who maintain the data and this site.
+:::
 
-: {tbl-colwidths="\[33,33,33\]"}
+::: {.aa-people}
+::: {.aa-person}
+**M. Hunter Martaindale, Ph.D.**
+Director of Research, ALERRT Center
+[martaindale@alerrt.org](mailto:martaindale@alerrt.org)
+:::
+::: {.aa-person}
+**Peter T. Tanksley, Ph.D.**
+Research Scientist, ALERRT Center
+[tanksley@alerrt.org](mailto:tanksley@alerrt.org)
+:::
+:::
+
+## What to write about {.aa-h2}
+
+::: {.aa-reasons}
+::: {.aa-reason}
+### The data
+Questions about how an attack is defined and counted, what a variable means, or how the figures were produced. The full dataset and codebook are on the [Active Attacks](1_visuals.html#download-the-data) page.
+:::
+::: {.aa-reason}
+### A correction
+A name missing or wrong on the [Remembrance](2_victims.html) page, or an error in a figure or number. Please tell us the attack's date and location and, for a name, the source you are working from.
+:::
+::: {.aa-reason}
+### Using the data
+If you use the data in research, reporting or training, we are glad to hear about it. Please credit the ALERRT Center's Active Attack Data and link to [activeattackdata.org](https://activeattackdata.org).
+:::
+:::
+
+## More from ALERRT {.aa-h2}
+
+The ALERRT Center at Texas State University trains first responders for active attacks, and its research team studies how these events unfold. Research publications and projects are at [ALERRTResearch.org](https://alerrtresearch.org); training at [ALERRT.org](https://www.alerrt.org). The code behind this site is on [GitHub](https://github.com/ALERRT-Research/PROJ_activeattack_website).

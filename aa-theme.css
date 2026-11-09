@@ -368,3 +368,43 @@ main nav.rem-years a:not(.btn):not(.nav-link):not(.dropdown-item):not(.aa-home-l
 .rem-video { margin: 2.5rem 0 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--aa-rule); color: var(--aa-muted); }
 .rem-dnt { background: var(--aa-surface); border-radius: 6px; padding: 1.1rem 1.4rem 0.6rem; margin-bottom: 2rem; }
 .rem-dnt h3 { font-size: 1.15rem; margin-top: 0; border: 0; }
+
+/*--Contact--------------------------------------------------------------------*/
+
+/* page intro: one large heading and a lead, as on Remembrance */
+.aa-intro h1 { font-size: 2.4rem; font-weight: 600; margin: 0.5rem 0 0.75rem; border: 0; }
+.aa-intro p:first-of-type { font-size: 1.25rem; line-height: 1.5; color: var(--aa-ink); max-width: 40ch; }
+.aa-intro p { max-width: 62ch; }
+
+h2.aa-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
+
+/* people: one card each, email as the action */
+.aa-people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0 0;
+}
+
+.aa-person {
+  border: 1px solid var(--aa-rule);
+  border-top: 3px solid var(--aa-ink);
+  border-radius: 6px;
+  padding: 1rem 1.15rem 1.1rem;
+}
+.aa-person p { margin: 0; line-height: 1.5; }
+.aa-person strong { display: block; font-size: 1.125rem; font-weight: 600; }
+.aa-person a { display: inline-block; margin-top: 0.5rem; font-weight: 600; }
+/* one line per fact: name / role / email */
+.aa-person p { display: flex; flex-direction: column; align-items: flex-start; }
+
+/* reasons to write: one column on phones, three side by side from tablet up
+   (auto-fit would leave the third item orphaned at mid widths) */
+.aa-reasons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 2rem;
+}
+@media (min-width: 760px) { .aa-reasons { grid-template-columns: repeat(3, 1fr); } }
+.aa-reason h3 { font-size: 1.125rem; font-weight: 600; margin: 0 0 0.35rem; border: 0; }
+.aa-reason p { margin: 0; color: var(--aa-ink); line-height: 1.5; }
