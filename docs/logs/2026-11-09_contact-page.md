@@ -2,7 +2,7 @@
 
 - Pulled the graphics repo (18 of Peter's own 11-06 commits; this clone was behind, nothing from Hunter).
 - `3_contact.qmd` rebuilt from the bare two-row table: intro (heading + lead, same rules as Remembrance), one card
-  per person (name, role, email at alerrt.org as before), "What to write about" in three columns (the data, a
+  per person (name, role, Texas State email; the alerrt.org addresses were replaced at Peter's request, Hunter's taken from the vehicle-attacks manuscript title page), "What to write about" in three columns (the data, a
   correction, using the data), and a "More from ALERRT" paragraph (ALERRTResearch.org, ALERRT.org, GitHub).
   No R, so the page renders without the sibling repos.
 - CSS appended to `aa-theme.css` (`.aa-intro`, `.aa-people`/`.aa-person`, `.aa-reasons`). The reasons grid is one

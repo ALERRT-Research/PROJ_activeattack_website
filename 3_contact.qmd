@@ -18,12 +18,12 @@ We are the two members of the ALERRT Center's research team who maintain the dat
 ::: {.aa-person}
 **M. Hunter Martaindale, Ph.D.**
 Director of Research, ALERRT Center
-[martaindale@alerrt.org](mailto:martaindale@alerrt.org)
+[hunter.martaindale@txstate.edu](mailto:hunter.martaindale@txstate.edu)
 :::
 ::: {.aa-person}
 **Peter T. Tanksley, Ph.D.**
 Research Scientist, ALERRT Center
-[tanksley@alerrt.org](mailto:tanksley@alerrt.org)
+[peter_tanksley@txstate.edu](mailto:peter_tanksley@txstate.edu)
 :::
 :::
 
