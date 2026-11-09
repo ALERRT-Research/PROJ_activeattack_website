@@ -37,8 +37,22 @@
   {
     "objectID": "3_contact.html",
     "href": "3_contact.html",
-    "title": "Contact Us",
+    "title": "Contact",
     "section": "",
-    "text": "Contact Us\nIf you have inquiries about the Active Attack Data or this website, you can contact the following members of the ALERRT Center using the emails below:\n\n\n\n\n\n\n\n\nName\nEmail\nPosition\n\n\n\n\nM. Hunter Martaindale, Ph.D.\nmartaindale@alerrt.org\nDirector of Research\n\n\nPeter T. Tanksley, Ph.D.\ntanksley@alerrt.org\nResearch Scientist"
+    "text": "Questions about the Active Attack Data, this website, or a name on the Remembrance page? Write to either of us.\nWe are the two members of the ALERRT Center’s research team who maintain the data and this site."
+  },
+  {
+    "objectID": "3_contact.html#what-to-write-about",
+    "href": "3_contact.html#what-to-write-about",
+    "title": "Contact",
+    "section": "What to write about",
+    "text": "What to write about\n\n\nThe data\nQuestions about how an attack is defined and counted, what a variable means, or how the figures were produced. The full dataset and codebook are on the Active Attacks page.\n\n\nA correction\nA name missing or wrong on the Remembrance page, or an error in a figure or number. Please tell us the attack’s date and location and, for a name, the source you are working from.\n\n\nUsing the data\nIf you use the data in research, reporting or training, we are glad to hear about it. Please credit the ALERRT Center’s Active Attack Data and link to activeattackdata.org."
+  },
+  {
+    "objectID": "3_contact.html#more-from-alerrt",
+    "href": "3_contact.html#more-from-alerrt",
+    "title": "Contact",
+    "section": "More from ALERRT",
+    "text": "More from ALERRT\nThe ALERRT Center at Texas State University trains first responders for active attacks, and its research team studies how these events unfold. Research publications and projects are at ALERRTResearch.org; training at ALERRT.org. The code behind this site is on GitHub."
   }
 ]
