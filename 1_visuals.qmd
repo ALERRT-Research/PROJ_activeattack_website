@@ -4,6 +4,9 @@ format:
   dashboard: 
     orientation: rows
     scrolling: true
+    theme:                               # the site's light/dark pair (navbar toggle); same as _quarto.yml
+      light: flatly
+      dark: [darkly, aa-dark.scss]
     css: [aa-theme.css, dashboard.css]   # format: html options in _quarto.yml do not reach dashboard pages
 resources: 
   - "www/"
@@ -95,34 +98,58 @@ tab_header("Timing",
 ### {.tabset width="62%"}
 
 ::: {.card .flow title="By year" expandable="true"}
+::: {.light-content}
 ![](www/univar_yr.png){fig-alt="By year"}
+:::
+::: {.dark-content}
+![](www/dark/univar_yr.png){fig-alt="By year"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_yr.png dname="aa_by_year" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_yr.png" download="aa_by_year.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_yr.png" download="aa_by_year_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="By month" expandable="true"}
+::: {.light-content}
 ![](www/univar_month.png){fig-alt="By month"}
+:::
+::: {.dark-content}
+![](www/dark/univar_month.png){fig-alt="By month"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_month.png dname="aa_by_month" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_month.png" download="aa_by_month.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_month.png" download="aa_by_month_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="By day of the week" expandable="true"}
+::: {.light-content}
 ![](www/univar_wday.png){fig-alt="By day of the week"}
+:::
+::: {.dark-content}
+![](www/dark/univar_wday.png){fig-alt="By day of the week"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_wday.png dname="aa_by_wday" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_wday.png" download="aa_by_wday.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_wday.png" download="aa_by_wday_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="By hour of the day" expandable="true"}
+::: {.light-content}
 ![](www/univar_hr.png){fig-alt="By hour of the day"}
+:::
+::: {.dark-content}
+![](www/dark/univar_hr.png){fig-alt="By hour of the day"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_hr.png dname="aa_by_hour" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_hr.png" download="aa_by_hour.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_hr.png" download="aa_by_hour_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
@@ -229,26 +256,44 @@ tab_header("Attackers",
 ### {.tabset width="62%"}
 
 ::: {.card .flow title="Race and ethnicity" expandable="true"}
+::: {.light-content}
 ![](www/univar_race.png){fig-alt="Race and ethnicity"}
+:::
+::: {.dark-content}
+![](www/dark/univar_race.png){fig-alt="Race and ethnicity"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_race.png dname="aa_by_race" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_race.png" download="aa_by_race.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_race.png" download="aa_by_race_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Age" expandable="true"}
+::: {.light-content}
 ![](www/univar_age.png){fig-alt="Age"}
+:::
+::: {.dark-content}
+![](www/dark/univar_age.png){fig-alt="Age"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_age.png dname="aa_by_age" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_age.png" download="aa_by_age.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_age.png" download="aa_by_age_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Weapon" expandable="true"}
+::: {.light-content}
 ![](www/univar_weapon.png){fig-alt="Weapon"}
+:::
+::: {.dark-content}
+![](www/dark/univar_weapon.png){fig-alt="Weapon"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_weapon.png dname="aa_by_weapon" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_weapon.png" download="aa_by_weapon.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_weapon.png" download="aa_by_weapon_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
@@ -372,34 +417,58 @@ tab_header("Locations",
 ### {.tabset width="62%"}
 
 ::: {.card .flow title="Location type" expandable="false"}
+::: {.light-content}
 ![](www/univar_loc.png){fig-alt="Location type"}
+:::
+::: {.dark-content}
+![](www/dark/univar_loc.png){fig-alt="Location type"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_loc.png dname="aa_by_loc_type" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_loc.png" download="aa_by_loc_type.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_loc.png" download="aa_by_loc_type_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Relationship to the location" expandable="true"}
+::: {.light-content}
 ![](www/univar_rel.png){fig-alt="Relationship to the location"}
+:::
+::: {.dark-content}
+![](www/dark/univar_rel.png){fig-alt="Relationship to the location"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/univar_rel.png dname="aa_by_rel_type" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/univar_rel.png" download="aa_by_rel_type.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/univar_rel.png" download="aa_by_rel_type_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Relationship by location type" expandable="true"}
+::: {.light-content}
 ![](www/bivar_loctype_rel.png){fig-alt="Relationship by location type"}
+:::
+::: {.dark-content}
+![](www/dark/bivar_loctype_rel.png){fig-alt="Relationship by location type"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/bivar_loctype_rel.png dname="aa_rel_loctype" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/bivar_loctype_rel.png" download="aa_rel_loctype.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_loctype_rel.png" download="aa_rel_loctype_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Time of day by location type" expandable="true"}
+::: {.light-content}
 ![](www/bivar_loc_hr.png){fig-alt="Time of day by location type"}
+:::
+::: {.dark-content}
+![](www/dark/bivar_loc_hr.png){fig-alt="Time of day by location type"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/bivar_loc_hr.png dname="aa_hour_by_log_type" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/bivar_loc_hr.png" download="aa_hour_by_log_type.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_loc_hr.png" download="aa_hour_by_log_type_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
@@ -526,28 +595,40 @@ tab_header("Casualties",
 ### {.tabset width="62%"}
 
 ::: {.card .flow title="Attacks and casualties by year" expandable="true"}
+::: {.light-content}
 ![](www/bivar_eventkilled.png){fig-alt="Attacks and casualties by year"}
+:::
+::: {.dark-content}
+![](www/dark/bivar_eventkilled.png){fig-alt="Attacks and casualties by year"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/bivar_eventkilled.png dname="attack_killed_year" label="Download PNG" >}}
+<a class="aa-dl light-content" href="www/bivar_eventkilled.png" download="attack_killed_year.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_eventkilled.png" download="attack_killed_year_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
 :::
 :::
 
 ::: {.card .flow title="Wounded and killed per attack" expandable="true"}
-<iframe class="aa-widget" src="www/bivar_wound_kill.html" title="Interactive plot" scrolling="no"></iframe>
+<iframe class="aa-widget light-content" src="www/bivar_wound_kill.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
+<iframe class="aa-widget dark-content" src="www/dark/bivar_wound_kill.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
 
 ::: {.aa-downloads}
-{{< downloadthis www/bivar_wound_kill.png dname="wounded_fatalities_year" label="Download PNG" >}}
-{{< downloadthis www/bivar_wound_kill.html dname="wounded_fatalities_year" label="Download interactive (HTML)" >}}
+<a class="aa-dl light-content" href="www/bivar_wound_kill.png" download="wounded_fatalities_year.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_wound_kill.png" download="wounded_fatalities_year_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl light-content" href="www/bivar_wound_kill.html" download="wounded_fatalities_year.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_wound_kill.html" download="wounded_fatalities_year_dark.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
 :::
 :::
 
 ::: {.card .flow title="Wounded and killed by weapon" expandable="true"}
-<iframe class="aa-widget" src="www/bivar_kill_weapon.html" title="Interactive plot" scrolling="no"></iframe>
+<iframe class="aa-widget light-content" src="www/bivar_kill_weapon.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
+<iframe class="aa-widget dark-content" src="www/dark/bivar_kill_weapon.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
 
 ::: {.aa-downloads}
-{{< downloadthis www/bivar_kill_weapon.png dname="fatalities_weapon_type" label="Download PNG" >}}
-{{< downloadthis www/bivar_kill_weapon.html dname="fatalities_weapon_type" label="Download interactive (HTML)" >}}
+<a class="aa-dl light-content" href="www/bivar_kill_weapon.png" download="fatalities_weapon_type.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_kill_weapon.png" download="fatalities_weapon_type_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl light-content" href="www/bivar_kill_weapon.html" download="fatalities_weapon_type.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
+<a class="aa-dl dark-content" href="www/dark/bivar_kill_weapon.html" download="fatalities_weapon_type_dark.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
 :::
 :::
 
@@ -644,19 +725,28 @@ tab_header("Across the USA",
 ### {.tabset width="62%"}
 
 ::: {.card .flow title="Attacks and fatalities by state" expandable="true"}
-<iframe class="aa-widget" src="www/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no"></iframe>
+<iframe class="aa-widget light-content" src="www/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
+<iframe class="aa-widget dark-content" src="www/dark/bicol_map_attackxkilled.html" title="Interactive plot" scrolling="no" loading="lazy"></iframe>
 
 ::: {.aa-downloads}
-{{< downloadthis www/bicol_map_attackxkilled.png dname="aa_attack_fatalities_map" label="Download PNG" >}}
-{{< downloadthis www/bicol_map_attackxkilled.html dname="aa_attack_fatalities_map" label="Download interactive (HTML)" >}}
+<a class="aa-dl light-content" href="www/bicol_map_attackxkilled.png" download="aa_attack_fatalities_map.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl dark-content" href="www/dark/bicol_map_attackxkilled.png" download="aa_attack_fatalities_map_dark.png"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download PNG</a>
+<a class="aa-dl light-content" href="www/bicol_map_attackxkilled.html" download="aa_attack_fatalities_map.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
+<a class="aa-dl dark-content" href="www/dark/bicol_map_attackxkilled.html" download="aa_attack_fatalities_map_dark.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download interactive (HTML)</a>
 :::
 :::
 
 ::: {.card .flow title="Attacks by year (animation)" expandable="true"}
+::: {.light-content}
 ![](www/rolling_map.gif){fig-alt="Attacks by year (animation)"}
+:::
+::: {.dark-content}
+![](www/dark/rolling_map.gif){fig-alt="Attacks by year (animation)"}
+:::
 
 ::: {.aa-downloads}
-{{< downloadthis www/rolling_map.gif dname="aa_attacks_year_map" label="Download GIF" >}}
+<a class="aa-dl light-content" href="www/rolling_map.gif" download="aa_attacks_year_map.gif"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download GIF</a>
+<a class="aa-dl dark-content" href="www/dark/rolling_map.gif" download="aa_attacks_year_map_dark.gif"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download GIF</a>
 :::
 :::
 

@@ -87,61 +87,29 @@ update_aa_graphics <- function(){
     return(invisible(NULL))
   }
 
-  
-  #timing
-  copy_ifelse_checksums("www/univar_yr.png",
-                        "../PROJ_activeattack_graphics/output/univar_yr.png")
-  copy_ifelse_checksums("www/univar_month.png",
-                        "../PROJ_activeattack_graphics/output/univar_month.png")
-  copy_ifelse_checksums("www/univar_wday.png",
-                        "../PROJ_activeattack_graphics/output/univar_wday.png")
-  copy_ifelse_checksums("www/univar_hr.png",
-                        "../PROJ_activeattack_graphics/output/univar_hr.png")
-  
-  #attackers
-  copy_ifelse_checksums("www/univar_race.png",
-                        "../PROJ_activeattack_graphics/output/univar_race.png")
-  copy_ifelse_checksums("www/univar_age.png",
-                        "../PROJ_activeattack_graphics/output/univar_age.png")
-  copy_ifelse_checksums("www/univar_weapon.png",
-                        "../PROJ_activeattack_graphics/output/univar_weapon.png")
-  
-  #locations
-  copy_ifelse_checksums("www/univar_loc.png",
-                        "../PROJ_activeattack_graphics/output/univar_loc.png")
-  copy_ifelse_checksums("www/univar_rel.png",
-                        "../PROJ_activeattack_graphics/output/univar_rel.png")
-  copy_ifelse_checksums("www/bivar_loctype_rel.png",
-                        "../PROJ_activeattack_graphics/output/bivar_loctype_rel.png")
-  copy_ifelse_checksums("www/bivar_loc_hr.png",
-                        "../PROJ_activeattack_graphics/output/bivar_loc_hr.png")
-  
-  #fatalities
-  copy_ifelse_checksums("www/bivar_eventkilled.png",
-                        "../PROJ_activeattack_graphics/output/bivar_eventkilled.png")
-  # copy_ifelse_checksums("www/bivar_kill_yr.png",
-  #                       "../PROJ_activeattack_graphics/output/bivar_kill_yr.png")
-  # copy_ifelse_checksums("www/bivar_kill_year.html",
-  #                       "../PROJ_activeattack_graphics/output/bivar_kill_year.html")
-  copy_ifelse_checksums("www/bivar_kill_weapon.png",
-                        "../PROJ_activeattack_graphics/output/bivar_kill_weapon.png")
-  copy_ifelse_checksums("www/bivar_kill_weapon.html",
-                        "../PROJ_activeattack_graphics/output/bivar_kill_weapon.html")
-  copy_ifelse_checksums("www/bivar_wound_kill.png",
-                        "../PROJ_activeattack_graphics/output/bivar_wound_kill.png")
-  copy_ifelse_checksums("www/bivar_wound_kill.html",
-                        "../PROJ_activeattack_graphics/output/bivar_wound_kill.html")
-  
-  #geospatial
-  copy_ifelse_checksums("www/rolling_map.gif",
-                        "../PROJ_activeattack_graphics/output/rolling_map.gif")
-  copy_ifelse_checksums("www/bicol_map_attackxkilled.png",
-                        "../PROJ_activeattack_graphics/output/bicol_map_attackxkilled.png")
-  #fact sheet: latest-year map (web tab and PDF)
-  copy_ifelse_checksums("www/map_latest_year.svg",
-                        "../PROJ_activeattack_graphics/output/map_latest_year.svg")
-  copy_ifelse_checksums("www/bicol_map_attackxkilled.html",
-                        "../PROJ_activeattack_graphics/output/bicol_map_attackxkilled.html")
+  #every figure the site shows, light at www/<file> and dark at www/dark/<file>
+  #(graphics renders the dark twins with AA_MODE=dark into output/dark/)
+  figs <- c(
+    #timing
+    "univar_yr.png", "univar_month.png", "univar_wday.png", "univar_hr.png",
+    #attackers
+    "univar_race.png", "univar_age.png", "univar_weapon.png",
+    #locations
+    "univar_loc.png", "univar_rel.png", "bivar_loctype_rel.png", "bivar_loc_hr.png",
+    #casualties
+    "bivar_eventkilled.png", "bivar_kill_weapon.png", "bivar_kill_weapon.html",
+    "bivar_wound_kill.png", "bivar_wound_kill.html",
+    #geospatial
+    "rolling_map.gif", "bicol_map_attackxkilled.png", "bicol_map_attackxkilled.html",
+    #fact sheet / home: latest-year map
+    "map_latest_year.svg")
+  dir.create("www/dark", showWarnings = FALSE)
+  for (f in figs) {
+    copy_ifelse_checksums(file.path("www", f), file.path("../PROJ_activeattack_graphics/output", f))
+    dark <- file.path("../PROJ_activeattack_graphics/output/dark", f)
+    if (file.exists(dark)) copy_ifelse_checksums(file.path("www/dark", f), dark)
+    else warning("No dark twin for ", f, call. = FALSE)
+  }
 }
 
 update_aa_victim_scroll <- function() {

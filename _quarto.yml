@@ -28,7 +28,9 @@ website:
 
 format:
   html:
-    theme: flatly
+    theme:
+      light: flatly
+      dark: [darkly, aa-dark.scss]
     css: [aa-theme.css, styles.css]
     toc: true
     

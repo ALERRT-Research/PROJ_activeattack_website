@@ -9,6 +9,13 @@
 # key numbers: a named character vector, names are the labels, e.g.
 #   c("Attacks, 2000-2025" = "634", "In 2025" = "37")
 # latest: names of entries to set in maroon (the latest year, as everywhere)
+# an image in both themes: www/<file> and www/dark/<file>, Quarto shows one
+aa_img_pair <- function(src, alt, class = "") {
+  dark <- sub("^www/", "www/dark/", src)
+  paste0('<img class="light-content ', class, '" src="', src, '" alt="', alt, '">',
+         '<img class="dark-content ', class, '" src="', dark, '" alt="', alt, '">')
+}
+
 aa_stats_html <- function(stats, latest = character()) {
   if (!length(stats)) return("")
   cls <- ifelse(names(stats) %in% latest, ' class="aa-latest"', "")
@@ -49,8 +56,8 @@ home_hero <- function(d) {
     aa_stats_html(stats),
     '</div>',
     '<figure class="aa-hero-map">',
-    '<img src="www/map_latest_year.svg" alt="Map of the United States with one dot for each of the ',
-    n_latest, ' active attacks in ', yrs[2], '">',
+    aa_img_pair("www/map_latest_year.svg", paste0("Map of the United States with one dot for each of the ",
+                n_latest, " active attacks in ", yrs[2])),
     '<figcaption>The ', n_latest, ' attacks in ', yrs[2], ', one dot each</figcaption>',
     '</figure>',
     '</div>'))
@@ -73,7 +80,8 @@ home_cards <- function(d) {
               paste0("The key numbers for ", yrs[2], ", with a PDF to share"),
               "The full dataset, its codebook, and how to cite it",
               "The names of the people who were killed"),
-    col   = c("#b8843f", "#3d6b9e", "#3f8a73", "#7d68ad", "#1f2a36", "#1f2a36", "#1f2a36", "#1f2a36"))
+    col   = c("var(--aa-tab-timing)", "var(--aa-tab-attackers)", "var(--aa-tab-locations)",
+              "var(--aa-tab-casualties)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)", "var(--aa-ink)"))
   cards <- paste0('<a class="aa-home-link" href="', links$href,
                   '" style="--aa-tab:', links$col, '"><strong>', links$title,
                   '</strong><span>', links$text, '</span></a>', collapse = "")

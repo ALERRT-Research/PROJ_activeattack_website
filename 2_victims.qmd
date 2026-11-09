@@ -3,7 +3,6 @@ pagetitle: "Remembrance"
 format:
   html:
     toc: false
-    theme: "flatly"
 ---
 
 ```{r, packages_data_fns}

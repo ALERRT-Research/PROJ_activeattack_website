@@ -3,7 +3,6 @@ pagetitle: "Codebook"
 format:
   html:
     toc: false
-    theme: "flatly"
 ---
 
 ```{r}

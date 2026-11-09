@@ -49,10 +49,10 @@
 
 /* each tab's colour matches its figures; maroon stays for the latest year */
 /* --aa-tab-bar: the same hue deep enough for white text (>= 4.5:1) */
-#timing     { --aa-tab: #b8843f; --aa-tab-bar: #8a6026; }
-#attackers  { --aa-tab: #3d6b9e; --aa-tab-bar: #3d6b9e; }
-#locations  { --aa-tab: #3f8a73; --aa-tab-bar: #2f6e5b; }
-#casualties { --aa-tab: #7d68ad; --aa-tab-bar: #6c5a9c; }
+#timing     { --aa-tab: var(--aa-tab-timing);     --aa-tab-bar: var(--aa-tab-bar-timing); }
+#attackers  { --aa-tab: var(--aa-tab-attackers);  --aa-tab-bar: var(--aa-tab-bar-attackers); }
+#locations  { --aa-tab: var(--aa-tab-locations);  --aa-tab-bar: var(--aa-tab-bar-locations); }
+#casualties { --aa-tab: var(--aa-tab-casualties); --aa-tab-bar: var(--aa-tab-bar-casualties); }
 #across-the-usa, #download-the-data { --aa-tab: var(--aa-ink); --aa-tab-bar: var(--aa-ink); }
 
 .quarto-dashboard .card.aa-head {
@@ -109,7 +109,7 @@
 .aa-subhead {
   display: block;
   font-weight: 600;
-  color: #fff;
+  color: var(--aa-paper);
   background: var(--aa-tab-bar, var(--aa-ink));
   border-radius: 4px;
   padding: 0.3rem 0.7rem;
@@ -380,7 +380,7 @@
 
 /* the latest year reads straight down every table */
 #fact-sheet .fs-curr { background: var(--aa-band); }
-#fact-sheet thead .fs-curr { background: var(--aa-maroon); color: #fff; }
+#fact-sheet thead .fs-curr { background: var(--aa-maroon); color: var(--aa-paper); }
 .quarto-dark #fact-sheet thead .fs-curr { color: var(--aa-paper); }
 #fact-sheet td.fs-curr { font-weight: 600; color: var(--aa-maroon); }
 
@@ -518,3 +518,21 @@
 }
 .quarto-dashboard .aa-cite p { margin: 0; }
 .quarto-dashboard .aa-downloads .aa-text-link { align-self: center; margin-left: 0.25rem; }
+
+/* figure downloads are plain links styled as the buttons (no base64 embedding,
+   which had grown the page past 13 MB); one per theme inside the light/dark pair */
+.quarto-dashboard .card-body a.aa-dl,
+.quarto-dashboard .card-body a.aa-dl:hover {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--aa-ink);
+  color: var(--aa-paper);
+  border-radius: 4px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.quarto-dashboard .card-body a.aa-dl:hover { background: var(--aa-muted); }
+.quarto-dashboard .card-body a.aa-dl svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; }

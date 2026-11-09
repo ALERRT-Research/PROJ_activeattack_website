@@ -3,7 +3,6 @@ pagetitle: "Contact"
 format:
   html:
     toc: false
-    theme: "flatly"
 ---
 
 ::: {.aa-intro}

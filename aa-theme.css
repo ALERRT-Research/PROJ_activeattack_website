@@ -22,18 +22,29 @@
   --aa-maroon: #9e1b32;   /* brighter than the logo maroon #501214, so the latest year reads first */
   --aa-band: rgba(158, 27, 50, 0.08);
   --aa-font: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  /* one colour per Active Attacks tab (figures use the same set; graphics 0_packages.R) */
+  --aa-tab-timing: #b8843f;     --aa-tab-bar-timing: #8a6026;
+  --aa-tab-attackers: #3d6b9e;  --aa-tab-bar-attackers: #3d6b9e;
+  --aa-tab-locations: #3f8a73;  --aa-tab-bar-locations: #2f6e5b;
+  --aa-tab-casualties: #7d68ad; --aa-tab-bar-casualties: #6c5a9c;
 }
 
-/* dark values, ready for the light/dark toggle (not switched on yet) */
-.quarto-dark {
+/* dark values (the navbar toggle adds .quarto-dark to body). Tab colours are
+   the brighter set the dark figures use; the bar colour is the same hue deep
+   enough for dark text */
+body.quarto-dark {
   --aa-ink: #e4e8ec;
   --aa-paper: #141a21;
   --aa-surface: #1b232c;
   --aa-rule: #2e3843;
   --aa-muted: #9aa5b1;
   --aa-prev: #5b6672;
-  --aa-maroon: #d29aa0;
-  --aa-band: rgba(210, 154, 160, 0.10);
+  --aa-maroon: #e3566f;
+  --aa-band: rgba(227, 86, 111, 0.14);
+  --aa-tab-timing: #dba54c;     --aa-tab-bar-timing: #dba54c;
+  --aa-tab-attackers: #5f9ce3;  --aa-tab-bar-attackers: #5f9ce3;
+  --aa-tab-locations: #4fb48f;  --aa-tab-bar-locations: #4fb48f;
+  --aa-tab-casualties: #a892e6; --aa-tab-bar-casualties: #a892e6;
 }
 
 /*--type---------------------------------------------------------------------*/
@@ -311,7 +322,7 @@ button.downloadthis {
   margin-left: 0.25rem;
   border-radius: 3px;
   background: var(--aa-ink);
-  color: #fff;
+  color: var(--aa-paper);
   vertical-align: 0.1em;
 }
 .rem-tag.rem-minor { background: var(--aa-surface); color: var(--aa-ink); border: 1px solid var(--aa-rule); }
@@ -513,3 +524,8 @@ ul.cb-levels li span { color: var(--aa-muted); font-variant-numeric: tabular-num
   .cb-missing::before { content: "Missing: "; color: var(--aa-muted); }
   ul.cb-levels { columns: 1; margin-top: 0.25rem; }
 }
+
+/*--light/dark pairs of figures (Quarto hides the other theme's copy)-------------*/
+/* !important: the pair members also carry their own display rules (block
+   figures, inline-flex download links, block iframes), which would otherwise win */
+body.quarto-light .dark-content, body.quarto-dark .light-content { display: none !important; }

@@ -93,8 +93,8 @@ fs_tiles_html <- function(fs, map_src = "www/map_latest_year.svg") {
   map <- paste0(
     '<figure class="fs-map">',
     '<h3 class="fs-tile-title">Where the ', n, ' attacks in ', yrs$curr, ' happened</h3>',
-    '<img src="', map_src, '" alt="Map of the United States with one dot for each of the ',
-    n, ' active attacks in ', yrs$curr, '">',
+    aa_img_pair(map_src, paste0("Map of the United States with one dot for each of the ",
+                n, " active attacks in ", yrs$curr)),
     '<figcaption class="fs-tile-note">One dot per attack; attacks in the same place overlap.</figcaption>',
     '</figure>')
 

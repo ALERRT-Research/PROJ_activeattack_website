@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+// aa-dark.scss: Bootstrap variables for the site's dark theme, layered over
+// darkly so cards, tables, inputs and the footer use the --aa-* dark tokens
+// (aa-theme.css). The navbar keeps its slate in both modes.
+$body-bg:            #141a21;
+$body-color:         #e4e8ec;
+$card-bg:            #1b232c;
+$card-border-color:  #2e3843;
+$border-color:       #2e3843;
+$input-bg:           #1b232c;
+$input-border-color: #2e3843;
+$input-color:        #e4e8ec;
+$table-color:        #e4e8ec;
+$table-border-color: #2e3843;
+$link-color:         #e4e8ec;
+$navbar-bg:          #2c3e50;
+$footer-bg:          #141a21;
+$footer-fg:          #9aa5b1;
+$dropdown-bg:        #1b232c;
+
+/*-- scss:rules --*/
+.navbar { background-color: #2c3e50 !important; }
+.nav-footer { background-color: #141a21; color: #9aa5b1; }
