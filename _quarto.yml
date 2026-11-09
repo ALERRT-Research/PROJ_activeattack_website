@@ -5,6 +5,7 @@ project:
     - "*.qmd"
   resources: 
   - "CNAME"
+  - "www/"        # figures, maps, video; every page may link into it
   
 website:
   title: "Active Attack Data Explorer"
