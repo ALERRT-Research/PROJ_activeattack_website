@@ -43,9 +43,13 @@ remembrance_names(victims)
 ```
 
 ::: {.rem-video}
-For memorial displays, a scrolling video of these names is available.
+### Memorial video
 
-{{< downloadthis www/victim_scroll.mp4 dname="aa_victims" label="Download the memorial video (MP4)" >}}
+For memorial displays: the names above, rolling by year, with a short introduction. 1080p, about six and a half minutes, no sound.
+
+<video class="rem-player" controls preload="none" poster="www/victim_scroll_poster.png" src="www/victim_scroll.mp4"></video>
+
+<a class="aa-dl" href="www/victim_scroll.mp4" download="aa_remembrance_scroll.mp4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Download the video (MP4)</a>
 :::
 
 ::: {.rem-dnt}

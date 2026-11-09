@@ -119,9 +119,11 @@ update_aa_victim_scroll <- function() {
   }
 
   
-  #victim scroll
+  #victim scroll and its poster (the title card, for the in-page player)
   copy_ifelse_checksums("www/victim_scroll.mp4",
                         "../PROJ_activeattack_graphics/output/victim_scroll.mp4")
+  copy_ifelse_checksums("www/victim_scroll_poster.png",
+                        "../PROJ_activeattack_graphics/output/preview/scroll_title.png")
 }
 
 #names for the Remembrance page (committed to data/ so CI renders without DATA_aa)
