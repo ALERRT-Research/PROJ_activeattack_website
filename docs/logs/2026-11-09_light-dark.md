@@ -55,5 +55,7 @@ page. Over http the reload re-applies the saved choice (a flicker); on `file://`
 variable and Chrome also blocks the module scripts (CORS), so the reload lands back in light. Fix: `aa-head.html`
 (`include-in-header` on every page) defines a no-op `window.toggleGiscusIfUsed` before Quarto's script. After it,
 the click switches in place over http and on local files, no reload. The dashboard header's own toggle is hidden in
-`dashboard.css` (the site navbar keeps the one). A `jQuery is not defined` page error on the dashboard predates
-this work (checked against the live site).
+`dashboard.css` (the site navbar keeps the one). A `jQuery is not defined` page error on the local dashboard comes
+from Quarto 1.7.18's own `quarto-dashboard/datatables.min.js`, which it loads before jQuery; the deploy runner
+(quarto-actions, latest release: 1.11.9 on the live page) does not emit that script, and the live page has no errors.
+Verify the toggle on the live site after the push, since the local Quarto is four minor versions behind CI.
