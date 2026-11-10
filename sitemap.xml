@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://activeattackdata.org/publications.html</loc>
-    <lastmod>2026-11-09T21:05:27.150Z</lastmod>
+    <lastmod>2026-11-10T22:53:41.053Z</lastmod>
   </url>
   <url>
-    <loc>https://activeattackdata.org/codebook.html</loc>
-    <lastmod>2026-11-09T21:05:27.138Z</lastmod>
-  </url>
-  <url>
-    <loc>https://activeattackdata.org/2_victims.html</loc>
-    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
-  </url>
-  <url>
-    <loc>https://activeattackdata.org/1_visuals.html</loc>
-    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
+    <loc>https://activeattackdata.org/datasets.html</loc>
+    <lastmod>2026-11-10T22:53:41.048Z</lastmod>
   </url>
   <url>
     <loc>https://activeattackdata.org/3_contact.html</loc>
-    <lastmod>2026-11-09T21:05:27.137Z</lastmod>
+    <lastmod>2026-11-10T22:53:41.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/1_visuals.html</loc>
+    <lastmod>2026-11-10T22:53:41.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/2_victims.html</loc>
+    <lastmod>2026-11-10T22:53:41.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://activeattackdata.org/codebook.html</loc>
+    <lastmod>2026-11-10T22:53:41.036Z</lastmod>
   </url>
   <url>
     <loc>https://activeattackdata.org/index.html</loc>
-    <lastmod>2026-11-09T21:05:27.150Z</lastmod>
+    <lastmod>2026-11-10T22:53:41.053Z</lastmod>
   </url>
 </urlset>
