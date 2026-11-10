@@ -54,4 +54,4 @@ Plan: `plans/2026-11-10_derivative-datasets-trim.md`. All edits on the shared dr
 
 ## Next
 
-- Download pages for both datasets (post-conference).
+- Download pages for both datasets, **before the conference** (Peter, 11-10: announced there as hosted on the site; target ~11-13).
