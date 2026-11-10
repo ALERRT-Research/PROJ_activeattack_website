@@ -8,7 +8,7 @@ importance: medium
 path: /Users/PTT2/Documents/GitHub/PROJ_activeattack_website
 deadline: 2026-11-13  # site updated before the ALERRT conference, Nov 16–19 (Peter, 2026-10-16; approximate)
 target: Site updated before the ALERRT conference (Nov 16–19, 2026): core update done 11-09; the K-12 door security and officer shot datasets must be hosted by ~11-13 (announced at the conference)
-effort_remaining: push the More Data page; then conference-week watch
+effort_remaining: conference-week watch; tell Hunter about the export redaction rules
 weekly_commitment: ~3h through 11-13
 last_updated: 2026-11-10
 blockers: null
@@ -35,7 +35,7 @@ sync: github
 
 - [x] **Fact sheet retool** done 11-06 (web tab + 2-page Typst PDF + latest-year map), pushed; live once the runner-pin deploy succeeds. PDF rebuild: `Rscript R/fact_sheet_pdf.R`; map: graphics `code/plots_latest_year_map.R`. See `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`
 - [x] **Site-wide look** done and pushed 11-06: page styling, figures (refined, muted palette), maps, tab headers/chart-first layout, map-led landing page, Remembrance names page; all live 11-06. **Contact page** (11-09, live) and **Download the Data tab**, **Codebook page + PDF** and a **suggested citation** (11-09, committed, not pushed; `docs/logs/2026-11-09_download-tab.md`, `2026-11-09_codebook.md`) in the new style. **Light/dark toggle** done 11-09: whole site + dark twin of every figure, widget, map and GIF; downloads follow the toggle; dashboard page 13.8 MB -> 1.2 MB (live 11-09 evening; `docs/logs/2026-11-09_light-dark.md`)
-- [ ] **Host the two derivative datasets before the conference** (announced at the conference). Built 11-10: `datasets.qmd` (More Data), CSV + codebook PDF each, citations; officer_shot attacker names redacted at export. **Committed, not pushed**: push, then tell Hunter about the redaction rules in `export_v2025.R` (`docs/logs/2026-11-10_derivative-datasets.md`)
+- [x] **Derivative datasets hosted** (pushed 11-10): More Data page (`datasets.qmd`), K-12 door security + officers shot, CSV + codebook PDF with cover thumbnails, citations; officer_shot attacker names redacted at export. Home tab dropped from the navbar. Still to do: tell Hunter about the redaction rules in `export_v2025.R` (`docs/logs/2026-11-10_derivative-datasets.md`)
 - [ ] Tell Hunter: victims list vs events deaths differ by year (2016 88 vs 81, 2017 149 vs 147, 2024 29 vs 32; 13 rows unnamed), see log 11-06; scope settled; DATA_aa relationship recode fix + church/military base levels (11-06, `docs/logs/2026-11-06_fact-sheet-stats-and-data-fix.md`); 09-09 fixes; ggiraph 0.9.6 pin
 - Delete `ALERRT-Research/PROJ_activeattack_app` on GitHub (local clone already removed 2026-09-24). Blocked on Peter's side: needs `gh auth refresh -h github.com -s delete_repo` in a real terminal AND admin on the org repo (API returned 403 without it); web UI under repo Settings is the fallback, or ask Hunter if he owns the org
 
