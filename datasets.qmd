@@ -51,10 +51,20 @@ knitr::asis_output(aa_stats_html(c("Attacks" = nrow(k12_ev), "Doors" = nrow(k12_
                                    "Years" = yr_span(k12_ev$year), "Version" = "2025")))
 ```
 
+::: {.ds-download}
+![](www/k12_door_security_codebook_v2025_preview.png){.ds-thumb alt="Cover of the K-12 Door Security Dataset codebook"}
+
+::: {.ds-download-text}
+**Two CSV files and a PDF codebook**
+
+The codebook describes every variable in both files: what it records, its values, and how often it is missing.
+
 ::: {.aa-downloads .cb-downloads}
 {{< downloadthis data/derived/k12_door_security_events_v2025.csv dname="k12_door_security_events_v2025" label="Events (CSV)" >}}
 {{< downloadthis data/derived/k12_door_security_doors_v2025.csv dname="k12_door_security_doors_v2025" label="Doors (CSV)" >}}
 {{< downloadthis data/derived/k12_door_security_codebook_v2025.pdf dname="k12_door_security_codebook_v2025" label="Codebook (PDF)" >}}
+:::
+:::
 :::
 :::
 
@@ -106,9 +116,19 @@ knitr::asis_output(aa_stats_html(c("Officers" = nrow(ofc), "Incidents" = length(
                                    "Years" = yr_span(ofc_yr), "Version" = "2025")))
 ```
 
+::: {.ds-download}
+![](www/officer_shot_codebook_v2025_preview.png){.ds-thumb alt="Cover of the Officers Shot in Active Shooter Incidents codebook"}
+
+::: {.ds-download-text}
+**A CSV file and a PDF codebook**
+
+The codebook describes every variable, the rules for who counts as shot, and the sources behind the coding.
+
 ::: {.aa-downloads .cb-downloads}
 {{< downloadthis data/derived/officer_shot_data_v2025.csv dname="officer_shot_data_v2025" label="Data (CSV)" >}}
 {{< downloadthis data/derived/officer_shot_codebook_v2025.pdf dname="officer_shot_codebook_v2025" label="Codebook (PDF)" >}}
+:::
+:::
 :::
 :::
 

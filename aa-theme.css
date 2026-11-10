@@ -448,6 +448,16 @@ h2.aa-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
 
 h2.cb-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
 h3.cb-h3 { font-size: 1.125rem; font-weight: 600; border: 0; margin: 2rem 0 0.75rem; }  /* datasets.qmd: citation under each dataset */
+/* datasets.qmd: codebook cover beside the downloads, as on the Fact Sheet tab */
+.ds-download {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem 1.25rem; align-items: start;
+  background: var(--aa-surface); border: 1px solid var(--aa-rule); border-radius: 6px;
+  padding: 1rem; max-width: 46rem;
+}
+.ds-download p { margin: 0 0 0.5rem; }
+.ds-download figure, .ds-download p:has(> img) { margin: 0; }
+.ds-download .cb-downloads { margin-top: 0.75rem; }
+.ds-thumb { display: block; width: 5.5rem; height: auto; border: 1px solid var(--aa-rule); background: #fff; }
 
 .cb-reading {
   display: grid;

@@ -84,3 +84,10 @@ Data, so **CSV + codebook PDF only** (no RDS or xlsx on the site). Both codebook
 
 - Push (Peter's approval). Then tell Hunter: the redaction rule table lives in `export_v2025.R`, so any edit to
   those notes in his pipeline must keep the rules matching (the export stops otherwise).
+
+## Codebook covers and navbar (later still)
+
+- Navbar: Home tab dropped (the logo links to `index.html`); five items now.
+- Each dataset's downloads sit in a `.ds-download` panel beside the codebook's page-1 thumbnail, the Fact Sheet
+  pattern. `update_derived_data()` makes `www/<codebook>_preview.png` with `pdftoppm` (40 dpi) whenever the PDF is
+  newer than its thumbnail; the PNGs are committed for CI.

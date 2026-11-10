@@ -172,6 +172,17 @@ update_derived_data <- function() {
   for (f in derived_files) {
     copy_ifelse_checksums(file.path("data/derived", basename(f)), file.path(root, "data", "raw_data", f))
   }
+  # page-1 thumbnail of each codebook for its download panel, as for the fact sheet
+  # (poppler's pdftoppm); remade when the PDF is newer than its thumbnail
+  for (f in grep("\\.pdf$", derived_files, value = TRUE)) {
+    pdf   <- file.path("data/derived", basename(f))
+    thumb <- file.path("www", sub("\\.pdf$", "_preview", basename(f)))
+    if (!file.exists(paste0(thumb, ".png")) || file.mtime(pdf) > file.mtime(paste0(thumb, ".png"))) {
+      res <- system2("pdftoppm", c("-png", "-r", "40", "-f", "1", "-l", "1", "-singlefile", pdf, thumb),
+                     stdout = TRUE, stderr = TRUE)
+      if (!is.null(attr(res, "status"))) warning("Codebook preview not made: ", paste(res, collapse = " "))
+    }
+  }
 }
 
 #=function to format numbers inline============================================
