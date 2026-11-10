@@ -12,9 +12,8 @@ website:
   navbar:
     tools:
     logo: "www/alerrt_banner.png"
+    # no Home tab (2026-11-10): the logo links to index.html
     right:
-      - href: index.qmd #this needs to stay "index.qmd" to be recognized as the landing page
-        text: Home
       - href: 1_visuals.qmd
         text: Active Attacks
       - href: datasets.qmd
