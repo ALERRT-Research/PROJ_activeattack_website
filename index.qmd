@@ -54,6 +54,8 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 ## Updates {.aa-home-h2}
 
+-   *11/10/26* - New [More Data](datasets.html) page with two datasets built from the Active Attack Data: [K-12 door security](datasets.html#k-12-door-security) (54 school attacks and the 66 doors the attackers came up against) and [officers shot](datasets.html#officers-shot) (156 officers struck by gunfire in 75 active shooter incidents). Each comes as CSV with a PDF codebook and a suggested citation.
+
 -   *11/09/26* - New [Publications](publications.html) page: the research, reports and books that used the Active Attack Data, with a button to tell us about work of your own so we can list it.
 
 -   *11/09/26* - New memorial video on the Remembrance page: 1080p, the names rolling by year with officer and under-18 marked, playable on the page and downloadable.

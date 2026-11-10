@@ -55,3 +55,32 @@ Plan: `plans/2026-11-10_derivative-datasets-trim.md`. All edits on the shared dr
 ## Next
 
 - Download pages for both datasets, **before the conference** (Peter, 11-10: announced there as hosted on the site; target ~11-13).
+
+## Evening: More Data page built (plan `plans/2026-11-10_datasets-page.md`)
+
+Peter: one page, a citation per dataset, DOI later; and every dataset in the same format as the Active Attack
+Data, so **CSV + codebook PDF only** (no RDS or xlsx on the site). Both codebooks now describe the CSV only.
+
+- **Don't Name Them, officer shot.** The free text named attackers in 11 cells across 9 incidents (found by
+  matching against `offender.name` in DATA_aa's raw workbook, then reading every capitalized word that is not an
+  officer's name). Peter chose redaction at export: `export_v2025.R` carries a rule table (officer_id, column,
+  from, to, expected count) that swaps in "the attacker", stops if any rule misses, and stops if a known name
+  survives. The internal xlsx keeps the source text. Codebook states the policy. Officers and victims stay named
+  (Rougeau, case 67, is the trooper). K-12: no attacker names (hits were school names, race values, gun makers).
+- `0_set_up.R`: `update_derived_data()` copies the five files into `data/derived/` (committed for CI). The drive is
+  found through `AA_RESEARCH_DRIVE` or the Mac OneDrive mount; skipped in CI and with `AA_SKIP_UPDATE=1`.
+- `R/codebook.R`: `dataset_citation()`; `aa_citation()` now wraps it, with output identical to before (checked).
+- `datasets.qmd` ("More Data" in the navbar, after Active Attacks): per dataset, figures computed from the files,
+  download buttons, four reading notes, citation + BibTeX. Cross-links from the Download the Data tab and the
+  Codebook page; Home changelog entry.
+- CSS: `h3.cb-h3`; citation links wrap (`overflow-wrap: anywhere`); BibTeX blocks scroll inside their box
+  (also fixes the Codebook page at phone width).
+- Checks: full-site render before/after, visible text differs only by the new navbar item, the two link lines and
+  the changelog; no horizontal scroll at 375 px in light or dark (headless `--screenshot` lays narrow windows out
+  wider than asked, which looks like clipping; measure with Playwright instead); every download decodes to its
+  source file.
+
+## Next
+
+- Push (Peter's approval). Then tell Hunter: the redaction rule table lives in `export_v2025.R`, so any edit to
+  those notes in his pipeline must keep the rules matching (the export stops otherwise).

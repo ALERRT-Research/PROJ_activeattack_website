@@ -447,6 +447,7 @@ h2.aa-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
 .cb-downloads p { margin: 0; display: contents; }
 
 h2.cb-h2 { font-size: 1.5rem; border-bottom: 0; margin: 2.5rem 0 1rem; }
+h3.cb-h3 { font-size: 1.125rem; font-weight: 600; border: 0; margin: 2rem 0 0.75rem; }  /* datasets.qmd: citation under each dataset */
 
 .cb-reading {
   display: grid;
@@ -531,8 +532,9 @@ ul.cb-levels li span { color: var(--aa-muted); font-variant-numeric: tabular-num
 
 .cb-cite { background: var(--aa-surface); border-radius: 6px; padding: 1.1rem 1.4rem; }
 .cb-cite p:first-child { font-size: 1.0625rem; }
+.cb-cite a { overflow-wrap: anywhere; }  /* long dataset URLs (datasets.qmd) wrap at phone width */
 .cb-bibtex summary { cursor: pointer; color: var(--aa-muted); margin: 0.25rem 0 0.5rem; }
-.cb-bibtex pre { background: var(--aa-paper); border: 1px solid var(--aa-rule); border-radius: 4px; padding: 0.75rem 1rem; font-size: 0.8125rem; }
+.cb-bibtex pre { background: var(--aa-paper); border: 1px solid var(--aa-rule); border-radius: 4px; padding: 0.75rem 1rem; font-size: 0.8125rem; overflow-x: auto; }
 
 @media (max-width: 700px) {
   table.cb-table, table.cb-table thead, table.cb-table tbody, table.cb-table tr, table.cb-table td { display: block; width: auto; }

@@ -96,5 +96,5 @@ cat("```bibtex\n", cit$bibtex, "\n```\n", sep = "")
 
 </details>
 
-Questions about a variable, or a value that looks wrong: [Contact](3_contact.html).
+Questions about a variable, or a value that looks wrong: [Contact](3_contact.html). Related datasets (K-12 door security, officers shot) are on [More Data](datasets.html).
 :::

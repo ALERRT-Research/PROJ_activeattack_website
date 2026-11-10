@@ -1,0 +1,149 @@
+---
+pagetitle: "More Data"
+format:
+  html:
+    toc: false
+---
+
+```{r}
+#| include: false
+source("0_set_up.R")
+source("R/codebook.R")        # dataset_citation()
+source("R/page_helpers.R")    # aa_stats_html()
+update_derived_data()         # copies from the research drive; skipped in CI
+
+k12_ev  <- read.csv("data/derived/k12_door_security_events_v2025.csv")
+k12_dr  <- read.csv("data/derived/k12_door_security_doors_v2025.csv")
+ofc     <- read.csv("data/derived/officer_shot_data_v2025.csv",
+                    colClasses = c(officer_id = "character"))
+ofc_yr  <- as.integer(substr(ofc$date, 1, 4))
+
+yr_span <- function(y) paste0(min(y, na.rm = TRUE), "–", max(y, na.rm = TRUE))
+posted  <- "2026"   # year both datasets went up on the site (citation year)
+
+k12_cit <- dataset_citation("K-12 Door Security Dataset", "alerrt_k12_door_security", "2025", posted,
+                            "https://activeattackdata.org/datasets.html#k-12-door-security")
+ofc_cit <- dataset_citation("Officers Shot in Active Shooter Incidents", "alerrt_officers_shot", "2025", posted,
+                            "https://activeattackdata.org/datasets.html#officers-shot")
+
+bibtex_block <- function(cit) {
+  cat("<details class=\"cb-bibtex\"><summary>BibTeX</summary>\n\n```bibtex\n", cit$bibtex,
+      "\n```\n\n</details>\n", sep = "")
+}
+```
+
+::: {.aa-intro}
+# More data
+
+Two datasets built from the Active Attack Data: the doors attackers met in K-12 school attacks, and the officers shot in active shooter incidents.
+
+Each comes as CSV files with a PDF codebook, in the same form as the [Active Attack Data](1_visuals.html#download-the-data). Jump to [K-12 door security](#k-12-door-security) or [Officers shot](#officers-shot).
+:::
+
+## K-12 door security {#k-12-door-security .cb-h2}
+
+U.S. K-12 active shooter attacks and the doors the attackers came up against: whether each door was locked, barricaded or breached, and how the attacker got through.
+
+::: {.cb-facts}
+```{r}
+#| echo: false
+knitr::asis_output(aa_stats_html(c("Attacks" = nrow(k12_ev), "Doors" = nrow(k12_dr),
+                                   "Years" = yr_span(k12_ev$year), "Version" = "2025")))
+```
+
+::: {.aa-downloads .cb-downloads}
+{{< downloadthis data/derived/k12_door_security_events_v2025.csv dname="k12_door_security_events_v2025" label="Events (CSV)" >}}
+{{< downloadthis data/derived/k12_door_security_doors_v2025.csv dname="k12_door_security_doors_v2025" label="Doors (CSV)" >}}
+{{< downloadthis data/derived/k12_door_security_codebook_v2025.pdf dname="k12_door_security_codebook_v2025" label="Codebook (PDF)" >}}
+:::
+:::
+
+::: {.cb-reading}
+::: {.cb-reason}
+### Two files
+The events file has one row per attack (`{r} nrow(k12_ev)` rows, `{r} ncol(k12_ev)` variables): school, timing, victims by location, attackers, firearms and the response. The doors file has one row per door (`{r} nrow(k12_dr)` doors in `{r} length(unique(k12_dr$case_number))` attacks, `{r} ncol(k12_dr)` variables).
+:::
+::: {.cb-reason}
+### Linking them
+The files share one column, `case_number`. To look at doors by an event characteristic, such as school level, join the events file to the doors file on `case_number`.
+:::
+::: {.cb-reason}
+### Doors
+Each door is recorded as coded and grouped as in the 2026 report: lock type, status (locked, unlocked, propped), breach attempts, barricades, whether the attacker got through, and by what route.
+:::
+::: {.cb-reason}
+### Funding and report
+Collection of the `{r} yr_span(k12_ev$year)` data was funded by the Security Industry Association and first reported in ALERRT's *The Role of Locked Doors and Access Control in School-Based Active Shooter Events* (2026). Where this version differs from the report, this version is the corrected one.
+:::
+:::
+
+### Suggested citation {.cb-h3}
+
+::: {.cb-cite}
+```{r}
+#| echo: false
+knitr::asis_output(paste0("<p>", k12_cit$html, "</p>"))
+```
+
+For the `{r} yr_span(k12_ev$year)` findings, please also cite the 2026 report.
+
+```{r}
+#| echo: false
+#| results: asis
+bibtex_block(k12_cit)
+```
+:::
+
+## Officers shot {#officers-shot .cb-h2}
+
+Law enforcement officers struck by gunfire during active shooter incidents: where they were, how they were hit, and what they were doing at the time.
+
+::: {.cb-facts}
+```{r}
+#| echo: false
+knitr::asis_output(aa_stats_html(c("Officers" = nrow(ofc), "Incidents" = length(unique(ofc$case_id)),
+                                   "Killed" = sum(ofc$officer_killed == 1, na.rm = TRUE),
+                                   "Years" = yr_span(ofc_yr), "Version" = "2025")))
+```
+
+::: {.aa-downloads .cb-downloads}
+{{< downloadthis data/derived/officer_shot_data_v2025.csv dname="officer_shot_data_v2025" label="Data (CSV)" >}}
+{{< downloadthis data/derived/officer_shot_codebook_v2025.pdf dname="officer_shot_codebook_v2025" label="Codebook (PDF)" >}}
+:::
+:::
+
+::: {.cb-reading}
+::: {.cb-reason}
+### One row per officer
+`{r} nrow(ofc)` officers in `{r} length(unique(ofc$case_id))` incidents, `{r} ncol(ofc)` variables. Officers shot in the same incident share a `case_id`; incident-level columns repeat on each officer's row.
+:::
+::: {.cb-reason}
+### Who counts as shot
+An officer is included when struck by gunfire: wounds and grazes, rounds stopped by body armor or equipment, bullet fragments and ricochets, and fire from other officers (`blue_on_blue`). Injuries only from glass or debris are not counted. The codebook gives the full rules.
+:::
+::: {.cb-reason}
+### Linked to the Active Attack Data
+`aad_case_code` matches `case_code` in the Active Attack Data, so incident details (location, attacker, casualties) can be joined in. Officer details come from news and agency reports, prosecutor and court records, and FBI LEOKA.
+:::
+::: {.cb-reason}
+### Reading the file
+Read `officer_id` as text: officer 30.10 is not 30.1, and spreadsheet programs will merge them. Officers are named where their names were released; attackers are never named, and the notes say "the attacker" instead.
+:::
+:::
+
+### Suggested citation {.cb-h3}
+
+::: {.cb-cite}
+```{r}
+#| echo: false
+knitr::asis_output(paste0("<p>", ofc_cit$html, "</p>"))
+```
+
+```{r}
+#| echo: false
+#| results: asis
+bibtex_block(ofc_cit)
+```
+
+Questions about either dataset, or a value that looks wrong: [Contact](3_contact.html).
+:::

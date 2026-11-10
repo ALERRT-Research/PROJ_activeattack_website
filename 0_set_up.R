@@ -137,6 +137,43 @@ update_aa_victims <- function(version) {
                         glue("../DATA_aa/output/victims/victims_{version}.rds"))
 }
 
+#related datasets for the More Data page (datasets.qmd), committed to data/derived/
+#so CI renders without the shared research drive. Their source of truth is Hunter's
+#build on the drive (data/raw_data/k12_door_security, data/raw_data/officer_shot).
+#Set AA_RESEARCH_DRIVE to the "Martaindale, Hunter - Research" folder; on a Mac
+#with the library synced it is found without it.
+derived_files <- c(
+  k12_events   = "k12_door_security/k12_door_security_events_v2025.csv",
+  k12_doors    = "k12_door_security/k12_door_security_doors_v2025.csv",
+  k12_codebook = "k12_door_security/k12_door_security_codebook_v2025.pdf",
+  ofc_data     = "officer_shot/officer_shot_data_v2025.csv",
+  ofc_codebook = "officer_shot/officer_shot_codebook_v2025.pdf")
+
+find_research_drive <- function() {
+  root <- Sys.getenv("AA_RESEARCH_DRIVE")
+  if (!nzchar(root)) {
+    hits <- Sys.glob(file.path(path.expand("~"), "Library", "CloudStorage",
+                               "OneDrive-SharedLibraries-*", "Martaindale*Research"))
+    root <- if (length(hits)) hits[1] else ""
+  }
+  if (nzchar(root) && dir.exists(file.path(root, "data", "raw_data"))) root else NA_character_
+}
+
+update_derived_data <- function() {
+  if (Sys.getenv("AA_SKIP_UPDATE") == "1" || Sys.getenv("GITHUB_ACTIONS") == "true") {
+    return(invisible(NULL))
+  }
+  root <- find_research_drive()
+  if (is.na(root)) {
+    message("Research drive not found (set AA_RESEARCH_DRIVE): using the committed data/derived/ copies")
+    return(invisible(NULL))
+  }
+  dir.create("data/derived", showWarnings = FALSE)
+  for (f in derived_files) {
+    copy_ifelse_checksums(file.path("data/derived", basename(f)), file.path(root, "data", "raw_data", f))
+  }
+}
+
 #=function to format numbers inline============================================
 format_num <- scales::label_comma(big.mark = ",")
 

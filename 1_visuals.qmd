@@ -950,4 +950,7 @@ knitr::asis_output(paste0("<p>", aa_citation(version, version_released)$html, "<
 :::
 
 A BibTeX entry is on the [codebook](codebook.html#suggested-citation) page. Questions and corrections: [Contact](3_contact.html).
+
+[Related datasets]{.aa-subhead}
+Two datasets built from these data, [K-12 door security](datasets.html#k-12-door-security) and [officers shot](datasets.html#officers-shot), are on the [More Data](datasets.html) page.
 :::

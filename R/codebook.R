@@ -149,29 +149,35 @@ codebook_nav_html <- function(rows) {
 #--citation-----------------------------------------------------------------------
 
 # release year is the citation year; the version is the data year
-aa_citation <- function(version, released) {
-  yr <- format(as.Date(released), "%Y")
+# APA-style data set citation in four forms (markdown, html, plain, BibTeX).
+# Used for the Active Attack Data and for the related datasets on datasets.qmd.
+dataset_citation <- function(title, key, version, year, url = "https://activeattackdata.org") {
   list(
     text = glue::glue(
-      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({yr}). ",
-      "*Active Attack Data* (Version {version}) [Data set]. Texas State University. ",
-      "https://activeattackdata.org"),
+      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({year}). ",
+      "*{title}* (Version {version}) [Data set]. Texas State University. ",
+      "{url}"),
     html = glue::glue(
-      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({yr}). ",
-      "<em>Active Attack Data</em> (Version {version}) [Data set]. Texas State University. ",
-      "<a href=\"https://activeattackdata.org\">https://activeattackdata.org</a>"),
+      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({year}). ",
+      "<em>{title}</em> (Version {version}) [Data set]. Texas State University. ",
+      "<a href=\"{url}\">{url}</a>"),
     plain = glue::glue(
-      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({yr}). ",
-      "Active Attack Data (Version {version}) [Data set]. Texas State University. ",
-      "https://activeattackdata.org"),
+      "Advanced Law Enforcement Rapid Response Training (ALERRT) Center. ({year}). ",
+      "{title} (Version {version}) [Data set]. Texas State University. ",
+      "{url}"),
     bibtex = glue::glue(
-      "@misc{{alerrt_active_attack_data_{version},\n",
+      "@misc{{{key}_{version},\n",
       "  author       = {{{{Advanced Law Enforcement Rapid Response Training (ALERRT) Center}}}},\n",
-      "  title        = {{Active Attack Data}},\n",
-      "  year         = {{{yr}}},\n",
+      "  title        = {{{title}}},\n",
+      "  year         = {{{year}}},\n",
       "  version      = {{{version}}},\n",
       "  publisher    = {{Texas State University}},\n",
-      "  howpublished = {{\\url{{https://activeattackdata.org}}}},\n",
+      "  howpublished = {{\\url{{{url}}}}},\n",
       "  note         = {{Data set}}\n",
       "}}"))
+}
+
+aa_citation <- function(version, released) {
+  dataset_citation("Active Attack Data", "alerrt_active_attack_data", version,
+                   format(as.Date(released), "%Y"))
 }
