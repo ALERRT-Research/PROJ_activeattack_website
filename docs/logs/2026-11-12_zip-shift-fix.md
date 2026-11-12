@@ -12,6 +12,12 @@
 
 **Rebuilt.** DATA_aa outputs; graphics `plots_geospatial.R` light and dark (rolling_map.gif, bicol map html, frames); website full `quarto render` (data/ copies and downloadable CSV refreshed, 22 zip rows changed). Codebook PDF unaffected.
 
-**State.** DATA_aa, graphics and website changes all uncommitted and unpushed. DATA_aa is Hunter's repo (he pushes to main): commit and pushing need Peter's go-ahead.
+**State.** Pushed and live 11-12 (Peter approved each push): DATA_aa `fa65e59`, graphics `ee515af`, website `1d8a551`; Pages deploy succeeded. A chained commit-and-push command was refused by the auto-mode classifier ("External System Writes"); plain single `git push origin main` calls went through. Live check: the download embedded in the Data page carries the corrected zips (168 93268, 172 77410, 185 90045, 188 36104, 115 20301), 634 rows; `rolling_map.gif` timestamp is after the push. Maps not eyeballed in a browser.
+
+**Site note.** The 2025 CSV, codebook PDF and the two derived datasets are embedded by `downloadthis`, not hosted as files, so they have no URL (only the 2023/2024 CSVs and old docx do). By design, not a bug.
 
 **To tell Hunter.** The shift in the xlsx (cases 168-188), case 185 state "LA", case 256 state "OR", case 185 zip (LAX 90045), case 403 Rockford zip, and that the pipeline now validates zips against listed city/state.
+
+**Raw-data policy.** Peter favours an exception (move each 2013 zip down one row) but it is Hunter's call; the validation rule keeps outputs right either way. Its limits: it flags only when state AND city both disagree, so a same-state shift or a wrong zip inside the right state passes; repairs need the right zip in the file or a city the lookup knows.
+
+**Mail.** Note to Hunter drafted in `.bob/mail.md` (untracked, not delivered by git), body on the clipboard 11-12. Not sent: no email route in session (Gmail connector unauthenticated, no address on file). Peter to send.
