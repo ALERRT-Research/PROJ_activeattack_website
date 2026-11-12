@@ -13,3 +13,10 @@ Source: `~/Downloads/website_feedback_full.md`. Plan: `plans/2026-11-12_hunter-f
 ## Left for decisions or Hunter
 
 Attacker counting basis, race framing, 66% tile (65.46), five-year averages, hour-of-day "majority", weapon denominator, rifles/20-deaths sentence, sex 96.2%, Victims table % column, relationship label, Remembrance counts, SIA date range, definition wording, Blair vehicle note. "calibre" lives in DATA_aa (`codebook_events.R`, labels CSV): Hunter's repo.
+
+## Decisions (Peter, 11-12)
+
+- **Every attacker, unknown included.** Attacker numbering is arbitrary (the download sheet says so), so race is counted over all attackers, never first-listed. Denominator is the 651 attackers with a data row, unknowns kept in. Race chart gets an Unknown bar (23, 4%); the text reports other groups (Latino, Asian, Middle Eastern, other) and unknown separately; fact sheet race rows count attackers (`fact_sheet_stats.R`, `att_race`), definitions line says so. Text 46.1% / 29.3% now match chart and fact sheet.
+- **Future task:** media search to fill the unknowns (bob.md backlog).
+- **For Hunter:** case 141 has `offender_count` 2 but only one attacker's data (long file 651 rows vs `sum(offender_count)` 652).
+- Slip fixed: my replacement helper doubled a backslash in the animation sentence (`\\<4`); corrected before any push.

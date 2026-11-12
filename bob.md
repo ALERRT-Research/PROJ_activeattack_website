@@ -10,7 +10,7 @@ deadline: 2026-11-13  # site updated before the ALERRT conference, Nov 16–19 (
 target: Site updated before the ALERRT conference (Nov 16–19, 2026): core update done 11-09; the K-12 door security and officer shot datasets must be hosted by ~11-13 (announced at the conference)
 effort_remaining: conference-week watch; tell Hunter about the export redaction rules
 weekly_commitment: ~3h through 11-13
-last_updated: 2026-11-10
+last_updated: 2026-11-12
 blockers: null
 blocking_others: null
 phase: in-progress
@@ -48,6 +48,7 @@ sync: github
 
 - ~~Publications page~~ done 11-09 (15 works from the ALERRT list; mail-in button). **Peter/Hunter to confirm** the five left out as uncertain and add others' work as it arrives: edit `data/publications.yml` (`docs/logs/2026-11-09_publications.md`)
 - **DOI + dataset profile** (Peter, 11-09): mint a DOI per data version (Zenodo or the TXST repository) and publish a data-descriptor paper profiling the dataset, so we and others cite one fixed record while the publications page collects the cites
+- **Fill unknowns by media search** (Peter, 11-12): 23 attackers have no recorded race (2 no sex, 1 event with a blank second attacker, case 141); a media search could fill them. Not before the conference
 - ~~Victim scroll video~~ done 11-09: 1080p rebuild in the site look, in-page player + download (`docs/logs/2026-11-09_scroll-video.md`)
 
 ## Start Here Next Session

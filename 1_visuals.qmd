@@ -215,8 +215,10 @@ black_pct <- get_pct(aa_data_long, race, "African American")
 #White % of shooters
 white_pct <- get_pct(aa_data_long, race, "Caucasian")
 
-#other race % of shooters
-other_pct <- 100 - black_pct - white_pct
+#other known race groups % and unknown race %, of every attacker (unknown stays in
+#the denominator, the same as the race chart and the fact sheet)
+other_pct <- get_pct(aa_data_long, race, c("Latino", "Asian", "Middle Eastern", "Other"))
+unk_race_pct <- round(100 * mean(is.na(aa_data_long$race)), 1)
 
 #minimum age of shooters
 age_min <- min(aa_data_long$age, na.rm = TRUE)
@@ -312,8 +314,9 @@ The racial/ethnic makeup of attackers roughly mirrored that of the
 general population, though Caucasians were under-represented and African
 Americans were over-represented. Most attackers were either Caucasian
 (`{r} white_pct`%) or African American (`{r} black_pct`%). All other
-racial/ethnic groups (e.g., Latino, Asian, Middle Eastern) only
-accounted for around a quarter of attackers (`{r} other_pct`%).
+racial/ethnic groups (e.g., Latino, Asian, Middle Eastern) accounted
+for `{r} other_pct`% of attackers, and race was unknown for
+`{r} unk_race_pct`%.
 
 [Age]{.aa-subhead}
 While the median age of attackers was `{r} age_median` years old,
@@ -774,7 +777,7 @@ other states/groups.
 [Attacks by year (animation)]{.aa-subhead}
 The number of attacks and fatalities has risen over the period. This
 animation shows the location, primary weapon, and number of fatalities
-(\\<4, 4+) of each attack, year by year from 2000 to `{r} years_max`.
+(\<4, 4+) of each attack, year by year from 2000 to `{r} years_max`.
 :::
 
 # Fact Sheet
@@ -859,7 +862,7 @@ year before (`{r} fs_yrs$prev` counts are in the PDF). Single years hold few att
 events is within normal year-to-year variation; the five-year average
 gives the longer view.
 
-**Definitions.** *One weapon* includes vehicle attacks and attacks with a firearm of unknown type. Race is that of the first-listed attacker. *Shot by
+**Definitions.** *One weapon* includes vehicle attacks and attacks with a firearm of unknown type. Race counts every attacker (unknown included), so its rows total the number of attackers, not attacks. *Shot by
 civilian* includes off-duty officers and security guards. *Fled the
 scene* includes a small number of attackers who fled after police
 arrived. Victim counts follow ALERRT's definitions, which are stricter

@@ -45,8 +45,18 @@ fs_tally <- function(d) {
   firearm <- d$weapon_primary %in% fs_firearms | is.na(d$weapon_primary)
   n_fire  <- sum(firearm)
 
-  race <- as.character(d$race_1)
-  race[is.na(race)] <- "Unknown"
+  # Race counts every attacker, not the first-listed one: the numbering of attackers
+  # (race_1, race_2, race_3) is arbitrary. A slot holds an attacker when any of its race,
+  # sex or age is recorded; a slot with no race is counted as "Unknown", so unknowns stay
+  # in the denominator (Peter, 2026-11-12).
+  blank_na <- function(x) { x <- as.character(x); x[x %in% ""] <- NA; x }
+  att_race <- unlist(lapply(1:3, function(k) {
+    r <- blank_na(d[[paste0("race_", k)]])
+    present <- !is.na(r) | !is.na(blank_na(d[[paste0("sex_", k)]])) |
+               !is.na(blank_na(d[[paste0("age_", k)]]))
+    ifelse(is.na(r), "Unknown", r)[present]
+  }))
+  n_att <- length(att_race)
 
   rel <- as.character(d$relationship)
   loc <- as.character(d$location_primary)
@@ -89,13 +99,13 @@ fs_tally <- function(d) {
     cnt("Weapons", "Shotgun", firearm & d$weapon_primary %in% "Shotgun", n_fire, "Firearm type"),
     cnt("Weapons", "Unknown", firearm & is.na(d$weapon_primary),         n_fire, "Firearm type"),
 
-    # Attackers (race is the first-listed attacker, as on the published sheet)
+    # Attackers (race counts every attacker; the other rows count events)
     cnt("Attackers", "1 attacker",  d$offender_count == 1, group = "Number of attackers"),
     cnt("Attackers", "2 attackers", d$offender_count == 2, group = "Number of attackers"),
     cnt("Attackers", "3 attackers", d$offender_count == 3, group = "Number of attackers"),
     map_dfr(c("African American", "Asian", "Caucasian", "Latino",
               "Middle Eastern", "Other", "Unknown"),
-            \(r) cnt("Attackers", r, race == r, group = "Race")),
+            \(r) cnt("Attackers", r, att_race == r, n_att, group = "Race")),
     cnt("Attackers", "No relationship",          rel %in% "No relationship", group = "Relationship to victims"),
     cnt("Attackers", "Employee/former employee", rel %in% "Coworker",        group = "Relationship to victims"),
     cnt("Attackers", "Student/former student",   rel %in% "Student",         group = "Relationship to victims"),

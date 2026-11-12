@@ -133,7 +133,7 @@ notes <- glue(
   "so a change of a few events is within normal year-to-year variation; the five-year average gives ",
   "the longer view.\n\n",
   "*Definitions.* _One weapon_ includes vehicle attacks and attacks with a firearm of unknown type. ",
-  "Race is that of the first-listed attacker. _Shot by civilian_ includes off-duty officers and ",
+  "Race counts every attacker (unknown included), so its rows total the number of attackers, not attacks. _Shot by civilian_ includes off-duty officers and ",
   "security guards. _Fled the scene_ includes a small number of attackers who fled after police ",
   "arrived. Victim counts follow ALERRT's definitions, which are stricter than the FBI's. ",
   "Year-by-year figures always come from the current version of the data, so attacks identified ",
