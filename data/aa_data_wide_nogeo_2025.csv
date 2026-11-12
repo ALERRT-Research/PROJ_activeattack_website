@@ -254,7 +254,7 @@ case_code,date,year,month,day,hour,zip_code,escalated,mobile,city,state,location
 253,2016-10-03,2016,Oct,Mon,15,74074,No,No,Stillwater,OK,Retail,,1,No relationship,Knife,0,0,0,1,0,0,0,0,0,2,,2,0,0,0,,0,0,0,Subdued by citizens,Yes,53,,,Male,,,Caucasian,,
 254,2016-10-25,2016,Oct,Tue,6,24042,No,No,Roanoke,VA,Factory/warehouse,,1,Coworker,Pistol,1,0,0,1,4,4,4,0,0,3,3,3,0,0,1,1,1,0,0,Suicide before police arrival,Yes,53,,,Male,,,African American,,
 255,2016-11-04,2016,Nov,Fri,14,08901,No,No,New Brunswick,NJ,School,university,1,Student,Knife,0,0,0,1,0,0,0,0,0,2,,2,0,0,0,,0,0,0,Suicide after police arrival,No,25,,,Male,,,Caucasian,,
-256,2016-11-16,2016,Nov,Wed,7,84097,No,No,Orem,OR,School,9-12 (high school),1,Student,Knife,0,0,0,1,0,0,0,0,0,5,,5,0,0,0,,0,0,0,Suicide after police arrival,No,16,,,Male,,,Caucasian,,
+256,2016-11-16,2016,Nov,Wed,7,84097,No,No,Orem,UT,School,9-12 (high school),1,Student,Knife,0,0,0,1,0,0,0,0,0,5,,5,0,0,0,,0,0,0,Suicide after police arrival,No,16,,,Male,,,Caucasian,,
 257,2016-11-28,2016,Nov,Mon,3,78572,No,No,Palmview,TX,Retail,,1,Coworker,Pistol,1,0,0,1,4,4,4,0,0,3,3,3,0,0,1,1,1,0,0,Fled,Yes,25,,,Male,,,Latino,,
 258,2016-11-28,2016,Nov,Mon,9,43218,No,No,Columbus,OH,School,university,1,Student,Vehicle,0,0,0,1,0,0,0,0,0,11,,11,0,0,0,,0,0,0,Shot by police,No,18,,,Male,,,African American,,
 259,2017-01-06,2017,Jan,Fri,13,33315,No,No,Fort Lauderdale,FL,Retail,,1,No relationship,Pistol,1,0,0,1,13,13,13,0,0,8,8,8,0,0,5,5,5,0,0,Surrendered,Yes,26,,,Male,,,Latino,,

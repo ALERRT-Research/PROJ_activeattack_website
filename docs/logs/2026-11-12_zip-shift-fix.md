@@ -8,7 +8,7 @@
 - Case 185 (LAX) set to 90045, LAX's own zip (Peter, 11-12), applied after the repair step so 87101 stays available to case 184; the source's 90017 is downtown LA.
 - Case 403 Rockford IL had a Wisconsin zip; now 61107 (approximate, city lookup).
 - 77410 (Cypress TX) and 87101 (Albuquerque NM) are PO-box zips with no coordinates; appended to `input/events/2023/zip_coords_completed.csv` with city-area points (4/9/2013, 10/26/2013).
-- Case 256 Orem has state "OR" (should be UT); zip is right, left alone.
+- Case 256 Orem: state "OR" corrected to UT (Peter, 11-12; zip 84097 is Orem, UT). Not caught by the zip check (zip city matches), but it moved a school attack between states: OR 8 -> 7, UT 2 -> 3. Fixed in the raw-data step beside 53 and 185; rebuilt (state map, downloads); top-state ranking unchanged (CA 72, TX 60, FL 42), no page text names OR or UT, fact sheet has no state counts. Second round of commits is local until pushed.
 
 **Rebuilt.** DATA_aa outputs; graphics `plots_geospatial.R` light and dark (rolling_map.gif, bicol map html, frames); website full `quarto render` (data/ copies and downloadable CSV refreshed, 22 zip rows changed). Codebook PDF unaffected.
 
