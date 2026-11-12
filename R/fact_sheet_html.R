@@ -130,13 +130,15 @@ fs_table_html <- function(fs, section_name, prev_col = FALSE) {
 
   yrs <- attr(fs, "years")
   d   <- filter(fs, section == section_name)
-  ncol <- if (prev_col) 7 else 6
+  # a section with no counts (Victims: sums and medians) has nothing for the % column
+  has_pct <- any(d$kind == "count")
+  ncol <- 5 + prev_col + has_pct
 
   head <- glue(
     '<thead><tr>',
     '<th scope="col">Category</th>',
     '<th scope="col" class="fs-num">{yrs$first}&ndash;<wbr>{yrs$curr}</th>',
-    '<th scope="col" class="fs-num fs-pct">%</th>',
+    if (has_pct) '<th scope="col" class="fs-num fs-pct">%</th>' else '',
     if (prev_col) '<th scope="col" class="fs-num fs-prev">{yrs$prev}</th>' else '',
     '<th scope="col" class="fs-num fs-curr">{yrs$curr}</th>',
     '<th scope="col" class="fs-num">vs. {yrs$prev}</th>',
@@ -163,7 +165,7 @@ fs_table_html <- function(fs, section_name, prev_col = FALSE) {
       '<tr{if (subtotal) " class=\\"fs-subtotal\\"" else ""}>',
       '<th scope="row">{gsub("/", "/<wbr>", r$item, fixed = TRUE)}</th>',
       '<td class="fs-num">{fs_fmt_n(r$n_all, r$kind)}</td>',
-      '<td class="fs-num fs-pct">{pct}</td>',
+      if (has_pct) '<td class="fs-num fs-pct">{pct}</td>' else '',
       if (prev_col) '<td class="fs-num fs-prev">{fs_fmt_n(r$n_prev, r$kind)}</td>' else '',
       '<td class="fs-num fs-curr">{fs_fmt_n(r$n_curr, r$kind)}</td>',
       '<td class="fs-num">{fs_fmt_change(r$change)}</td>',

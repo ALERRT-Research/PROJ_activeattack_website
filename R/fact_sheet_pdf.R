@@ -95,6 +95,8 @@ map_title <- glue("Where the {tot[2]} attacks in {yrs$curr} happened")
 
 section_table <- function(section_name, title) {
   d <- filter(fs, section == section_name)
+  # a section with no counts (Victims: sums and medians) has nothing for the % column
+  has_pct <- any(d$kind == "count")
   rows <- character()
   last_group <- ""
   for (i in seq_len(nrow(d))) {
@@ -107,12 +109,14 @@ section_table <- function(section_name, title) {
     pct <- if (r$kind == "count") scales::number(r$pct_all, accuracy = 0.1) else ""
     avg <- if (r$kind == "median") fmt_n(r$avg_window)
            else scales::number(r$avg_window, accuracy = 0.1, big.mark = ",")
-    cells <- paste0("[", c(ty(r$item), fmt_n(r$n_all), pct, fmt_n(r$n_prev), fmt_n(r$n_curr),
-                           fmt_change(r$change), avg), "]", collapse = ", ")
+    vals <- c(ty(r$item), fmt_n(r$n_all), pct, fmt_n(r$n_prev), fmt_n(r$n_curr),
+              fmt_change(r$change), avg)
+    if (!has_pct) vals <- vals[-3]
+    cells <- paste0("[", vals, "]", collapse = ", ")
     rows <- c(rows, if (subtotal) glue("table.hline(stroke: 0.75pt + ink), ..subtotal(({cells})),")
                     else paste0(cells, ","))
   }
-  glue('#fs-table([{title}], (\n  {paste(rows, collapse = "\n  ")}\n))')
+  glue('#fs-table([{title}], (\n  {paste(rows, collapse = "\n  ")}\n), pct: {tolower(has_pct)})')
 }
 
 #--page text---------------------------------------------------------------------
@@ -184,21 +188,24 @@ typ <- glue(.open = "<<", .close = ">>", '
 #let subtotal(cells) = cells.map(c => text(weight: "semibold", c))
 
 // one section: 2024 and 2025 both shown; 2025 carries the maroon band
-#let fs-table(title, body) = block(breakable: false, width: 100%)[
+#let fs-table(title, body, pct: true) = {
+  // the current-year column is x = 4, or x = 3 when the % column is dropped
+  let cx = if pct { 4 } else { 3 }
+  block(breakable: false, width: 100%)[
   #set text(size: 8.5pt, number-width: "tabular")
-  #show table.cell.where(x: 4): set text(fill: maroon, weight: "semibold")
+  #show table.cell.where(x: cx): set text(fill: maroon, weight: "semibold")
   #text(size: 12pt, weight: "semibold", title)
   #v(-6pt)
   #table(
-    columns: (1fr, 62pt, 34pt, 38pt, 38pt, 46pt, 76pt),
+    columns: if pct { (1fr, 62pt, 34pt, 38pt, 38pt, 46pt, 76pt) } else { (1fr, 62pt, 38pt, 38pt, 46pt, 76pt) },
     align: (x, y) => if x == 0 { left + bottom } else { right + bottom },
     inset: (x: 4pt, y: 2.25pt),
     stroke: (x, y) => (bottom: if y == 0 { 1pt + ink } else { 0.4pt + rule }),
-    fill: (x, y) => if x == 4 { if y == 0 { maroon } else { band } },
+    fill: (x, y) => if x == cx { if y == 0 { maroon } else { band } },
     table.header(
       text(weight: "semibold")[Category],
       text(weight: "semibold")[<<yrs$first>>–<<yrs$curr>>],
-      text(weight: "semibold", fill: muted)[%],
+      ..if pct { (text(weight: "semibold", fill: muted)[%],) } else { () },
       text(weight: "semibold")[<<yrs$prev>>],
       text(weight: "semibold", fill: white)[<<yrs$curr>>],
       text(weight: "semibold")[vs. <<yrs$prev>>],
@@ -206,7 +213,7 @@ typ <- glue(.open = "<<", .close = ">>", '
     ),
     ..body,
   )
-]
+]}
 
 // ---- page 1 ------------------------------------------------------------------
 
