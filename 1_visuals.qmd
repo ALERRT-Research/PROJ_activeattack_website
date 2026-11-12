@@ -57,13 +57,13 @@ years <- n_distinct(aa_data$year, na.rm = TRUE)
 years_max <- max(aa_data$year, na.rm = TRUE)
 
 #average of last five years
-mean_last_5yr <- get_mean(aa_data, year, (years_max-5):years_max)
+mean_last_5yr <- get_mean(aa_data, year, (years_max-4):years_max)
 
-#average of first five years (2000-2005)
-mean_first_5yr <- get_mean(aa_data, year, 2000:2005)
+#average of first five years (2000-2004)
+mean_first_5yr <- get_mean(aa_data, year, 2000:2004)
 
-#average of second five years (2006-2010)
-mean_second_5yr <- get_mean(aa_data, year, 2006:2010)
+#average of second five years (2005-2009)
+mean_second_5yr <- get_mean(aa_data, year, 2005:2009)
 
 #April-August % of attacks
 warm_months_pct <- get_pct(aa_data, month, month.abb[4:8])
@@ -192,7 +192,7 @@ equally likely on any given day of the week.
 [By hour of the day]{.aa-subhead}
 Active attacks tend to cluster around midday. While attacks that begin
 at midday exactly are relatively infrequent (only `{r} midday_pct`% of
-attacks), the majority of attacks occur immediately before midday
+attacks), half of all attacks occur immediately before midday
 (8-11am hours account for `{r} late_morn_pct`% of attacks) or after
 midday (1-4pm hours account for `{r} early_aft_pct`% of attacks).
 :::
@@ -249,7 +249,7 @@ shotgun_pct <- get_pct(aa_data, weapon_primary, "Shotgun")
 ```{r}
 tab_header("Attackers",
            "Who carried out the attacks, and the weapons they used.",
-           c("Male" = paste0(round(male_pct), "%"), "Acted alone" = paste0(round(solo_pct), "%"),
+           c("Male" = tile_pct(male_pct), "Acted alone" = tile_pct(solo_pct),
              "Median age" = age_median))
 ```
 :::
@@ -310,9 +310,7 @@ the attacker commits the attack alone `{r} solo_pct`% of the
 time. Beyond these characteristics, attackers are somewhat more varied.
 
 [Race and ethnicity]{.aa-subhead}
-The racial/ethnic makeup of attackers roughly mirrored that of the
-general population, though Caucasians were under-represented and African
-Americans were over-represented. Most attackers were either Caucasian
+Most attackers were either Caucasian
 (`{r} white_pct`%) or African American (`{r} black_pct`%). All other
 racial/ethnic groups (e.g., Latino, Asian, Middle Eastern) accounted
 for `{r} other_pct`% of attackers, and race was unknown for
@@ -331,9 +329,9 @@ of the life course.
 Active attacks can be carried out using any weapon though, in reality,
 only a very small minority of attacks (`{r} non_gun_pct`%) were carried
 out using weapons other than firearms (e.g., knife, vehicle). Among
-types of firearms, handguns made up a clear majority
-(`{r} pistol_pct`%), while rifles (e.g., AR15s) and shotguns were used
-in `{r} rifle_pct`% and `{r} shotgun_pct`% of the time, respectively.
+firearms, pistols were the most common, used in `{r} pistol_pct`% of
+all attacks, while rifles (e.g., AR15s) and shotguns were used in
+`{r} rifle_pct`% and `{r} shotgun_pct`% of all attacks, respectively.
 :::
 
 # Locations
@@ -411,8 +409,8 @@ business_coworker_pct <- get_pct(
 ```{r}
 tab_header("Locations",
            "Where attacks happened, and the attacker's relationship to the place.",
-           c("At a business" = paste0(round(business_pct), "%"), "At a school" = paste0(round(school_pct), "%"),
-             "No relationship to the place" = paste0(round(norel_pct), "%")))
+           c("At a business" = tile_pct(business_pct), "At a school" = tile_pct(school_pct),
+             "No relationship to the place" = tile_pct(norel_pct)))
 ```
 :::
 
@@ -590,7 +588,7 @@ casualty_lt10_pct <- get_pct(aa_data |>
 tab_header("Casualties",
            "People killed and wounded: by year, in each attack, and by weapon.",
            c("Killed" = format_num(kill_tot), "Wounded" = format_num(wound_tot),
-             "Attacks with no deaths" = paste0(round(deaths_0_pct), "%")))
+             "Attacks with no deaths" = tile_pct(deaths_0_pct)))
 ```
 :::
 
@@ -680,11 +678,13 @@ one side of the plot will highlight a corresponding point on the other
 side.
 
 [Wounded and killed by weapon]{.aa-subhead}
-Most attacks (`{r} pistol_pct`%) were committed using handguns. Among
-these, total fatalities were generally less than 20 (except for the
-attacks at Virginia Tech, 2007). Similarly, nearly all handgun attacks
-resulted in \<20 wounded (except the attack at Fort Hood, 2009).
-Attacks using rifles accounted for all of the attacks that surpassed 20
+Most attacks (`{r} pistol_pct`% of all attacks) were committed using
+pistols. Among these, total fatalities were generally less than 20
+(except for the attack at Virginia Tech, 2007). Similarly, nearly all
+pistol attacks resulted in \<20 wounded (except the attack at Fort Hood,
+2009). Rifle attacks accounted for
+`{r} sum(aa_data$kill_tot > 20 & aa_data$weapon_primary %in% "Rifle")`
+of the `{r} sum(aa_data$kill_tot > 20)` attacks that surpassed 20
 deaths. However, a mix of vehicle and rifle attacks accounted for nearly
 all attacks with more than 20 wounded. Hover over the points on this
 plot to get information about that specific attack.

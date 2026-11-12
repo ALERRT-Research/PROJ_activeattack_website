@@ -106,11 +106,11 @@ fs_tally <- function(d) {
     map_dfr(c("African American", "Asian", "Caucasian", "Latino",
               "Middle Eastern", "Other", "Unknown"),
             \(r) cnt("Attackers", r, att_race == r, n_att, group = "Race")),
-    cnt("Attackers", "No relationship",          rel %in% "No relationship", group = "Relationship to victims"),
-    cnt("Attackers", "Employee/former employee", rel %in% "Coworker",        group = "Relationship to victims"),
-    cnt("Attackers", "Student/former student",   rel %in% "Student",         group = "Relationship to victims"),
+    cnt("Attackers", "No relationship",          rel %in% "No relationship", group = "Relationship to the location"),
+    cnt("Attackers", "Employee/former employee", rel %in% "Coworker",        group = "Relationship to the location"),
+    cnt("Attackers", "Student/former student",   rel %in% "Student",         group = "Relationship to the location"),
     cnt("Attackers", "All other",
-        !rel %in% c("No relationship", "Coworker", "Student"),               group = "Relationship to victims"),
+        !rel %in% c("No relationship", "Coworker", "Student"),               group = "Relationship to the location"),
 
     # Locations ("Church" and "Military base" appear only if DATA_aa keeps them
     # as levels; until then they are inside "All other")

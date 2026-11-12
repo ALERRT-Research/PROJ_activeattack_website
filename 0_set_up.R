@@ -195,10 +195,15 @@ get_pct <- function(data, var_name, value) {
     summarise(
       n_total = n(),
       n_target = sum(target),
-      pct = round((n_target / n_total) * 100, 1)
+      pct_raw = (n_target / n_total) * 100,
+      pct = round(pct_raw, 1)
     ) |>
-    pull(pct)
+    (\(x) structure(x$pct, raw = x$pct_raw))()
 }
+
+#=tile text from a get_pct() result, rounded once from the unrounded value========
+#(rounding the 1-decimal value again turned 65.46 into 65.5 and then 66)
+tile_pct <- function(p) paste0(round(attr(p, "raw")), "%")
 
 #=function to get the mean of specific levels of a variable====================
 get_mean <- function(data, var_name, value) {
