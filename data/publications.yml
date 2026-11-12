@@ -49,7 +49,7 @@
   title: "Correlates of the number shot and killed in active shooter events"
   venue: "Homicide Studies"
   doi: "10.1177/1088767920976727"
-  uses: "Models of the number shot and killed per event: weapons, location, resolution and year."
+  uses: "Models of the number shot and killed per event: weapons, location, resolution, and year."
 
 - type: article
   year: 2019
@@ -130,3 +130,50 @@
   venue: "CRC Press"
   doi: "10.1201/b14996"
   uses: "Includes the first analysis of the events, 2000 to 2010."
+
+- type: book
+  year: 2024
+  authors: "Blair, J. P., & Martaindale, M. H."
+  title: "The Chain of Survival: Responding to an Active Attack"
+  venue: "TPPP, LLC"
+  uses: "How civilians and responders keep victims alive in an active attack, drawing on the event data."
+
+- type: report
+  year: 2025
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States 2024"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2024
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States 2023"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2023
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2022"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2022
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2021"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."
+
+- type: report
+  year: 2021
+  authors: "Federal Bureau of Investigation & ALERRT Center, Texas State University"
+  title: "Active shooter incidents in the United States in 2020"
+  venue: "U.S. Department of Justice"
+  url: "https://www.fbi.gov/how-we-can-help-you/active-shooter-safety-resources/active-shooter-incidents"
+  uses: "The FBI's annual report, built with ALERRT from the firearm events in the data."

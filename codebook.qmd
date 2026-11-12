@@ -52,11 +52,11 @@ An active attack occurs when an individual or individuals is actively killing or
 :::
 ::: {.cb-reason}
 ### Attacker variables
-Age, sex and race carry a suffix for each attacker (`age_1`, `age_2`, `age_3`). For an attack with one attacker, the `_2` and `_3` variables are empty. The order is arbitrary.
+Age, sex, and race carry a suffix for each attacker (`age_1`, `age_2`, `age_3`). For an attack with one attacker, the `_2` and `_3` variables are empty. The order is arbitrary.
 :::
 ::: {.cb-reason}
 ### Inclusive counts
-Variables ending in `_incl` use the FBI's more inclusive definition. ALERRT counts only people shot, wounded or killed by the attacker; an injury suffered while fleeing is not in `wound_tot`.
+Variables ending in `_incl` use the FBI's more inclusive definition. ALERRT counts only people shot, wounded, or killed by the attacker; an injury suffered while fleeing is not in `wound_tot`.
 :::
 ::: {.cb-reason}
 ### Versions

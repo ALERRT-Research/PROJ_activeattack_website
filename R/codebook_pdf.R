@@ -149,9 +149,9 @@ typ <- glue(.open = "<<", .close = ">>", '
     [#text(weight: "semibold")[What counts as an active attack] #linebreak()
      An active attack occurs when an individual or individuals is actively killing or attempting to kill multiple unrelated people in a public space. The key word is _actively_: events that law enforcement learns of only after they end are excluded. Any weapon counts.],
     [#text(weight: "semibold")[Attacker variables] #linebreak()
-     Age, sex and race carry a suffix for each attacker (#raw("age_1"), #raw("age_2"), #raw("age_3")). For an attack with one attacker, the #raw("_2") and #raw("_3") variables are empty. The order is arbitrary.],
+     Age, sex, and race carry a suffix for each attacker (#raw("age_1"), #raw("age_2"), #raw("age_3")). For an attack with one attacker, the #raw("_2") and #raw("_3") variables are empty. The order is arbitrary.],
     [#text(weight: "semibold")[Inclusive counts] #linebreak()
-     Variables ending in #raw("_incl") use the FBI\'s more inclusive definition. ALERRT counts only people shot, wounded or killed by the attacker; an injury suffered while fleeing is not in #raw("wound_tot").],
+     Variables ending in #raw("_incl") use the FBI\'s more inclusive definition. ALERRT counts only people shot, wounded, or killed by the attacker; an injury suffered while fleeing is not in #raw("wound_tot").],
     [#text(weight: "semibold")[Suggested citation] #linebreak()
      <<ty(cit$plain)>>],
   )

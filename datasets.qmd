@@ -33,7 +33,7 @@ bibtex_block <- function(cit) {
 ```
 
 ::: {.aa-intro}
-# More data
+# More Data
 
 Two datasets built from the Active Attack Data: the doors attackers met in K-12 school attacks, and the officers shot in active shooter incidents.
 
@@ -42,7 +42,7 @@ Each comes as CSV files with a PDF codebook, in the same form as the [Active Att
 
 ## K-12 door security {#k-12-door-security .cb-h2}
 
-U.S. K-12 active shooter attacks and the doors the attackers came up against: whether each door was locked, barricaded or breached, and how the attacker got through.
+U.S. K-12 active shooter attacks and the doors the attackers came up against: whether each door was locked, barricaded, or breached, and how the attacker got through.
 
 ::: {.cb-facts}
 ```{r}
@@ -71,7 +71,7 @@ The codebook describes every variable in both files: what it records, its values
 ::: {.cb-reading}
 ::: {.cb-reason}
 ### Two files
-The events file has one row per attack (`{r} nrow(k12_ev)` rows, `{r} ncol(k12_ev)` variables): school, timing, victims by location, attackers, firearms and the response. The doors file has one row per door (`{r} nrow(k12_dr)` doors in `{r} length(unique(k12_dr$case_number))` attacks, `{r} ncol(k12_dr)` variables).
+The events file has one row per attack (`{r} nrow(k12_ev)` rows, `{r} ncol(k12_ev)` variables): school, timing, victims by location, attackers, firearms, and the response. The doors file has one row per door (`{r} nrow(k12_dr)` doors in `{r} length(unique(k12_dr$case_number))` attacks, `{r} ncol(k12_dr)` variables).
 :::
 ::: {.cb-reason}
 ### Linking them

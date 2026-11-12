@@ -44,7 +44,7 @@ home_latest(home_fs)
 
 > **An active attack occurs when an individual or individuals is actively killing or attempting to kill multiple unrelated people in a public space.**
 
-The key word is *actively*. The definition excludes events that law enforcement learns of only after they end, such as many family annihilations in a private home; first responders are typically alerted to an active attack while it is happening. Even so, more than half of these attacks end before law enforcement arrives, because civilians stop the attacker or the attacker stops (flees or dies by suicide). Any weapon counts, whether a firearm, a knife or a vehicle, as long as the intent is to kill as many people as possible.
+The key word is *actively*. The definition excludes events that law enforcement learns of only after they end, such as many family annihilations in a private home; first responders are typically alerted to an active attack while it is happening. Even so, more than half of these attacks end before law enforcement arrives, because civilians stop the attacker or the attacker stops (flees or dies by suicide). Any weapon counts, whether a firearm, a knife, or a vehicle, as long as the intent is to kill as many people as possible.
 
 ALERRT began collecting data on active shooter events in 2010 to understand how they unfold and to inform its training, and in 2013 joined the FBI to form an Active Shooter Working Group that supports the FBI's annual reports. Around 2018 the definition widened from firearms to any weapon, and the data became the Active Attack Data: every FBI-documented firearm attack, plus the non-firearm attacks identified by ALERRT's research team.
 
@@ -56,13 +56,13 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 -   *11/10/26* - New [More Data](datasets.html) page with two datasets built from the Active Attack Data: [K-12 door security](datasets.html#k-12-door-security) (54 school attacks and the 66 doors the attackers came up against) and [officers shot](datasets.html#officers-shot) (156 officers struck by gunfire in 75 active shooter incidents). Each comes as CSV with a PDF codebook and a suggested citation.
 
--   *11/09/26* - New [Publications](publications.html) page: the research, reports and books that used the Active Attack Data, with a button to tell us about work of your own so we can list it.
+-   *11/09/26* - New [Publications](publications.html) page: the research, reports, and books that used the Active Attack Data, with a button to tell us about work of your own so we can list it.
 
 -   *11/09/26* - New memorial video on the Remembrance page: 1080p, the names rolling by year with officer and under-18 marked, playable on the page and downloadable.
 
--   *11/09/26* - Added a light/dark switch (the half-moon icon in the top bar). It changes the whole site, and every figure, map, interactive plot and animation has a dark version drawn for it; downloads give you the version on screen. Also added a [Codebook](codebook.html) page and PDF built from the data (the Word codebook is retired), a suggested citation, and a redesigned Download the Data tab: download buttons first, a table that pages and scrolls sideways, and links to the v2024 and v2023 files for reproducing earlier work. The Contact page now carries our Texas State email addresses.
+-   *11/09/26* - Added a light/dark switch (the half-moon icon in the top bar). It changes the whole site, and every figure, map, interactive plot, and animation has a dark version drawn for it; downloads give you the version on screen. Also added a [Codebook](codebook.html) page and PDF built from the data (the Word codebook is retired), a suggested citation, and a redesigned Download the Data tab: download buttons first, a table that pages and scrolls sideways, and links to the v2024 and v2023 files for reproducing earlier work. The Contact page now carries our Texas State email addresses.
 
--   *11/06/26* - Redesigned the site: a new home page, a header with key numbers on each Active Attacks tab, figures restyled with one colour per tab, a fixed count on the state map (Delaware, which has no recorded attacks, had been shown with one), and interactive plots that fit any screen.
+-   *11/06/26* - Redesigned the site: a new home page, a header with key numbers on each Active Attacks tab, figures restyled with one color per tab, a fixed count on the state map (Delaware, which has no recorded attacks, had been shown with one), and interactive plots that fit any screen.
 
 -   *11/06/26* - Redesigned the Fact Sheet tab and the downloadable fact sheet PDF. Both now show each figure for 2025 next to 2024 and the 2020–2024 average, add a map of where the 2025 attacks happened, and are built directly from the data. The numbers themselves are unchanged.
 
@@ -79,7 +79,7 @@ More about the ALERRT Center's research at [ALERRTResearch.org](https://alerrtre
 
 -   *12/04/25* - Added "fact sheet" tab and downloadable fact sheet to the Active Attacks page.
 
--   *08/29/25* - Changed the section title "fatalities" to "casualities" and added information on the number of wounded.
+-   *08/29/25* - Changed the section title "fatalities" to "casualties" and added information on the number of wounded.
 
 -   *08/27/25* - Gradient color schemes were removed from plots to avoid double encoding of attack counts/percentages.
 

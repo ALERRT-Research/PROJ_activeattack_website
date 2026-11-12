@@ -34,7 +34,7 @@ mailto <- paste0("mailto:", mail_to, "?cc=", mail_cc, "&subject=", utils::URLenc
 
 Research, reports and books that used the Active Attack Data, and a way to add yours.
 
-The list starts with the ALERRT Center's own work, from the first FBI study in 2014 to the current articles. We would like it to grow: if you have published, presented or taught with the data, tell us below and we will add it.
+The list starts with the ALERRT Center's own work, from a 2013 book and the first FBI study in 2014 to the current articles. We would like it to grow: if you have published, presented or taught with the data, tell us below and we will add it.
 :::
 
 ::: {.cb-facts}

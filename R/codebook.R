@@ -23,7 +23,7 @@ codebook_groups <- list(
                   paste0("sex_", 1:3), paste0("race_", 1:3)),
   "Weapons" = c("weapon_primary", "weapon_pistol_tot", "weapon_shotgun_tot",
                 "weapon_rifle_tot", "weapon_tot"),
-  "People shot, wounded and killed" = c(
+  "People shot, wounded, and killed" = c(
     "shot_tot", "shot_tot_incl", "shot_cit_tot", "shot_le_tot", "shot_guard_tot",
     "wound_tot", "wound_tot_incl", "wound_cit_tot", "wound_le_tot", "wound_guard_tot",
     "kill_tot", "kill_tot_incl", "kill_cit_tot", "kill_le_tot", "kill_guard_tot"),

@@ -115,11 +115,11 @@ fs_header_html <- function(fs) {
     yrs$first, '&ndash;', yrs$curr, '</h2>',
     '<p class="fs-sub">Fact sheet, updated with ', yrs$curr, ' data</p>',
     '<p>The most-requested numbers from the Active Attack Data on one page: how many attacks ',
-    'there were, who carried them out, where they happened, how they ended and how many people ',
+    'there were, who carried them out, where they happened, how they ended, and how many people ',
     'were hurt. Every figure covers all ', total, ' attacks since ', yrs$first, ', with ',
     yrs$curr, ' set beside ', yrs$prev, ' and the ', win, ' average.</p>',
     '<p class="fs-onpage">Below: headline numbers and a map of ', yrs$curr, ', then tables on ',
-    'weapons, attackers, locations, how attacks ended and victims. Definitions are at the end.</p>'))
+    'weapons, attackers, locations, how attacks ended, and victims. Definitions are at the end.</p>'))
 }
 
 #--section tables---------------------------------------------------------------

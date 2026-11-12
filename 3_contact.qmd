@@ -39,7 +39,7 @@ A name missing or wrong on the [Remembrance](2_victims.html) page, or an error i
 :::
 ::: {.aa-reason}
 ### Using the data
-If you use the data in research, reporting or training, we are glad to hear about it. Please credit the ALERRT Center's Active Attack Data and link to [activeattackdata.org](https://activeattackdata.org).
+If you use the data in research, reporting, or training, we are glad to hear about it. Please credit the ALERRT Center's Active Attack Data and link to [activeattackdata.org](https://activeattackdata.org).
 :::
 :::
 
