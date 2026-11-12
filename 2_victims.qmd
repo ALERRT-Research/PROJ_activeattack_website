@@ -32,14 +32,14 @@ yr_last   <- max(aa_data$year, na.rm = TRUE)
 
 `{r} format_num(names_n)` names of the `{r} format_num(kill_tot)` people killed in active attacks in the United States, 2000 to `{r} yr_last`.
 
-Let us pause to remember them, and to honor with courage and compassion their families and those who risked their lives to save others. We try to record every name we can find. If a name is missing or wrong, please [tell us](3_contact.qmd).
+Let us pause to remember them, and to honor with courage and compassion their families and those who risked their lives to save others. We try to record every name we can find, but not everyone could be named, so a year's names can differ from the number of people killed in the data. If a name is missing or wrong, please [tell us](3_contact.qmd).
 
 [Officer]{.rem-tag} law enforcement officer  [Under 18]{.rem-tag .rem-minor} under 18 years old
 :::
 
 ```{r}
 #| echo: false
-remembrance_names(victims)
+remembrance_names(victims, tapply(aa_data$kill_tot, aa_data$year, sum, na.rm = TRUE))
 ```
 
 ::: {.rem-video}

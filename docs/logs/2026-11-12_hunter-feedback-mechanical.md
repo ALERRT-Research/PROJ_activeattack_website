@@ -20,3 +20,14 @@ Attacker counting basis, race framing, 66% tile (65.46), five-year averages, hou
 - **Future task:** media search to fill the unknowns (bob.md backlog).
 - **For Hunter:** case 141 has `offender_count` 2 but only one attacker's data (long file 651 rows vs `sum(offender_count)` 652).
 - Slip fixed: my replacement helper doubled a backslash in the animation sentence (`\\<4`); corrected before any push.
+
+## Later decisions and changes (Peter, 11-12)
+
+- Race framing: "roughly mirrored the general population" sentence dropped; numbers kept.
+- Relationship variable is relationship to the location: fact sheet group relabeled; codebook label (DATA_aa) is Hunter's.
+- Five-year averages: consecutive blocks 2000-2004 (8), 2005-2009 (13), 2021-2025 (46).
+- Weapon percentages stay out of all attacks, worded "of all attacks"; "pistols" not "handguns"; rifle sentence now "6 of the 7 attacks that surpassed 20 deaths" (computed).
+- Tiles round once from the unrounded value (`tile_pct()` in `0_set_up.R`; 66% was 65.46 rounded twice).
+- Victims table: empty % column dropped (web and PDF; Typst `fs-table(pct: false)`).
+- Remembrance: year headings read "N of D named" when names < deaths, "N names" when names > deaths (reconciliation with Hunter pending); intro says not everyone could be named.
+- SIA range left at 2000-2025 (the study window; first attack 2001). Definition wording left as is. Blair vehicle note now says through 2024 plus the New Orleans case, the only 2025 attack in the data at writing.

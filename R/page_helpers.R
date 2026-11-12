@@ -111,7 +111,10 @@ home_latest <- function(fs) {
 # Remembrance: every recorded name, newest year first, then by attack date.
 # Officers and minors carry a small text label (not colour alone). No attacker
 # is ever named on this site; this list holds victims only.
-remembrance_names <- function(v) {
+# deaths_by_year: named vector of kill_tot summed by year (names = year). When given, a
+# year's heading says how many of the deaths are named; years with more names than
+# deaths read "N names" until the two lists are reconciled (2026-11-12 review).
+remembrance_names <- function(v, deaths_by_year = NULL) {
   esc <- function(x) htmltools::htmlEscape(x)
   v <- v |>
     dplyr::filter(!is.na(victim), trimws(victim) != "") |>
@@ -134,8 +137,12 @@ remembrance_names <- function(v) {
       paste0('<div class="rem-date"><h3>', format(dates[i], "%B %e"), '</h3><ul class="rem-names">',
              paste0('<li>', esc(vd$victim), tags, '</li>', collapse = ""), '</ul></div>')
     }, character(1))
+    d_y   <- if (is.null(deaths_by_year)) NA else unname(deaths_by_year[as.character(y)])
+    count <- if (is.na(d_y) || nrow(vy) == d_y) paste0(nrow(vy), if (nrow(vy) == 1) ' person' else ' people')
+             else if (nrow(vy) < d_y) paste0(nrow(vy), ' of ', d_y, ' named')
+             else paste0(nrow(vy), ' names')
     paste0('<section class="rem-year" id="y', y, '"><h2>', y, ' <span class="rem-count">',
-           nrow(vy), if (nrow(vy) == 1) ' person' else ' people', '</span></h2>',
+           count, '</span></h2>',
            paste(blocks, collapse = ""), '</section>')
   }, character(1))
 
